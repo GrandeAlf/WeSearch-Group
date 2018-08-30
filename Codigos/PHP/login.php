@@ -20,8 +20,8 @@
    <div class="wrapper" >
     <form class="form-signin" method="post" action="mostralogin.php">       
       <h2 class="form-signin-heading">Login</h2>
-      <input type="email" class="form-control" name="email" placeholder="Email" required="" autofocus="" />
-      <input type="password" class="form-control" name="senha" placeholder="Senha" required=""/>      
+      <input type="email" class="form-control" name="email" placeholder="Email"  autofocus="" />
+      <input type="password" class="form-control" name="senha" placeholder="Senha" />      
         
         <button class="btn btn-lg btn-block btn-success" type="submit">Entrar</button><br>
         <div class="esqueceusenha">
