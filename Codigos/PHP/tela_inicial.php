@@ -13,22 +13,19 @@
      
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
 
-    <title>LOGIN</title>
+    <title>Cadastro ADM</title>
   </head>
   <body>
    
    <div class="wrapper" >
     <form class="form-signin" method="post" action="mostralogin.php">       
-      <h2 class="form-signin-heading">Login</h2>
-      <input type="text" class="form-control" name="login" placeholder="Prontuario"  autofocus="" />
-      <input type="password" class="form-control" name="senha" placeholder="Senha" />      
+      <h2 class="form-signin-heading">Cadastro de ADM</h2>
+      <input type="text" class="form-control" name="login" placeholder="Login"  autofocus="" />
+      <input type="email" class="form-control" name="email" placeholder="Email"  autofocus="" />
+      <input type="password" class="form-control" name="senha" placeholder="Senha" />
+      <input type="password" class="form-control" name="conf_senha" placeholder="Confirmar Senha" />      
         
-        <button class="btn btn-lg btn-block btn-success" type="submit">Entrar</button><br>
-        <div class="esqueceusenha">
-        <a href="recuperasenha.php">
-          <input type="button" class="btn btn-link"  value="Lembrar senha"/>
-        </a>
-        </div>
+        <button class="btn btn-lg btn-block btn-success" type="submit">Cadastrar</button><br>
     </form>
   </div>
     
