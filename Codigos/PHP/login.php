@@ -16,21 +16,23 @@
     <title>LOGIN</title>
   </head>
   <body>
-   
-   <div class="wrapper" >
-    <form class="form-signin" method="post" action="mostralogin.php">       
-      <h2 class="form-signin-heading">Login</h2>
-      <input type="text" class="form-control" name="login" placeholder="Prontuario"  autofocus="" />
-      <input type="password" class="form-control" name="senha" placeholder="Senha" />      
-        
-        <button class="btn btn-lg btn-block btn-success" type="submit">Entrar</button><br>
-        <div class="esqueceusenha">
-        <a href="recuperasenha.php">
-          <input type="button" class="btn btn-link"  value="Lembrar senha"/>
-        </a>
-        </div>
-    </form>
-  </div>
+     
+    <div class="wrapper" >
+      <form class="form-signin" method="post" action="mostralogin.php">       
+        <h2 class="form-signin-heading">Login</h2>
+        <input type="text" class="form-control" name="login" placeholder="Prontuario"  autofocus="" />
+        <input type="password" class="form-control" name="senha" placeholder="Senha" />      
+          
+          <button class="btn btn-lg btn-block btn-success" type="submit">Entrar</button><br>
+          <div class="esqueceusenha">
+          <a href="recuperasenha.php">
+            <input type="button" class="btn btn-link"  value="Lembrar senha"/>
+          </a>
+          </div>
+      </form>
+    </div>
+
+    
     
 
     <!-- Optional JavaScript -->
