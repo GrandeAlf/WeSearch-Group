@@ -1,6 +1,50 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <?php include("conexao.php");
+
+
+    if(isset ($_POST['cadastrar']))
+    {
+        //registro dos dados
+        
+        if(!isset($_SESSION))
+            session_start();
+        
+        foreach($_POST as $chave=>$valor)
+            $_SESSION[$chave] = $mysqli->real_escape_string($valor);
+        
+                
+        
+        //validacao dos dados
+        
+        if(strlen($_SESSION['login'])==0)
+            $erro[] = "Preencha corretamente o login";
+        
+        if(strlen($_SESSION['senha']) < 6 || strlen($_SESSION['senha']) > 10)
+            $erro[] = "Infome uma senha valida";
+        
+        if(strcmp($_SESSION['senha'],$_SESSION['conf_senha']) != 0)
+            $erro[] = "Senhas não batem";
+        
+        //insere no banco
+        
+        
+            
+            $sql_code = "INSERT INTO usuarios(prontuario, senha, email) 
+            VALUES ('$_SESSION[login]','$_SESSION[senha]','$_SESSION[email]')";
+            
+            $confirma = $mysqli->query($sql_code) or die($mysqli->error);
+            
+
+            echo"$confirma";
+
+        
+
+    }
+
+?>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,16 +60,15 @@
     <title>Cadastro ADM</title>
   </head>
   <body>
-   
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="mostralogin.php">       
+    <form class="form-signin" method="post" action="">       
       <h2 class="form-signin-heading">Cadastro de ADM</h2>
       <input type="text" class="form-control" name="login" placeholder="Login"  autofocus="" />
       <input type="email" class="form-control" name="email" placeholder="Email"  autofocus="" />
       <input type="password" class="form-control" name="senha" placeholder="Senha" />
       <input type="password" class="form-control" name="conf_senha" placeholder="Confirmar Senha" />      
         
-        <button class="btn btn-lg btn-block btn-success" type="submit">Cadastrar</button><br>
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
     </form>
   </div>
     
