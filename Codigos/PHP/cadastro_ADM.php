@@ -25,19 +25,20 @@
             $erro[] = "Infome uma senha valida";
         
         if(strcmp($_SESSION['senha'],$_SESSION['conf_senha']) != 0)
-            $erro[] = "Senhas não batem";
+            $erro[] = "As senhas são diferente";
         
         //insere no banco
         
+        //faz a criptografia da senha    
+        $cript = hash("sha256", $_SESSION['senha']);        
+            
+        $sql_code = "INSERT INTO usuarios(prontuario, senha, email, adm) 
+        VALUES ('$_SESSION[login]','$cript','$_SESSION[email]', '1')";
         
-            
-            $sql_code = "INSERT INTO usuarios(prontuario, senha, email) 
-            VALUES ('$_SESSION[login]','$_SESSION[senha]','$_SESSION[email]')";
-            
-            $confirma = $mysqli->query($sql_code) or die($mysqli->error);
-            
+        $confirma = $mysqli->query($sql_code) or die($mysqli->error);
+        
 
-            echo"$confirma";
+        echo"$confirma";
 
         
 

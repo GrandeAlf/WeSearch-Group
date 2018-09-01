@@ -27,7 +27,7 @@
     		echo "Prontuário e(ou) senha errados.";
     	}
 
-	   	    
+	   	echo hash("sha256", $senha);    
     
         /*echo("Login: ".$login."<br>");
         echo("Senha: ".$senha);*/
