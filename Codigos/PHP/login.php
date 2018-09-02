@@ -16,14 +16,28 @@
     <title>LOGIN</title>
   </head>
   <body>
-     
+    
     <div class="wrapper" >
-      <form class="form-signin" method="post" action="mostralogin.php">       
+      <form class="form-signin" method="post" action="validalogin.php">       
         <h2 class="form-signin-heading">Login</h2>
         <input type="text" class="form-control" name="login" placeholder="Prontuario"  autofocus="" />
         <input type="password" class="form-control" name="senha" placeholder="Senha" />      
           
           <button class="btn btn-lg btn-block btn-success" type="submit">Entrar</button><br>
+
+          
+            
+            <?php
+              session_start();
+              //verifica se a variavel global existe
+              if(isset($_SESSION['loginErro'])){
+                //imprime mensagem de erro e destrói a variável
+                echo $_SESSION['loginErro'];
+                unset($_SESSION['loginErro']);
+              }
+            ?>
+          
+
           <div class="esqueceusenha">
           <a href="recuperasenha.php">
             <input type="button" class="btn btn-link"  value="Lembrar senha"/>
