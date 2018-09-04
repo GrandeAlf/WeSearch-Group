@@ -3,16 +3,16 @@
     session_start();
     include("conexao.php");
 
-    $login = $_POST["login"];
+    $_SESSION['login'] = $_POST["login"];
     $senha = $_POST["senha"];
 
     //Criptografa senha para comparar com o banco
-    $cript = hash("sha256", $senha);
+    $_SESSION['cript'] = hash("sha256", $senha);
 
     //echo $cript . "<br>";
 
     //eferua consulta no banco, procurando login e senha (já criptografada);
-    $consulta = "SELECT prontuario, senha FROM usuarios WHERE prontuario = '$login' AND senha = '$cript'";
+    $consulta = "SELECT prontuario, senha FROM usuarios WHERE prontuario = '$_SESSION[login]' AND senha = '$_SESSION[cript]'";
     $result = $mysqli->query($consulta) or die($mysqli->error);
 
 
@@ -31,7 +31,7 @@
         //echo "Prontuário e(ou) senha errados.";
     }
     else{
-        echo "Achou! Faz login!";
+        echo "Sessão: ". $_SESSION['login'];
     }
 
 

@@ -6,7 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-   <label>Deu Certo</label>
-    
+
+    <?php
+    	session_start();
+    	echo $_SESSION['login'];
+    ?>
+
 </body>
 </html>

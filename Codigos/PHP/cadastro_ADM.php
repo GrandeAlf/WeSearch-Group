@@ -29,16 +29,28 @@
         
         //insere no banco
         
-        //faz a criptografia da senha    
-        $cript = hash("sha256", $_SESSION['senha']);        
+        $cript = hash("sha256", $_SESSION['senha']);   //faz a criptografia da senha         
             
-        $sql_code = "INSERT INTO usuarios(prontuario, senha, email, adm) 
-        VALUES ('$_SESSION[login]','$cript','$_SESSION[email]', '1')";
+        $sql_code = "INSERT INTO usuarios(prontuario,nome, senha, email, adm) 
+        VALUES ('$_SESSION[login]','admin','$cript','$_SESSION[email]', '1')";
         
         $confirma = $mysqli->query($sql_code) or die($mysqli->error);
         
 
-        echo"$confirma";
+        if($confirma)
+        {
+        	unset(
+        		$_SESSION['login'],
+        		$_SESSION['senha'],
+        		$_SESSION['email']
+        	);
+
+        	echo "<script>location.href='teste.php?p=inicial';</script>";	
+        }
+        else
+        {
+        	$erro[] = $confirma;
+        }
 
         
 

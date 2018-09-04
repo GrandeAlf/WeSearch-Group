@@ -28,12 +28,15 @@
           
             
             <?php
+            if(!isset($_SESSION))
               session_start();
               //verifica se a variavel global existe
               if(isset($_SESSION['loginErro'])){
                 //imprime mensagem de erro e destrói a variável
                 echo $_SESSION['loginErro'];
                 unset($_SESSION['loginErro']);
+
+
               }
             ?>
           
