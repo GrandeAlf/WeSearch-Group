@@ -81,7 +81,7 @@
       <input type="password" class="form-control" name="senha" placeholder="Senha" />
       <input type="password" class="form-control" name="conf_senha" placeholder="Confirmar Senha" />      
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+      <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
     </form>
   </div>
     
