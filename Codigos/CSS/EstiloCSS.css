@@ -1,21 +1,10 @@
-#centro 
+#site
 {
-    width:100px;
-    height:100px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-top:-50px;
-    margin-left:-50px;
+    background-color: #4CAF50;
+    color: white;
 }
-#div_login
+#infos
 {
-    position: absolute;
-    top: 125%;
-    left: 50%;
+    color: white;
     margin: 5px;
-}
-.cc_botão
-{
-    
 }

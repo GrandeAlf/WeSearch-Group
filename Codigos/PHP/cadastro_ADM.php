@@ -45,7 +45,9 @@
         		$_SESSION['email']
         	);
 
-        	echo "<script>location.href='teste.php?p=inicial';</script>";	
+        	echo "<script>location.href='teste.php';</script>";	
+
+          $barra = 0;
         }
         else
         {
@@ -74,7 +76,7 @@
   </head>
   <body>
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="">       
+    <form class="form-signin" method="post" action="inicial.php">       
       <h2 class="form-signin-heading">Cadastro de ADM</h2>
       <input type="text" class="form-control" name="login" placeholder="Login"  autofocus="" />
       <input type="email" class="form-control" name="email" placeholder="Email"  autofocus="" />
