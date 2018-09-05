@@ -45,9 +45,7 @@
         		$_SESSION['email']
         	);
 
-        	echo "<script>location.href='teste.php';</script>";	
-
-          $barra = 0;
+        	header("location: inicial.php");
         }
         else
         {
