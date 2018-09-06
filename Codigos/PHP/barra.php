@@ -9,9 +9,11 @@
   <link rel="stylesheet" type="text/css" href="../CSS/EstiloCSS.css">
 
 <?php  
-		$prontuario = "169006X";
-		$nome = "Danillo";
-    $x = $_POST['barra'];
+		
+
+    session_start();
+    $prontuario = $_SESSION['login'];
+    $x = $_SESSION['barra'];
 
 ?>
 
@@ -21,7 +23,7 @@
       <a class="navbar-brand" id="site">WeSearch Group</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="#">Inicio</a></li>
+      <li><a href="inicial.php">Inicio</a></li>
 <?php
       		if($x == 1)
       		{
@@ -39,20 +41,13 @@
         if($x == 1)
         {
 
-          echo "<li class='dropdown'>  
-              <a class='dropdown-toggle' data-toggle='dropdown' href='#''> Prontuario: ".$prontuario." || Nome: ".$nome. 
-              "
-                <span class='caret'></span></a>
-                 <ul class='dropdown-menu'>
-                 <li><a href='#''><span class='glyphicon glyphicon-wrench'></span> Permições</a></li>
-                    <li><a href='#''><span class='glyphicon glyphicon-cog'></span> Configurações</a></li>
-                    <li><a href='#''><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
-                    </ul>
-                 </li>
+          echo "<li><a href='#''>Pronturario: ".$prontuario."</a></li>
+                <li><a href='cadastro_ADM.php''><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
+         
               ";
         }
         else
-          echo "<li><a href='#''><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
+          echo "<li><a href='login.php''><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";
 
 
   ?>
