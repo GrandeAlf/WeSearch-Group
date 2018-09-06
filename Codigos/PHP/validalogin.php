@@ -27,11 +27,18 @@
         $_SESSION['loginErro'] = "<div class=\"alert alert-danger\" role=\"alert\">Prontuário e(ou) senha inválidos. Tente novamente.</div>";
         //echo "<script> alert(\"teste\");</script>";
         //manda o user de volta a tela login
+
+        
+
         header("location: login.php");
         //echo "Prontuário e(ou) senha errados.";
     }
     else{
-        echo "Sessão: ". $_SESSION['login'];
+        $barra = 1;
+
+        $_SESSION['barra'] = $barra;
+
+       echo "<script>location.href='inicial.php';</script>";    
     }
 
 
