@@ -22,6 +22,8 @@
     echo $dado["senha"] . "<br>";
     }*/
 
+    
+
     if($result->num_rows == 0){
         //variavel global que exibe a mensagem de erro
         $_SESSION['loginErro'] = "<div class=\"alert alert-danger\" role=\"alert\">Prontuário e(ou) senha inválidos. Tente novamente.</div>";

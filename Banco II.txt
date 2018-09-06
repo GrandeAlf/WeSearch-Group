@@ -1,8 +1,0 @@
-CREATE TABLE `wesearch`.`usuarios` 
-( `id` INT NOT NULL AUTO_INCREMENT , 
-`prontuario` VARCHAR(9) NOT NULL , 
-`nome` VARCHAR(120) NULL , 
-`senha` VARCHAR(64) NOT NULL , 
-`email` VARCHAR(120) NOT NULL , 
-`lattes` VARCHAR(120) NULL , 
-`adm` BOOLEAN NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM;

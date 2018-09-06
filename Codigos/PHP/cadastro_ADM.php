@@ -22,10 +22,13 @@
             $erro[] = "Preencha corretamente o login";
         
         if(strlen($_SESSION['senha']) < 6 || strlen($_SESSION['senha']) > 10)
-            $erro[] = "Infome uma senha valida";
+            $erro[] = "Informe uma senha valida";
         
-        if(strcmp($_SESSION['senha'],$_SESSION['conf_senha']) != 0)
-            $erro[] = "As senhas são diferente";
+        if(strcmp($_SESSION['senha'],$_SESSION['conf_senha']) != 0){
+            echo "<div class=\"alert alert-danger\" role=\"alert\">Prontuário e(ou) senha inválidos. Tente novamente.</div>";
+            header("location: cadastro_ADM.php");
+            return;
+        }
         
         //insere no banco
         
@@ -74,7 +77,7 @@
   </head>
   <body>
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="inicial.php">       
+    <form class="form-signin" method="post" action="">       
       <h2 class="form-signin-heading">Cadastro de ADM</h2>
       <input type="text" class="form-control" name="login" placeholder="Login"  autofocus="" />
       <input type="email" class="form-control" name="email" placeholder="Email"  autofocus="" />
