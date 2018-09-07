@@ -13,7 +13,13 @@
     
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     
-     
+     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" type="text/css" href="../CSS/recuperasenha.css">
 
     <title>Recuperar Senha</title>
@@ -22,25 +28,31 @@
   </head>
   <body>
    
-   <div class="container">
+  <div class="form-gap"></div>
+<div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="recovery-panel panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">Recuperação de Senha</h3>
-            </div>
-            <div class="panel-body">
-                <form role="form" method="post" action="enviaemail.php">
-                <fieldset>
-                    <input name="prontuario" placeholder="Prontuario" class="form-control input-md"  type="text">
-                    <span class="help-block">Insira o prontuário cadastrado no sistema</span>       
-                  <div align="center">
-                      <button  id="recupera" name="recupera" class="btn btn-success" type="submit" style="float: left;">Recuperar</button>
-                    <button type = "button"id="cancela" name="cancela" class="btn btn-danger" onClick="JavaScript: window.history.back();" style="float: right;">Cancelar</button> 
-
-                  </div>   
-                    
-                    <?php
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <h3><i class="fa fa-lock fa-4x"></i></h3>
+                  <h2 class="text-center">Esqueceu sua senha?</h2>
+                  <p>Altere sua senha aqui.</p>
+                  <div class="panel-body">
+    
+                    <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+    
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                          <input id="email" name="email" placeholder="E-mail cadastrado" class="form-control"  type="email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input name="recover-submit" class="btn btn-lg btn-success btn-block" value="Nova Senha" type="submit">
+                      </div>
+                      
+                        <?php
                         session_start();
                         //verifica se a variavel global existe
                         if(isset($_SESSION['loginErro'])){
@@ -48,14 +60,17 @@
                             echo $_SESSION['loginErro'];
                             unset($_SESSION['loginErro']);
                         }
-                    ?>
-                </fieldset>
-                </form>
+                        ?>
+
+                    </form>
+    
+                  </div>
+                </div>
+              </div>
             </div>
-            </div>
-        </div>
+          </div>
     </div>
-</div>   
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

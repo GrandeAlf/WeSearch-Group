@@ -26,8 +26,8 @@
       		</ul>
      <ul class="nav navbar-nav navbar-right">
      <?php 
-     		echo "<li><a href='#''>Pronturario: ".$prontuario."</a></li>";
+     		echo "<li><a href='configs_adm.php''>Pronturario: ".$prontuario."</a></li>";
       ?>
-                <li><a href='login.php''><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
+                <li><a href='inicial.php''><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
 </body>
 </html>
