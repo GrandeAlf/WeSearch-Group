@@ -15,23 +15,10 @@
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
 
     <title>Cadastro Usuarios</title>
-
-
-    <script type="text/javascript">
-        function barraADM()
-      {
-        $("#barra").load("barra_ADM.php");
-      }
-        
-      </script>
-
   </head>
-  <body onload="barraADM()">
-    <div id=barra>
-
-    </div>
-   <div class="wrapper" >
-    <form class="form-signin" method="post" action="validacadastrouser.php">       
+  <body>
+   <div class="" >
+    <form class="form-signin" method="post" action="">       
       <h2 class="form-signin-heading">Cadastro de Usuarios</h2>
       <input type="text" class="form-control" name="login" placeholder="Prontuario"  autofocus="" />
       <input type="text" class="form-control" name="nome" placeholder="Nome"  />
@@ -41,14 +28,6 @@
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
         
-        <?php 
-          session_start();
-          if(isset($_SESSION['informaerro'])){
-            echo $_SESSION['informaerro'];
-            unset($_SESSION['informaerro']);
-          }
-
-         ?>
 
     </form>
   </div>

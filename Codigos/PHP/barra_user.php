@@ -20,7 +20,7 @@
 		      <a class="navbar-brand" id="site">WeSearch Group</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		      <li><a href="inicial.php">Inicio</a></li>
+		      <li><a href="inicial.php?var=0">Inicio</a></li>
       		</ul>
      <ul class="nav navbar-nav navbar-right">
      <?php 

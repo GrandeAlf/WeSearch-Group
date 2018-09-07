@@ -20,7 +20,7 @@
 		      <a class="navbar-brand" id="site">WeSearch Group</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		      <li><a href="inicial.php">Inicio</a></li>
+		      <li><a href="inicial.php?var=1">Inicio</a></li>
 		      <li><a href='#''>Grupo de Pesquisa</a></li>
       			<li><a href='#''>Relatorios</a></li>
       		</ul>
