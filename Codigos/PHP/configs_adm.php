@@ -19,7 +19,7 @@
 
 	  <script type="text/javascript">
 	  	
-	  	function cadastra_usuario(pagina)
+	  	function carrega_pagina(pagina)
 	  	{
 	  		$("#conteudo").load(pagina);
 	  	}
@@ -28,6 +28,7 @@
 	  	{
 	  		$("#barra").load("barra_ADM.php");
 	  	}
+
 
 
 	  </script>
@@ -68,7 +69,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="">News</a>
+                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="#" onclick="carrega_pagina('permissoes.php')">Permissões</a>
                                     </td>
                                 </tr>
                                 <tr>
