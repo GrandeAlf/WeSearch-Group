@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="../CSS/barra.css">
 </head>
 
+<?php $prontuario = "USER"; ?>
 
 <body>
 		<nav class="navbar navbar-inverse">
@@ -22,9 +23,10 @@
 		      <li><a href="inicial.php">Inicio</a></li>
       		</ul>
      <ul class="nav navbar-nav navbar-right">
-     
-     
+     <?php 
+        echo "<li><a href='#''>Pronturario: ".$prontuario."</a></li>";
+      ?>
 
-                <li><a href='login.php''><span class='glyphicon glyphicon-log-in'></span> Login</a></li>
+                <li><a href='login.php''><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
 </body>
 </html>

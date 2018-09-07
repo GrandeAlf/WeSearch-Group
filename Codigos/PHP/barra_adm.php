@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css" href="../CSS/barra.css">
 </head>
 
+<?php $prontuario = "ADM"; ?>
 
 <body>
 		<nav class="navbar navbar-inverse">
@@ -20,11 +21,13 @@
 		    </div>
 		    <ul class="nav navbar-nav">
 		      <li><a href="inicial.php">Inicio</a></li>
+		      <li><a href='#''>Grupo de Pesquisa</a></li>
+      			<li><a href='#''>Relatorios</a></li>
       		</ul>
      <ul class="nav navbar-nav navbar-right">
-     
-     
-
-                <li><a href='login.php''><span class='glyphicon glyphicon-log-in'></span> Login</a></li>
+     <?php 
+     		echo "<li><a href='#''>Pronturario: ".$prontuario."</a></li>";
+      ?>
+                <li><a href='login.php''><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
 </body>
 </html>

@@ -1,66 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php include("conexao.php");
-
-
-    if(isset ($_POST['cadastrar']))
-    {
-        //registro dos dados
-        
-        if(!isset($_SESSION))
-            session_start();
-        
-        foreach($_POST as $chave=>$valor)
-            $_SESSION[$chave] = $mysqli->real_escape_string($valor);
-        
-                
-        
-        //validacao dos dados
-        
-        if(strlen($_SESSION['login'])==0)
-            $erro[] = "Preencha corretamente o login";
-        
-        if(strlen($_SESSION['senha']) < 6 || strlen($_SESSION['senha']) > 10)
-            $erro[] = "Informe uma senha valida";
-        
-        if(strcmp($_SESSION['senha'],$_SESSION['conf_senha']) != 0){
-            echo "<div class=\"alert alert-danger\" role=\"alert\">Prontuário e(ou) senha inválidos. Tente novamente.</div>";
-            header("location: cadastro_ADM.php");
-            return;
-        }
-        
-        //insere no banco
-        
-        $cript = hash("sha256", $_SESSION['senha']);   //faz a criptografia da senha         
-            
-        $sql_code = "INSERT INTO usuarios(prontuario,nome, senha, email, adm) 
-        VALUES ('$_SESSION[login]','admin','$cript','$_SESSION[email]', '1')";
-        
-        $confirma = $mysqli->query($sql_code) or die($mysqli->error);
-        
-
-        if($confirma)
-        {
-        	unset(
-        		$_SESSION['login'],
-        		$_SESSION['senha'],
-        		$_SESSION['email']
-        	);
-
-        	header("location: inicial.php");
-        }
-        else
-        {
-        	$erro[] = $confirma;
-        }
-
-        
-
-    }
-
-?>
-
+   
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,14 +18,22 @@
   </head>
   <body>
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="">       
+    <form class="form-signin" method="post" action="validacadastroadm.php">       
       <h2 class="form-signin-heading">Cadastro de ADM</h2>
       <input type="text" class="form-control" name="login" placeholder="Login"  autofocus="" />
       <input type="email" class="form-control" name="email" placeholder="Email"  autofocus="" />
       <input type="password" class="form-control" name="senha" placeholder="Senha" />
       <input type="password" class="form-control" name="conf_senha" placeholder="Confirmar Senha" />      
         
-      <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+        <?php 
+          session_start();
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
     </form>
   </div>
     

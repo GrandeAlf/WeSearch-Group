@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+
+
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,9 +14,11 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     
      
-       <link rel="stylesheet" type="text/css" href="../CSS/recuperasenha.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/recuperasenha.css">
 
     <title>Recuperar Senha</title>
+
+
   </head>
   <body>
    
@@ -25,13 +30,25 @@
                 <h3 class="panel-title">Recuperação de Senha</h3>
             </div>
             <div class="panel-body">
-                <form role="form" method="post" action="mostrasenha.php">
+                <form role="form" method="post" action="enviaemail.php">
                 <fieldset>
-                    <input id="textinput" name="email" placeholder="email@email.com" class="form-control input-md" required="" type="email">
-                    <span class="help-block">Insira o email cadastrado no sistema</span>       
-                     
-                    <button id="recupera" name="recupera" class="btn btn-success" type="submit">Recuperar</button>
-                    <button id="cancela" name="cancela" class="btn btn-danger" onclick="Cancela_rsenha()">Cancelar</button>
+                    <input name="prontuario" placeholder="Prontuario" class="form-control input-md"  type="text">
+                    <span class="help-block">Insira o prontuário cadastrado no sistema</span>       
+                  <div align="center">
+                      <button  id="recupera" name="recupera" class="btn btn-success" type="submit" style="float: left;">Recuperar</button>
+                    <button type = "button"id="cancela" name="cancela" class="btn btn-danger" onClick="JavaScript: window.history.back();" style="float: right;">Cancelar</button> 
+
+                  </div>   
+                    
+                    <?php
+                        session_start();
+                        //verifica se a variavel global existe
+                        if(isset($_SESSION['loginErro'])){
+                            //imprime mensagem de erro e destrói a variável
+                            echo $_SESSION['loginErro'];
+                            unset($_SESSION['loginErro']);
+                        }
+                    ?>
                 </fieldset>
                 </form>
             </div>
