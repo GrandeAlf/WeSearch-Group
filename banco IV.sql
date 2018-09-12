@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 06-Set-2018 às 22:52
+-- Generation Time: 12-Set-2018 às 23:14
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `wesearch`
 --
+CREATE DATABASE IF NOT EXISTS `wesearch` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `wesearch`;
 
 -- --------------------------------------------------------
 
@@ -35,13 +37,6 @@ CREATE TABLE IF NOT EXISTS `links` (
   `data` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `links`
---
-
-INSERT INTO `links` (`id`, `chave`, `data`) VALUES
-(1, 'a78cee544d5535ddf3f3b21fac85d68fdc93e2040fdc665e94977bcf65cb7ce9', '2018-09-06 19:49:38');
 
 -- --------------------------------------------------------
 
@@ -62,13 +57,6 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `chave` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `prontuario`, `nome`, `senha`, `email`, `lattes`, `alteracao`, `adm`, `chave`) VALUES
-(22, 'admin', 'Admin', 'ccbc804f776cd2e742750c1045b5fd063d7cfba40c74fe5ff06b6c51ccbbd7b5', 'eric.gmoreira98@gmail.com', NULL, '2018-09-06', 1, 'a78cee544d5535ddf3f3b21fac85d68fdc93e2040fdc665e94977bcf65cb7ce9');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
