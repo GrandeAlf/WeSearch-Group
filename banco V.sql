@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 12-Set-2018 às 23:14
+-- Generation Time: 13-Set-2018 às 01:07
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -27,6 +27,27 @@ USE `wesearch`;
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `grupo_pesquisa`
+--
+
+DROP TABLE IF EXISTS `grupo_pesquisa`;
+CREATE TABLE IF NOT EXISTS `grupo_pesquisa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(120) NOT NULL,
+  `sigla` varchar(8) NOT NULL,
+  `lattes` varchar(120) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `descricao` text NOT NULL,
+  `data_inicio` date NOT NULL,
+  `ativacao` tinyint(1) NOT NULL,
+  `id_lider` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_lider` (`id_lider`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `links`
 --
 
@@ -36,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `links` (
   `chave` varchar(64) NOT NULL,
   `data` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -56,7 +77,17 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `adm` tinyint(1) NOT NULL,
   `chave` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `grupo_pesquisa`
+--
+ALTER TABLE `grupo_pesquisa`
+  ADD CONSTRAINT `grupo_pesquisa_ibfk_1` FOREIGN KEY (`id_lider`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
