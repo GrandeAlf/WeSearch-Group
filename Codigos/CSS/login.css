@@ -48,21 +48,15 @@
 	input[type="text"] 
     {
 	  margin-bottom: 20px;
-	  border-bottom-left-radius: 0;
-	  border-bottom-right-radius: 0;
 	}
 
 	input[type="password"] 
     {
 	  margin-bottom: 20px;
-	  border-top-left-radius: 0;
-	  border-top-right-radius: 0;
 	}
     input[type="email"] 
     {
 	  margin-bottom: 20px;
-	  border-bottom-left-radius: 0;
-	  border-bottom-right-radius: 0;
 	}
     
     .esqueceusenha
@@ -70,4 +64,11 @@
         
         margin-left: 95px;
     }
+
     
+    select
+    {
+        margin-bottom: 20px
+    }
+
+   
