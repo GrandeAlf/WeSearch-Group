@@ -45,7 +45,7 @@
 	$result = $mysqli->query($consulta) or die($mysqli->error);
 	if($result){
 
-		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Cadastro Inserido com sucesso!.</div>"; 
+		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Cadastro Inserido com sucesso!</div>"; 
 		header("location: cadastro_user.php");
 	}
 

@@ -21,16 +21,59 @@
      
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
 
+
+
+
+
     <title>Cadastro Grupo de Pesquisa</title>
   </head>
   <body>
+    <?php
+      include ("conexao.php");
+    ?>
+
+
    <div class="wrapper" >
     <form class="form-signin" method="post" action="validacadastroadm.php">       
       <h2 class="form-signin-heading" align="center">Cadastro de Grupo de Pesquisa</h2>
       <input type="text" class="form-control" name="nome" placeholder="Nome"  autofocus="" />
       <input type="text" class="form-control" name="sigla" placeholder="Sigla" />
-      <p class="text-muted">Lider de Pesquisa:</p>
-      <select class="form-control"></select>
+      <select class="form-control">
+         <option selected="selected">Lider de Pesquisa</option>
+         <?php
+            include ("conexao.php");
+
+            /* check connection */
+              if ($mysqli->connect_errno) {
+                  printf("A conexão falhou: %s\n", $ligacao->connect_error);
+                  exit();
+              }
+                               
+
+                $query = "SELECT id,nome FROM `usuarios` WHERE adm != 1";
+                               
+
+                               
+                if ($stmt = $mysqli->prepare($query)) {
+
+                    /* execute statement */
+                    $stmt->execute();
+
+                    /* bind result variables */
+                    $stmt->bind_result($id, $nome);
+
+                    /* fetch values */
+                    while ($stmt->fetch()) {        
+                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
+                    }
+
+                /* close statement */
+                  $stmt->close();
+                }                     
+          ?>
+
+      </select>
+
 
       <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
