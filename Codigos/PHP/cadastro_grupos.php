@@ -34,12 +34,12 @@
 
 
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="validacadastroadm.php">       
+    <form class="form-signin" method="post" action="validacadastrogrupos.php">       
       <h2 class="form-signin-heading" align="center">Cadastro de Grupo de Pesquisa</h2>
-      <input type="text" class="form-control" name="nome" placeholder="Nome"  autofocus="" />
+      <input type="text" class="form-control" name="nome" placeholder="Nome do Grupo de Pesquisa"  autofocus="" />
       <input type="text" class="form-control" name="sigla" placeholder="Sigla" />
-      <select class="form-control">
-         <option selected="selected">Lider de Pesquisa</option>
+      <select class="form-control" name="lider">
+         <option disabled selected="selected" >Lider de Pesquisa</option>
          <?php
             include ("conexao.php");
 

@@ -67,7 +67,7 @@
 		$mail->ClearAllRecipients();
 		$mail->ClearAttachments();
 
-		# Exibe uma mensagem de resultado (opcional)
+		
 		if ($enviado) {
 		$_SESSION['loginErro'] = "<div class=\"alert alert-info\" role=\"alert\">Email enviado!</div>";
         header("location: login.php");
