@@ -14,27 +14,32 @@
      
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
 
-    <title>Alterar Grupoo</title>
+    <title>Alterar Grupo</title>
   </head>
 <body>
 	<?php 
+
+    include ("conexao.php");
     //get de id de grupo de pesquisa
 		$cod = $_GET["id"];
 
+    $consulta = "SELECT nome, sigla FROM grupo_pesquisa WHERE id = '$cod'";
+    $result = $mysqli->query($consulta) or die($mysqli->error);
+    $dado = mysqli_fetch_assoc($result);
 
 
 	 ?>
 
 	 <div class="wrapper" >
-    <form class="form-signin" method="post" action="validacadastroadm.php">       
+    <form class="form-signin" method="post" action="validaalteracaogrupos.php">       
       <h2 class="form-signin-heading" align="center">Alterar Grupo de Pesquisa</h2>
-      <input type="text" class="form-control" name="nome" placeholder="Nome"   />
-      <input type="text" class="form-control" name="sigla" placeholder="Sigla"   />
+      <input disabled type="text" class="form-control" name="nome" placeholder="<?php echo $dado["nome"]; ?>"   />
+      <input disabled type="text" class="form-control" name="sigla" placeholder="<?php echo $dado["sigla"] ?>"   />
       <input type="email" class="form-control" name="email" placeholder="Email"   />
       <input type="text" class="form-control" name="lattes" placeholder="Lattes" />
       
       	
-      	<textarea class="form-control" rows="5" name="descricao">Descrição</textarea>    
+      	<textarea class="form-control" rows="5" name="descricao" placeholder="Descrição"></textarea>    
  
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
