@@ -39,7 +39,7 @@
                   <p>Altere sua senha aqui.</p>
                   <div class="panel-body">
     
-                    <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+                    <form id="register-form" role="form" autocomplete="off" class="form" method="post" action="novasenha.php">
     
                       <div class="form-group">
                         <div class="input-group">

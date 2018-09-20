@@ -74,7 +74,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-file text-info"></span><a href="">Newsletters</a>
+                                        <span class="glyphicon glyphicon-file text-info"></span><a href="cadastro_grupos.php">Cadastrar Grupos</a>
                                     </td>
                                 </tr>
                                 <tr>

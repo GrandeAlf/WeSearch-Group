@@ -32,12 +32,14 @@
 	}
 	else{
 		$consulta = "INSERT INTO grupo_pesquisa(nome, sigla, data_inicio, ativacao, id_lider) 
-		VALUES ('$nome', '$sigla', '$data', '0', '$lider')";
+		VALUES ('$nome', '$sigla', '$data', '1', '$lider')";
 		$result = $mysqli->query($consulta) or die($mysqli->error);
 		if($result){
-		echo "inserido";
 
-		//header("location: login.php");
+		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Grupo inserido com sucesso!</div>"; 
+		header("location: cadastro_grupos.php");
+
+		
 	}
 	}
 	
