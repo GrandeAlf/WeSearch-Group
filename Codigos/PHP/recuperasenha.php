@@ -47,12 +47,12 @@
                   <p>Altere sua senha aqui.</p>
                   <div class="panel-body">
     
-                    <form id="register-form" role="form" autocomplete="off" class="form" method="post" action="enviaemail.php">
+                    <form id="register-form" role="form" autocomplete="off" class="form" method="post" action="enviaemail_recupsenha.php">
     
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                          <input id="email" name="email" placeholder="E-mail cadastrado" class="form-control"  type="email">
+                          <input id="email" name="prontuario" placeholder="Prontuario" class="form-control"  type="text">
                         </div>
                       </div>
                       <div class="form-group">

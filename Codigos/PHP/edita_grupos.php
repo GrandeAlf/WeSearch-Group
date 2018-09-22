@@ -19,15 +19,18 @@
   </head>
 <body onload="barra()">
 	<?php 
-
     include ("conexao.php");
-    //get de id de grupo de pesquisa
-		$cod = $_GET["id"];
+    session_start();
+    
+      
+  		$cod = $_GET["id"];
 
-    $consulta = "SELECT nome, sigla FROM grupo_pesquisa WHERE id = '$cod'";
-    $result = $mysqli->query($consulta) or die($mysqli->error);
-    $dado = mysqli_fetch_assoc($result);
+      $_SESSION['codigo_grupo'] = $cod;
 
+      $consulta = "SELECT nome, sigla FROM grupo_pesquisa WHERE id = '$cod'";
+      $result = $mysqli->query($consulta) or die($mysqli->error);
+      $dado = mysqli_fetch_assoc($result);
+   
 
 	 ?>
    <div id="barra">
@@ -49,7 +52,7 @@
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
         <?php 
-          session_start();
+          
           if(isset($_SESSION['informaerro'])){
             echo $_SESSION['informaerro'];
             unset($_SESSION['informaerro']);

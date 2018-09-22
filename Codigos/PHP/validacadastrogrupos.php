@@ -36,11 +36,12 @@
 		$result = $mysqli->query($consulta) or die($mysqli->error);
 		if($result){
 
-		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Grupo inserido com sucesso!</div>"; 
-		header("location: cadastro_grupos.php");
+			$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Grupo inserido com sucesso!</div>"; 
+
+			header("location: enviaemail_cadastrogrupo.php?id=$lider");
 
 		
-	}
+		}
 	}
 	
 	
