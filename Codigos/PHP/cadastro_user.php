@@ -13,20 +13,15 @@
     
      
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
+       <script type="text/javascript" src="../JS/scripts.js"></script>
 
     <title>Cadastro Usuarios</title>
 
 
-    <script type="text/javascript">
-        function barraADM()
-      {
-        $("#barra").load("barra_ADM.php");
-      }
-        
-      </script>
+    
 
   </head>
-  <body onload="barraADM()">
+  <body onload="barra()">
     <div id=barra>
 
     </div>

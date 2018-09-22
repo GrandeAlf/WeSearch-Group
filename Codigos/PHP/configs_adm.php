@@ -16,26 +16,13 @@
 
 
 	  <link rel="stylesheet" type="text/css" href="../CSS/configs_adm.css">
+      <script type="text/javascript" src="../JS/scripts.js"></script> 
 
-	  <script type="text/javascript">
-	  	
-	  	function carrega_pagina(pagina)
-	  	{
-	  		$("#conteudo").load(pagina);
-	  	}
-
-	  	function barraADM()
-	  	{
-	  		$("#barra").load("barra_ADM.php");
-	  	}
-
-
-
-	  </script>
+	 
 
 	<title>Gerenciamento</title>
 </head>
-<body onload="barraADM()">
+<body onload="barra()">
 	
 	<div id="barra">
 		
@@ -74,7 +61,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-file text-info"></span><a href="cadastro_grupos.php">Cadastrar Grupos</a>
+                                        <span class="glyphicon glyphicon-file text-info"></span><a href="#" onclick="carrega_pagina('grupos.php')">Grupos de Pesquisa</a>
                                     </td>
                                 </tr>
                                 <tr>

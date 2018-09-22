@@ -6,6 +6,9 @@
     $login = $_POST["login"];
     $senha = $_POST["senha"];
 
+
+   
+
     //Criptografa senha para comparar com o banco
     $cript = hash("sha256", $senha);
 
@@ -31,7 +34,11 @@
         //echo "Prontuário e(ou) senha errados.";
     }
     else{
-
+       
+        $_SESSION['login'] = $login;
+        $_SESSION['senha'] = $cript;
+        header('location:inicial.php');
+/*
         $consulta = "SELECT prontuario, nome FROM usuarios WHERE prontuario = '$login' AND adm = '1'";
 
         $result = $mysqli->query($consulta);
@@ -45,6 +52,8 @@
              $var = 1;
         }
         header("location:inicial.php?var=".$var);
+    
+*/
     }
 
 

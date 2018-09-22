@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     
@@ -21,13 +20,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="../CSS/recuperasenha.css">
+    <script type="text/javascript" src="../JS/scripts.js"></script>
 
     <title>Recuperar Senha</title>
 
 
   </head>
-  <body>
-   
+  <body onload="barra()">
+
+<div id="barra">
+  
+</div>
+
+<div class="form-gap"></div>
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">

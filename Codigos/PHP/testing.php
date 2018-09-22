@@ -4,11 +4,9 @@
 
 <link rel="stylesheet" type="text/css" href="../CSS/test.css">
 <!------ Include the above in your HEAD tag ---------->
+<?php include ("funcoes.php") ?>
+<div>
+	 
+	 <p><?php teste(); ?></p>
 
-<div class="container">
-    <div class="row">
-        <div class="center-box">
-             Center Box    
-        </div>
-    </div>
 </div>

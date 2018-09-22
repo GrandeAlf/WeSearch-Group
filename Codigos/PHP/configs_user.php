@@ -16,26 +16,17 @@
 
 
 	  <link rel="stylesheet" type="text/css" href="../CSS/configs_adm.css">
+      <script type="text/javascript" src="../JS/scripts.js"></script> 
 
 	  <script type="text/javascript">
 	  	
-	  	function carrega_pagina(pagina)
-	  	{
-	  		$("#conteudo").load(pagina);
-	  	}
-
-	  	function barraUSR()
-	  	{
-	  		$("#barra").load("barra_user.php");
-	  	}
-
 
 
 	  </script>
 
 	<title>Gerenciamento</title>
 </head>
-<body onload="barraUSR()">
+<body onload="barra()">
 	
 	<div id="barra">
 		
