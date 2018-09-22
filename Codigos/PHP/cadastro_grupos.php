@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -20,18 +20,23 @@
     
      
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
+       <script type="text/javascript" src="../JS/scripts.js"></script>
 
 
-
+       
 
 
     <title>Cadastro Grupo de Pesquisa</title>
-  </head>
-  <body>
-    <?php
-      include ("conexao.php");
-    ?>
 
+
+    
+  </head>
+  <body onload="barra()">
+
+    <div id="barra">
+      
+
+    </div>
 
    <div class="wrapper" >
     <form class="form-signin" method="post" action="validacadastrogrupos.php">       
@@ -74,7 +79,7 @@
 
       </select>
 
-
+      <br>
       <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                     <input class="form-control" name="registration_date" id="registration-date" type="date">

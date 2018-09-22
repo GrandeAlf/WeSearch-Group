@@ -16,8 +16,10 @@
 <!------ Include the above in your HEAD tag ---------->
 <link rel="stylesheet" type="text/css" href="../CSS/perm.css">
     <title></title>
+
 </head>
 <body>
+
         
     <table class="table table-bordered table-sm m-0">
                     <thead class="">
@@ -41,8 +43,35 @@
 
                                 </tr> 
                         <?php } ?>
+
                     </tbody>
+
                 </table>
+                <?php 
+
+                    session_start();
+
+                      if((isset ($_SESSION['login']) == true) and (isset ($_SESSION['senha']) == true))
+                    {
+                      $logado = $_SESSION['login'];
+
+                    }
+
+
+
+                      $consulta = "SELECT `adm` FROM `usuarios` WHERE `prontuario` = '$logado'";
+                                                   
+                      $result = $mysqli->query($consulta) or die($mysqli->error);
+                      $dado = mysqli_fetch_assoc($result);
+
+
+                      if($dado["adm"] == 1)
+                      {
+                        echo " <a href=\"cadastro_grupos.php\"><button class=\"btn btn-success\">Cadastrar Grupo</button></a>";
+                      }  
+
+                 ?>
+               
             
     
 </body>

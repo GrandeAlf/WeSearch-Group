@@ -25,11 +25,11 @@
              
 
             
-                    <div class="borda">
+                    <div class="">
                                 <h2><?php echo $dados["nome"]." - ". $dados["sigla"]; ?></h2>
                                 <br>
                                 <p>Data de inicio do grupo: <?php echo date('d/m/Y', strtotime($dados["data_inicio"])); ?></p>
-                                <?php echo "<a href='".$dados["link_grupo"]."'>Link Lattes do Grupo</a>"; ?><br>
+                                <?php echo "<a href='".$dados["link_grupo"]."'>Saiba mais</a>"; ?><br>
                                 <p>Lider atual do grupo: <?php echo $dados["lider"]; ?></p>
                                 <div class="text">
                                     <p><?php echo ""; ?></p>

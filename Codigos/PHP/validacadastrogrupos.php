@@ -32,7 +32,7 @@
 	}
 	else{
 		$consulta = "INSERT INTO grupo_pesquisa(nome, sigla, data_inicio, ativacao, id_lider) 
-		VALUES ('$nome', '$sigla', '$data', '1', '$lider')";
+		VALUES ('$nome', '$sigla', '$data', '2', '$lider')";
 		$result = $mysqli->query($consulta) or die($mysqli->error);
 		if($result){
 
