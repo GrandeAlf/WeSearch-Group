@@ -34,5 +34,32 @@ function dado()
   	return $dado["adm"];
 }
 
+function lider()
+{
+	include("conexao.php");
+	$prontuario = logado();
+
+	$consulta = "SELECT `id` FROM `usuarios` WHERE `prontuario` = '$prontuario'";
+                               
+  	$result = $mysqli->query($consulta) or die($mysqli->error);
+  	$dado = mysqli_fetch_assoc($result);
+
+  	return $dado["id"];
+}
+
+function situacao($id)
+{
+	include("conexao.php");
+
+	$consulta = "SELECT `ativacao` FROM `grupo_pesquisa` WHERE `id` = '$id'";
+                               
+  	$result = $mysqli->query($consulta) or die($mysqli->error);
+  	$dado = mysqli_fetch_assoc($result);
+
+  	return $dado["ativacao"];
+}
+
+
+
 
  ?>

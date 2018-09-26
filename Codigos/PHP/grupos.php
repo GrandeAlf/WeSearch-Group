@@ -6,7 +6,22 @@
 <head>
 
 <?php include("conexao.php");
-        $consulta = "SELECT id, sigla, nome FROM grupo_pesquisa";
+       include("funcoes.php");
+
+       $lider = lider();
+       $adm = dado(); 
+        
+             
+       if($adm != 1)
+       {
+
+        $consulta = "SELECT `id`, `nome`, `sigla` FROM `grupo_pesquisa` WHERE `id_lider` = '$lider'";
+       }
+       else
+       {
+        $consulta = "SELECT `id`, `nome`, `sigla` FROM `grupo_pesquisa`";
+       }
+        
         $con = $mysqli->query($consulta) or die ($mysqli->error);
   ?>
 
@@ -20,6 +35,7 @@
 </head>
 <body>
 
+
         
     <table class="table table-bordered table-sm m-0">
                     <thead class="">
@@ -27,7 +43,12 @@
                             
                             <th align="center">Nome</th>
                             <th align="center">Sigla</th>
-                            <th align="center">#</th>
+                            
+                                
+                                <th align="center"></th>
+                                
+                            
+                          
                             
                         </tr>
                     </thead>
@@ -38,8 +59,41 @@
                                  
                                 <td align="center"><?php echo $dados["nome"]; ?></td>
                                 <td align="center"><?php echo $dados["sigla"]; ?></td>
-                                <td align="center"><a href="edita_grupos.php?id=<?php echo $dados["id"]; ?>"><button " class="btn btn-warning">Alterar</button>
-                                </td>
+                                <?php 
+                                if($adm != 1)
+                                {
+
+                                  echo "<td align=\"center\"><a href=\"edita_grupos.php?id=".$dados["id"]."\"><button \" class=\"btn btn-warning\">Alterar</button>
+                                
+                                </td>";
+
+                                }
+                                else
+                                {
+                                  $situacao = situacao($dados["id"]);
+                                  if($situacao == 0)
+                                  {
+                                    echo "<td align=\"center\"><a href=\"\"><button \" class=\"btn btn-danger btn-block\">ATIVAR</button>
+                                    </td>";
+                                  }
+                                  else if($situacao == 1)
+                                  {
+                                    echo "<td align=\"center\"><a href=\"\"><button \" class=\"btn btn-success btn-block\">INATIVAR</button>
+                                    </td>";
+                                  }
+                                  else if($situacao == 2)
+                                  {
+                                    echo "<td align=\"center\"><a href=\"\"><button \" class=\"btn btn-warning btn-block\">EXCLUIR</button>
+                                
+                                </td>";
+                                  }
+                                  
+                                }
+
+                                  
+
+                                 ?>
+                                
 
                                 </tr> 
                         <?php } ?>
@@ -49,23 +103,11 @@
                 </table>
                 <?php 
 
-                    session_start();
 
-                      if((isset ($_SESSION['login']) == true) and (isset ($_SESSION['senha']) == true))
-                    {
-                      $logado = $_SESSION['login'];
+                      
+                      $logado = logado();
 
-                    }
-
-
-
-                      $consulta = "SELECT `adm` FROM `usuarios` WHERE `prontuario` = '$logado'";
-                                                   
-                      $result = $mysqli->query($consulta) or die($mysqli->error);
-                      $dado = mysqli_fetch_assoc($result);
-
-
-                      if($dado["adm"] == 1)
+                      if($adm == 1)
                       {
                         echo " <a href=\"cadastro_grupos.php\"><button class=\"btn btn-success\">Cadastrar Grupo</button></a>";
                       }  
