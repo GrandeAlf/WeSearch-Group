@@ -18,7 +18,15 @@
 	  <link rel="stylesheet" type="text/css" href="../CSS/configs_adm.css">
       <script type="text/javascript" src="../JS/scripts.js"></script> 
 
-	 
+	 <?php include("funcoes.php");
+     
+     $logado = logado();
+     $adm = dado();
+     if($logado == NULL)
+     {
+      header("location: inicial.php");
+     }
+?>
 
 	<title>Gerenciamento</title>
 </head>
@@ -51,12 +59,32 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-pencil text-primary"></span><a href="cadastro_user.php" >Novo Usuario</a>
+                                        <?php 
+                                            if($adm == 1)
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-pencil text-primary\"></span><a href=\"cadastro_user.php\" >Novo Usuario</a>";
+                                            }
+                                            else
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-pencil text-primary\"></span><a href=\"#\" >Editar Informações</a>";
+                                            }
+                                         ?>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="#" onclick="carrega_pagina('permissoes.php')">Permissões</a>
+                                        <?php 
+                                            if($adm == 1)
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-flash text-success\"></span><a href=\"#\" onclick=\"carrega_pagina('permissoes.php')\">Permissões</a>";
+                                            }
+                                            else
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-pencil text-primary\"></span><a href=\"#\" >Newsletters</a>";
+                                            }
+                                         ?>
+                                        
                                     </td>
                                 </tr>
                                 <tr>

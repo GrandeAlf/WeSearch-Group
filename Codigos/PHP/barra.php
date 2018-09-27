@@ -43,15 +43,7 @@
      <?php 
      if($logado != NULL)
      {
-      if($dado == 1)
-      {
-        $config = "configs_adm.php";
-      }
-      else
-      {
-        $config = "configs_user.php";
-      }
-     		echo "<li><a href='".$config."''>Pronturario: ".$logado."</a></li>";
+     		echo "<li><a href='configs.php''>Pronturario: ".$logado."</a></li>";
 
         echo "<li><a href='logout.php''><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>";
      }

@@ -1,7 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-
+<?php include("funcoes.php");
+     
+     $logado = logado();
+     if($logado == NULL)
+     {
+      header("location: inicial.php");
+     }
+?>
 
 
     <!-- Required meta tags -->

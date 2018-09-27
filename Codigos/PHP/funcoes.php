@@ -58,8 +58,13 @@ function situacao($id)
 
   	return $dado["ativacao"];
 }
+function inativar($id)
+{
+	include("conexao.php");
 
+	$consulta = "UPDATE `grupo_pesquisa` SET `ativacao`=0 WHERE `id` = '$id'";
+	$result = $mysqli->query($consulta) or die($mysqli->error);
 
-
+}
 
  ?>
