@@ -2,7 +2,7 @@
 <html>
 <head>
 	<?php include("conexao.php");
-        $consulta = "SELECT gp.nome,sigla,id_lider,data_inicio,gp.lattes as link_grupo,u.nome as lider FROM grupo_pesquisa as gp,usuarios as u WHERE ativacao = 1 and id_lider = u.id";
+        $consulta = "SELECT gp.id, gp.nome,sigla,id_lider,data_inicio,descricao,gp.lattes as link_grupo,u.nome as lider FROM grupo_pesquisa as gp,usuarios as u WHERE ativacao = 1 and id_lider = u.id";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
   ?>
 
@@ -42,14 +42,26 @@
 
             
                     <div class="borda">
-                                <h2 class="h2"><?php echo $dados["nome"]." - ". $dados["sigla"]; ?></h2>
+                                <h2><?php echo $dados["nome"]." - ". $dados["sigla"]; ?></h2>
                                 <br>
                                 <p>Data de inicio do grupo: <?php echo date('d/m/Y', strtotime($dados["data_inicio"])); ?></p>
                                 <?php echo "<a href='".$dados["link_grupo"]."'>Saiba mais</a>"; ?><br>
                                 <p>Lider atual do grupo: <?php echo $dados["lider"]; ?></p>
+                                <br><br>
                                 <div class="text">
-                                    <p><?php echo ""; ?></p>
+                                    <p><?php echo $dados["descricao"]; ?></p>
                                 </div>
+
+                                <br><br>
+
+                                <div>
+                                    <?php 
+
+                                    //
+                                        echo "<a href=\"mostra_grupo.php?id=".$dados["id"]."\"><button \" class=\"btn btn-info btn-center\">Ver Mais</button>";
+                                     ?>
+                                </div>
+                                <br><br><br>
                                 
                             </div>
                             <br>
