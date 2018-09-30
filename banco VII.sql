@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 30-Set-2018 às 13:32
+-- Generation Time: 30-Set-2018 às 14:40
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `adm` tinyint(1) NOT NULL,
   `chave` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
@@ -106,6 +106,13 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 ALTER TABLE `grupo_pesquisa`
   ADD CONSTRAINT `grupo_pesquisa_ibfk_1` FOREIGN KEY (`id_lider`) REFERENCES `usuarios` (`id`);
+
+--
+-- Limitadores para a tabela `mudancas_lider`
+--
+ALTER TABLE `mudancas_lider`
+  ADD CONSTRAINT `mudancas_lider_ibfk_1` FOREIGN KEY (`id_lider_antigo`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `mudancas_lider_ibfk_2` FOREIGN KEY (`id_lider_novo`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
