@@ -18,7 +18,15 @@
 	  <link rel="stylesheet" type="text/css" href="../CSS/configs_adm.css">
       <script type="text/javascript" src="../JS/scripts.js"></script> 
 
-	 
+	 <?php include("funcoes.php");
+     
+     $logado = logado();
+     $adm = dado();
+     if($logado == NULL)
+     {
+      header("location: inicial.php");
+     }
+?>
 
 	<title>Gerenciamento</title>
 </head>
@@ -43,7 +51,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
-                            </span>Content</a>
+                            </span>Administrativo</a>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
@@ -51,25 +59,40 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-pencil text-primary"></span><a href="cadastro_user.php" >Novo Usuario</a>
+                                        <?php 
+                                            if($adm == 1)
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-pencil \"></span><a href=\"#\" onclick=\"carrega_pagina('usuarios.php')\">Usuarios</a>";
+                                            }
+                                            else
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-pencil \"></span><a href=\"#\" >Editar Informações</a>";
+                                            }
+                                         ?>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="#" onclick="carrega_pagina('permissoes.php')">Permissões</a>
+                                        <?php 
+                                            if($adm == 1)
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-eye-open\"></span><a href=\"#\" onclick=\"carrega_pagina('permissoes.php')\">Permissões</a>";
+                                            }
+                                            else
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-pencil text-primary\"></span><a href=\"#\" >Newsletters</a>";
+                                            }
+                                         ?>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-file text-info"></span><a href="#" onclick="carrega_pagina('grupos.php')">Grupos de Pesquisa</a>
+                                        <span class="glyphicon glyphicon-file"></span><a href="#" onclick="carrega_pagina('grupos.php')">Grupos de Pesquisa</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-comment text-success"></span><a href="">Comments</a>
-                                        <span class="badge">42</span>
-                                    </td>
-                                </tr>
+                                
                             </table>
                         </div>
                     </div>
@@ -120,7 +143,7 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="">Change Password</a>
+                                        <a href="">Alterar Senha</a>
                                     </td>
                                 </tr>
                                 <tr>

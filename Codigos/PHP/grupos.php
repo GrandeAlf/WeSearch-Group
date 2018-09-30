@@ -7,6 +7,16 @@
 
 <?php include("conexao.php");
        include("funcoes.php");
+     
+     $logado = logado();
+     if($logado == NULL)
+     {
+      header("location: inicial.php");
+     }
+     else
+     {
+
+
 
        $lider = lider();
        $adm = dado(); 
@@ -23,6 +33,7 @@
        }
         
         $con = $mysqli->query($consulta) or die ($mysqli->error);
+      }
   ?>
 
 
@@ -60,30 +71,42 @@
                                 <td align="center"><?php echo $dados["nome"]; ?></td>
                                 <td align="center"><?php echo $dados["sigla"]; ?></td>
                                 <?php 
+
+                                $situacao = situacao($dados["id"]);
+
                                 if($adm != 1)
                                 {
-
-                                  echo "<td align=\"center\"><a href=\"edita_grupos.php?id=".$dados["id"]."\"><button \" class=\"btn btn-warning\">Alterar</button>
+                                  if($situacao == 2)
+                                  {
+                                    echo "<td align=\"center\"><a href=\"edita_grupos.php?id=".$dados["id"]."\"><button \" class=\"btn btn-warning btn-block\">Finalizar Cadastro</button>
                                 
                                 </td>";
+                                  }
+                                  else
+                                  {
+                                    echo "<td align=\"center\"><a href=\"edita_grupos.php?id=".$dados["id"]."\"><button \" class=\"btn btn-primary btn-block\">Alterar Dados</button>
+                                
+                                </td>";
+                                  }
+                                  
 
                                 }
                                 else
                                 {
-                                  $situacao = situacao($dados["id"]);
+                                  
                                   if($situacao == 0)
                                   {
-                                    echo "<td align=\"center\"><a href=\"\"><button \" class=\"btn btn-danger btn-block\">ATIVAR</button>
+                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php?cod=1&id=".$dados["id"]."\"><button \" class=\"btn btn-danger btn-block\">ATIVAR</button>
                                     </td>";
                                   }
                                   else if($situacao == 1)
                                   {
-                                    echo "<td align=\"center\"><a href=\"\"><button \" class=\"btn btn-success btn-block\">INATIVAR</button>
+                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php?cod=0&id=".$dados["id"]."\"><button \" class=\"btn btn-success btn-block\">INATIVAR</button>
                                     </td>";
                                   }
                                   else if($situacao == 2)
                                   {
-                                    echo "<td align=\"center\"><a href=\"\"><button \" class=\"btn btn-warning btn-block\">EXCLUIR</button>
+                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php.php?cod=2&id=".$dados["id"]."\"><button \" class=\"btn btn-warning btn-block\">EXCLUIR</button>
                                 
                                 </td>";
                                   }

@@ -15,12 +15,20 @@
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
        <script type="text/javascript" src="../JS/scripts.js"></script>
 
+<?php include("funcoes.php");
+     
+     $logado = logado();
+     if($logado == NULL)
+     {
+      header("location: inicial.php");
+     }
+?>
     <title>Alterar Grupo</title>
   </head>
+  
 <body onload="barra()">
 	<?php 
     include ("conexao.php");
-    session_start();
     
       
   		$cod = $_GET["id"];
@@ -48,7 +56,8 @@
       
       	
       	<textarea class="form-control" rows="5" name="descricao" placeholder="Descrição"></textarea>    
- 
+          
+        <br><br>
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
         <?php 
