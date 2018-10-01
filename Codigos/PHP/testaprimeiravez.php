@@ -10,7 +10,7 @@
 
     while($dados = $result->fetch_array())
     {
-    	$mudanca = "UPDATE grupo_pesquisa SET id_lider = '$dados["id_novo_lider"]' WHERE  id_lider = '$dados["id_lider_antigo"]'";
+    	$mudanca = "UPDATE grupo_pesquisa SET id_lider = '$dados[id_novo_lider]' WHERE  id_lider = '$dados[id_lider_antigo]'";
     }
 
  

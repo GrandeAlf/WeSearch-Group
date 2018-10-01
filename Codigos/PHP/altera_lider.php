@@ -25,8 +25,9 @@
      }
 
      $idgrupo = $_GET["id"];
+     $_SESSION['idgrupo'] = $idgrupo;
 
-     $consulta = "SELECT id_lider, u.nome FROM grupo_pesquisa as gp, usuarios as u WHERE id_lider = u.id and gp.id = '$idgrupo'";
+     $consulta = "SELECT gp.id_lider, u.nome FROM grupo_pesquisa as gp, usuarios as u WHERE id_lider = u.id and gp.id = '$idgrupo'";
 
      $result = $mysqli->query($consulta) or die($mysqli->error);
       $dado = mysqli_fetch_assoc($result);
@@ -34,7 +35,7 @@
 
 ?>
 
-    <title>LOGIN</title>
+    <title>Altera Líder</title>
   </head>
   <body onload="barra()">
 
@@ -44,12 +45,12 @@
     </div>
     
     <div class="wrapper" >
-      <form class="form-signin" method="post" action="validalogin.php">       
-        <h2 class="form-signin-heading">Login</h2>
+      <form class="form-signin" method="post" action="valida_altera_lider.php">       
+        <h2 class="form-signin-heading">Altera Líder</h2>
 
         <!-- input com nome do lider atual desabilitado --> 
 
-        <input type="text" class="form-control" name="lideratual" disabled="disabled" <?php echo "placeholder='".$dado["nome"]."'"; ?>  autofocus="" />
+        <input type="text" class="form-control" name="lideratual" <?php echo "value='".$dado["nome"]."'"; ?>  autofocus="" />
 
         <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
@@ -101,7 +102,13 @@
           
           <button class="btn btn-lg btn-block btn-success" type="submit">Alterar</button><br>
 
-          
+          <?php 
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
             
             
          

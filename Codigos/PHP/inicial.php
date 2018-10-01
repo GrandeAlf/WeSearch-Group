@@ -58,7 +58,7 @@
                                     <?php 
 
                                     //
-                                        echo "<a href=\"mostra_grupo.php?id=".$dados["id"]."\"><button \" class=\"btn btn-info btn-center\">Ver Mais</button>";
+                                        echo "<a href=\"mostra_grupo.php?id=".$dados["id"]."\"><button \" class=\"btn btn-info btn-center\">Ver Mais</button></a>";
                                      ?>
                                 </div>
                                 <br><br><br>

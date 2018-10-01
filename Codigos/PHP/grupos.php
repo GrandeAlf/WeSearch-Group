@@ -110,6 +110,9 @@
                                 
                                 </td>";
                                   }
+                                  echo "<td align=\"center\"><a href=\"altera_lider.php?cod=0&id=".$dados["id"]."\"><button \" class=\"btn btn-success btn-block\">ALTERAR LÍDER</button>
+                                    </td>";
+
                                   
                                 }
 
