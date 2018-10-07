@@ -74,7 +74,7 @@
 
                 </table>
 
-                <a href="cadastro_grupos.php"><button class="btn btn-success">Novo Usuario</button></a>
+                <a href="cadastro_user.php"><button class="btn btn-success">Novo Usuario</button></a>
                 
                
             

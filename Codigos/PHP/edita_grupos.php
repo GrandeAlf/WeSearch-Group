@@ -53,6 +53,13 @@
       <input disabled type="text" class="form-control" name="sigla" placeholder="<?php echo $dado["sigla"] ?>"   />
       <input type="email" class="form-control" name="email" placeholder="Email"   />
       <input type="text" class="form-control" name="lattes" placeholder="Lattes" />
+
+      <select class="form-control" name="lider">
+         <option disabled selected="selected" >Linha de Pesquisa</option>
+         <!-- Preencher com linhas de pesquisa -->
+
+      </select>
+      <br>
       
       	
       	<textarea class="form-control" rows="5" name="descricao" placeholder="Descrição"></textarea>    
