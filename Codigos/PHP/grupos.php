@@ -52,11 +52,11 @@
                     <thead class="">
                         <tr>
                             
-                            <th align="center">Nome</th>
-                            <th align="center">Sigla</th>
+                            <th class="text-center">Nome</th>
+                            <th class="text-center">Sigla</th>
                             
                                 
-                                <th align="center"></th>
+                                <th></th>
                                 
                             
                           
@@ -68,8 +68,8 @@
                             while($dados = $con->fetch_array()){?>
                              <tr>
                                  
-                                <td align="center"><?php echo $dados["nome"]; ?></td>
-                                <td align="center"><?php echo $dados["sigla"]; ?></td>
+                                <td class="text-center"><?php echo $dados["nome"]; ?></td>
+                                <td class="text-center"><?php echo $dados["sigla"]; ?></td>
                                 <?php 
 
                                 $situacao = situacao($dados["id"]);
