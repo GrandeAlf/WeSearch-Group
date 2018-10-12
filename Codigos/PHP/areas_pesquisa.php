@@ -20,6 +20,29 @@
 <link rel="stylesheet" type="text/css" href="../CSS/perm.css">
     <title></title>
 
+
+    <?php include("conexao.php");
+       include("funcoes.php");
+     
+    // $logado = logado();
+     //if($logado == NULL)
+     //{
+    //  header("location: inicial.php");
+    // }
+    // else
+    // {
+
+
+
+      
+
+        $consulta = "SELECT `cod_especialidade`, `nome_especialidade` FROM `especialidade`";
+      
+        
+        $con = $mysqli->query($consulta) or die ($mysqli->error);
+     // }
+  ?>
+
 </head>
 <body>
 
@@ -28,12 +51,10 @@
     <table class="table table-bordered table-sm m-0">
                     <thead class="">
                         <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            
-                            
-                                
-                                <th align="center"></th>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Código</th>
+                            <th class="text-center">Nome</th>
+                            <th></th>
                                 
                             
                           
@@ -42,42 +63,17 @@
                     </thead>
                     <tbody>
                       
+                             <?php 
+                            while($dados = $con->fetch_array()){?>
                              <tr>
-                                <td align="center"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
-                                 
-                                <td align="center">EXEMPLO DE LINHA</td>
+                                 <td class="text-center"><input type="checkbox" name="select"></td>
+                                 <td class="text-center"><?php echo $dados["cod_especialidade"]; ?></td>
+                                <td class="text-center"><?php echo $dados["nome_especialidade"]; ?></td>
+                                <td><?php echo "<a href="."TESTE.php?id=".$dados["cod_especialidade"]."</a>";?><button class="btn btn-warning btn-block">Alterar Linha</button></td>
                                 
-                               
-                                <td align="center"><a href=""><button class="btn btn-warning btn-block">Alterar Linha</button>
-                                
-                                </td>
 
                                 </tr> 
-
-                                 <tr>
-                                <td align="center"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
-                                 
-                                <td align="center">EXEMPLO DE LINHA</td>
-                                
-                               
-                                <td align="center"><a href=""><button class="btn btn-warning btn-block">Alterar Linha</button>
-                                
-                                </td>
-
-                                </tr> 
-
-
-                                 <tr>
-                                <td align="center"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
-                                 
-                                <td align="center">EXEMPLO DE LINHA</td>
-                                
-                               
-                                <td align="center"><a href=""><button class="btn btn-warning btn-block">Alterar Linha</button>
-                                
-                                </td>
-
-                                </tr> 
+                        <?php } ?>
                       
                     </tbody>
 
