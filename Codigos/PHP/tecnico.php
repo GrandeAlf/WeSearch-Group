@@ -37,13 +37,39 @@
          </div>   
 <br><br><br>        
 <div class="text-center">
-          <p>Nome: Michael Jackson</p> <br>
-          <p><a href="">link lattes</a></p> <br>
-          <p>Ativiade realizada no grupo: Moonwalker</p> <br>
-          <p>Graduação: Superior Completo</p> <br>
-          <p>Curso: Dancing Bitch</p> <br>
-          <p>Ano de vonclusão do curso: 2014</p> <br>
-          <p>Data da inclusão: 21/08/2018</p> <br>
+          <?php 
+            Include("conexao.php");
+
+            $id = $_GET["id"];
+
+            $consulta = "SELECT `cod_tecnico`, `nome`, `lattes`, `atividade_realizada`, `fk_graduacao`, `curso`, `ano_conclusao`, `data_inclusao`, `data_remocao` FROM `tecnicos` WHERE `cod_tecnico` = '$id'";
+
+
+
+            $con = $mysqli->query($consulta) or die ($mysqli->error);
+
+            $dados = $con->fetch_array();
+
+            $grad = $dados["fk_graduacao"];
+
+            $cgraduacao = "SELECT `nome_graduacao` FROM `graduacoes` WHERE `cod_graduacao` = $grad ";
+            $con2 = $mysqli->query($cgraduacao) or die ($mysqli->error);
+            $graduacoes = $con2->fetch_array();
+
+
+            echo "<p>Nome: ".$dados["nome"]."</p> <br>";
+            echo "<a href='".$dados["lattes"]."'><p>Link Curriculo Lattes</p></a>";
+            echo "<p>Ativiade realizada no grupo: ".$dados["atividade_realizada"]."</p> <br>";
+            echo " <p>Graduação: ".$graduacoes["nome_graduacao"]."</p> <br>";
+            echo "<p>Curso: ".$dados["curso"]."</p> <br>";
+            echo "<p>Ano de conclusão do curso ".$dados["ano_conclusao"]."</p> <br>";
+            $inclusao = date('d/m/Y', strtotime($dados["data_inclusao"]));
+            echo "<p>Data de inclusão no grupo ".$inclusao."</p> <br>";
+            $remocao = date('d/m/Y', strtotime($dados["data_remocao"]));
+            echo "<p>Data de remoção no grupo ".$remocao."</p> <br>";
+
+           ?>
+         
 
 </div>
           
