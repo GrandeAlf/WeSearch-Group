@@ -47,8 +47,8 @@
 <body>
 
 
-        
-    <table class="table table-bordered table-sm m-0">
+    <div id = "conteudo">
+      <table class="table table-bordered table-sm m-0">
                     <thead class="">
                         <tr>
                             
@@ -119,6 +119,13 @@
                                   
 
                                  ?>
+                                 
+                                 <?php $id = $dados["id"];
+
+                                  echo "<td class=\"text-center\"><button class=\"btn btn-success btn-block\" onclick=\"carrega_pagina_id('vincular_linhas.php',$id)\">Vincular Linha</button></td>";
+                                 ?>
+
+                               
                                 
 
                                 </tr> 
@@ -141,6 +148,8 @@
                  ?>
                
             
+    
+    </div>    
     
 </body>
 </html>
