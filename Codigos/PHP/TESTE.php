@@ -39,14 +39,8 @@
          <?php
             include ("conexao.php");
 
-            /* check connection */
-              if ($mysqli->connect_errno) {
-                  printf("A conexão falhou: %s\n", $ligacao->connect_error);
-                  exit();
-              }
-                               
 
-                $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
+                 $query = "SELECT `cod_especialidade`, `nome_especialidade` FROM `especialidade`";
                  if ($stmt = $mysqli->prepare($query)) {
 
                     /* execute statement */
