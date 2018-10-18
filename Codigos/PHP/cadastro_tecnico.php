@@ -4,44 +4,22 @@
    
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="pt-br">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-    <script src="http://momentjs.com/downloads/moment-timezone-with-data.js"></script>
     
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-    <script src="http://momentjs.com/downloads/moment-timezone-with-data.js"></script>
-    
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
-
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-*.min.js"></script>
     
      
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
        <script type="text/javascript" src="../JS/scripts.js"></script>
 
+    <title>Cadastro Técnicos</title>
 
-       
 <?php include("funcoes.php");
+      include ("conexao.php");
      
      $logado = logado();
      $adm = dado();
@@ -50,28 +28,23 @@
       header("location: inicial.php");
      }
 ?>
-
-    <title>Cadastro Grupo de Pesquisa</title>
-
-
     
+
   </head>
   <body onload="barra()">
-
-    <div id="barra">
-      
+    <div id=barra>
 
     </div>
-
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="validacadastrogrupos.php">       
-      <h2 class="form-signin-heading" align="center">Cadastro de Grupo de Pesquisa</h2>
-      <input type="text" class="form-control" name="nome" placeholder="Nome do Grupo de Pesquisa"  autofocus="" />
-      <input type="text" class="form-control" name="sigla" placeholder="Sigla" />
-      <select class="form-control" name="lider">
-         <option disabled selected="selected" >Lider de Pesquisa</option>
+    <form class="form-signin" method="post" action="validacadastrotecnico.php">       
+      <h2 class="form-signin-heading">Cadastro de Técnicos</h2>
+      <input type="text" class="form-control" name="nome" placeholder="Nome"  />
+      <input type="text" class="form-control" name="lattes" placeholder="Curriculo Lattes" />
+      <input type="text" class="form-control" name="atividade" placeholder="Atividade Realizada"  />
+      <select class="form-control" name="graduacao">
+      <option disabled selected="selected" >Graduação</option>
          <?php
-            include ("conexao.php");
+            
 
             /* check connection */
               if ($mysqli->connect_errno) {
@@ -80,7 +53,7 @@
               }
                                
 
-                $query = "SELECT id,nome FROM `usuarios` WHERE adm != 1";
+                $query = "SELECT cod_graduacao,nome_graduacao FROM `graduacoes`";
                                
 
                                
@@ -103,22 +76,35 @@
           ?>
 
       </select>
-
       <br>
+      <input type="text" class="form-control" name="curso" placeholder="Curso"  />
+      <input type="text" class="form-control" name="ano" placeholder="Ano de Conclusão"  />
+
+      <p>Data de Inclusão</p>
       <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                    <input class="form-control" name="registration_date" id="registration-date" type="date">
+                    <input class="form-control" name="inclusao" id="registration-date" type="date">
                     
                 </div>
                 <br>
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+                <p>Data de Remoção</p>
+                <div class="input-group registration-date-time">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                    <input class="form-control" name="remocao" id="registration-date" type="date">
+                    
+                </div>
+                <br>
+      <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+        
         <?php 
+
           if(isset($_SESSION['informaerro'])){
             echo $_SESSION['informaerro'];
             unset($_SESSION['informaerro']);
           }
 
          ?>
+
     </form>
   </div>
     
@@ -131,9 +117,8 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-
-        
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
   </body>
 </html>

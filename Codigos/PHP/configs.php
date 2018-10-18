@@ -30,7 +30,7 @@
 
 	<title>Gerenciamento</title>
 </head>
-<body onload="barra()">
+<body onload="barra()" >
 	
 	<div id="barra">
 		
