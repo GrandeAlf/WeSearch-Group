@@ -78,7 +78,7 @@
                                 {
                                   if($situacao == 2)
                                   {
-                                    echo "<td align=\"center\"><a href=\"edita_grupos.php?id=".$dados["id"]."\"><button \" class=\"btn btn-warning btn-block\">Finalizar Cadastro</button>
+                                    echo "<td align=\"center\"><a href=\"ativa_grupo.php?id=".$dados["id"]."\"><button \" class=\"btn btn-warning btn-block\">Finalizar Cadastro</button>
                                 
                                 </td>";
                                   }
@@ -120,9 +120,16 @@
 
                                  ?>
                                  
-                                 <?php $id = $dados["id"];
+                                 <?php 
 
-                                  echo "<td class=\"text-center\"><button class=\"btn btn-success btn-block\" onclick=\"carrega_pagina_id('vincular_linhas.php',$id)\">Vincular Linha</button></td>";
+                                 if($adm != 1)
+                                 {
+                                  $id = $dados["id"];
+
+                                  echo "<td class=\"text-center\"><a href=\"vincular_linhas.php?cod=0&id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Linha</button></td>";
+                                 }
+
+                                 
                                  ?>
 
                                

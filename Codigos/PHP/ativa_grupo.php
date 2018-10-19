@@ -37,18 +37,15 @@
 <?php include("funcoes.php");
      
      $logado = logado();
-     $adm = dado();
-
-     if($logado == NULL || $adm == 1)
+     if($logado == NULL)
      {
       header("location: inicial.php");
      }
-
 ?>
-    <title>Vincular Linha</title>
+    <title>Ativar Grupo</title>
   </head>
   
-<body>
+<body onload="barra()">
 	<?php 
     include ("conexao.php");
     
@@ -57,18 +54,24 @@
 
       $_SESSION['codigo_grupo'] = $cod;
 
-      $consulta = "SELECT nome FROM grupo_pesquisa WHERE id = '$cod'";
+      $consulta = "SELECT nome, sigla FROM grupo_pesquisa WHERE id = '$cod'";
       $result = $mysqli->query($consulta) or die($mysqli->error);
       $dado = mysqli_fetch_assoc($result);
    
 
 	 ?>
-   
+   <div id="barra">
+     
 
-  <div class="wrapper">
-        <form  class="form-signin" method="post" action=""> 
-        <h2 class="form-signin-heading" align="center">Vincular Linha</h2>      
-      <input disabled type="text" class="form-control" name="nome" placeholder="Grupo: <?php echo $dado["nome"]; ?>"   />
+   </div>
+
+  <div >
+        <form class="form-signin"  method="post" action="validaativacaogrupos.php">       
+      <h2 class="form-signin-heading" align="center">Attivar Grupo de Pesquisa</h2>
+      <input disabled type="text" class="form-control" name="nome" placeholder="<?php echo $dado["nome"]; ?>"   />
+      <input disabled type="text" class="form-control" name="sigla" placeholder="<?php echo $dado["sigla"] ?>"   />
+      <input type="email" class="form-control" name="email" placeholder="Email"   />
+      <input type="text" class="form-control" name="lattes" placeholder="Lattes" />
 
 <div class="text-center">
       <select data-live-search="true" name="linha" class="selectpicker form-control">
@@ -102,10 +105,22 @@
       </select>
 </div>
 
+
+      <br>
+        
+        <textarea class="form-control" rows="5" name="descricao" placeholder="Descrição"></textarea>    
+          
         <br><br>
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Vincular"/><br>
-       
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
+        <?php 
+          
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
     </form>
       </div>
     </div>

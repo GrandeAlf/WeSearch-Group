@@ -65,6 +65,17 @@
 
         echo "<p align=\"center\">Lider atual do grupo: ".$dado["lider"]."</p>";
 
+        $querry = "SELECT `nome_especialidade` as linha FROM `especialidade`,grupos_linhas, grupo_pesquisa WHERE cod_especialidade = fk_cod_linha and fk_cod_grupo = '$id'";
+        $code = $mysqli->query($querry) or die ($mysqli->error);
+          
+          echo "<p align=\"center\">Linhas do grupo: <br>";
+
+              while ($linha = $code->fetch_array()) 
+              {
+                    echo $linha["linha"]."<br>";
+              }
+          echo "</p>";
+
 
         echo "<br><br><br>";
 

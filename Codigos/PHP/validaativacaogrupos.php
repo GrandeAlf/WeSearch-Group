@@ -30,9 +30,11 @@
 	$consulta = "UPDATE grupo_pesquisa SET lattes = '$lattes', email = '$email', descricao = '$desc', ativacao = 1 WHERE id = '$cod' ";
 	$result = $mysqli->query($consulta) or die($mysqli->error);
 
-	
+	$consulta2 = "INSERT INTO grupos_linhas( fk_cod_grupo, fk_cod_linha) VALUES ('$cod', '$linha')";
 
-	if($result){
+	$result2 = $mysqli->query($consulta2) or die($mysqli->error);
+
+	if($result && $result2){
 
 		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Cadastro Inserido com sucesso!</div>"; 
 		header("location: inicial.php");

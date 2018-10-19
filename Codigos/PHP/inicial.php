@@ -45,8 +45,26 @@
                                 <h2><?php echo $dados["nome"]." - ". $dados["sigla"]; ?></h2>
                                 <br>
                                 <p>Data de inicio do grupo: <?php echo date('d/m/Y', strtotime($dados["data_inicio"])); ?></p>
-                                <?php echo "<a href='".$dados["link_grupo"]."'>Saiba mais</a>"; ?><br>
+                                <br>
+                                <?php echo "<a href='".$dados["link_grupo"]."'>Saiba mais</a>"; ?>
+                                <br><br>
                                 <p>Lider atual do grupo: <?php echo $dados["lider"]; ?></p>
+                                <?php 
+                                    $id = $dados["id"];
+                                    $querry = "SELECT `nome_especialidade` as linha FROM `especialidade`,grupos_linhas WHERE cod_especialidade = fk_cod_linha and fk_cod_grupo = '$id'";
+                                    $code = $mysqli->query($querry) or die ($mysqli->error);
+
+                                    
+
+                                    echo "<p>Linhas do grupo: <br>";
+
+                                    while ($linha = $code->fetch_array()) {
+                                        echo $linha["linha"]."<br>";
+                                    }
+                                    echo "</p>";
+                                    
+
+                                 ?>
                                 <br><br>
                                 <div class="text">
                                     <p><?php echo $dados["descricao"]; ?></p>
