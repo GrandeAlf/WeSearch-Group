@@ -38,6 +38,7 @@
      
      $logado = logado();
      $adm = dado();
+     $lider = lider();
 
      if($logado == NULL || $adm == 1)
      {
@@ -57,14 +58,15 @@
    </div>
 
   <div class="wrapper">
-        <form  class="form-signin" method="post" action=""> 
-        <h2 class="form-signin-heading" align="center">Vincular Linha</h2>      
+        <form  class="form-signin" method="post" action="cadastro_tecnico.php"> 
+        <h2 class="form-signin-heading" align="center">Vincular Linha</h2> 
+        
       <select data-live-search="true" name="grupo" class="selectpicker form-control">
          <option disabled selected="selected" >Grupo de Pesquisa</option>
          <?php
 
 
-                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE lider = '$logado'";
+                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE id_lider = '$lider'";
 
                  // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
                  if ($stmt = $mysqli->prepare($consulta)) {
@@ -89,43 +91,9 @@
 
       </select>
       <br><br>
-<div class="text-center">
-      <select data-live-search="true" name="linha" class="selectpicker form-control">
-         <option disabled selected="selected" >Linha de Pesquisa</option>
-         <?php
 
-
-                 $query = "SELECT `cod_especialidade`, `nome_especialidade` FROM `especialidade`";
-
-                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                 if ($stmt = $mysqli->prepare($query)) {
-
-                    /* execute statement */
-                    $stmt->execute();
-
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
-
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
-
-                /* close statement */
-                  $stmt->close();
-                }         
-                               
-                
-          ?>
-
-      </select>
-</div>
-<br><br>
-<textarea class="form-control" rows="5" name="descricao" placeholder="Descrição da linha de pesquisa"></textarea> 
-
-        <br><br>
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Vincular"/><br>
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Grupo"/><br>
        
     </form>
       </div>

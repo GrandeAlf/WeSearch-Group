@@ -23,10 +23,17 @@
      
      $logado = logado();
      $adm = dado();
-     if($logado == NULL || $adm != 1)
+     if($logado == NULL || $adm == 1)
      {
       header("location: inicial.php");
      }
+
+
+     $gp = $_POST["grupo"];
+
+     $consulta = "SELECT nome FROM grupo_pesquisa WHERE id = '$gp'";
+     $result = $mysqli->query($consulta) or die($mysqli->error);
+      $dado = mysqli_fetch_assoc($result);
 ?>
     
 
@@ -78,8 +85,41 @@
       </select>
       <br>
       <input type="text" class="form-control" name="curso" placeholder="Curso"  />
-      <input type="text" class="form-control" name="ano" placeholder="Ano de Conclusão"  />
+      <input type="text" class="form-control" placeholder="Data de conclusão do curso" name="conclusao" maxlength="6" autocomplete="off">
+      <input disabled type="text" class="form-control" name="grupo" placeholder="Grupo de Pesquisa : <?php echo $dado["nome"]; ?>"   />
 
+      <div class="text-center">
+      <select data-live-search="true" name="linha" class="selectpicker form-control">
+         <option disabled selected="selected" >Linha de Pesquisa</option>
+         <?php
+
+
+                 $query = "SELECT `cod_especialidade`, `nome_especialidade` FROM `especialidade`, `grupos_linhas` WHERE fk_cod_grupo = '$gp' AND `cod_especialidade` = `fk_cod_linha` ";
+
+                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
+                 if ($stmt = $mysqli->prepare($query)) {
+
+                    /* execute statement */
+                    $stmt->execute();
+
+                    /* bind result variables */
+                    $stmt->bind_result($id, $nome);
+
+                    /* fetch values */
+                    while ($stmt->fetch()) {        
+                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
+                    }
+
+                /* close statement */
+                  $stmt->close();
+                }         
+                               
+                
+          ?>
+
+      </select>
+</div>
+<br>
       <p>Data de Inclusão</p>
       <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
@@ -87,14 +127,11 @@
                     
                 </div>
                 <br>
-                <p>Data de Remoção</p>
-                <div class="input-group registration-date-time">
-                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                    <input class="form-control" name="remocao" id="registration-date" type="date">
-                    
-                </div>
-                <br>
-      <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+                
+
+
+
+      <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar Técnico"/><br>
         
         <?php 
 
@@ -107,7 +144,8 @@
 
     </form>
   </div>
-    
+
+  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -16,7 +16,7 @@
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
        <script type="text/javascript" src="../JS/scripts.js"></script>
 
-    <title>Cadastro Docentes</title>
+    <title>Cadastro Técnicos</title>
 
 <?php include("funcoes.php");
       include ("conexao.php");
@@ -27,12 +27,6 @@
      {
       header("location: inicial.php");
      }
-
-      $gp = $_POST["grupo"];
-
-     $consulta = "SELECT nome FROM grupo_pesquisa WHERE id = '$gp'";
-     $result = $mysqli->query($consulta) or die($mysqli->error);
-      $dado = mysqli_fetch_assoc($result);
 ?>
     
 
@@ -42,8 +36,8 @@
 
     </div>
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="validacadastrodocente.php">       
-      <h2 class="form-signin-heading">Cadastro de Docentes</h2>
+    <form class="form-signin" method="post" action="validacadastrotecnico.php">       
+      <h2 class="form-signin-heading" align="center">Alterar dados de Técnicos</h2>
       <input type="text" class="form-control" name="nome" placeholder="Nome"  />
       <input type="text" class="form-control" name="lattes" placeholder="Curriculo Lattes" />
       <input type="text" class="form-control" name="atividade" placeholder="Atividade Realizada"  />
@@ -85,48 +79,10 @@
       <br>
       <input type="text" class="form-control" name="curso" placeholder="Curso"  />
       <input type="text" class="form-control" placeholder="Data de conclusão do curso" name="conclusao" maxlength="6" autocomplete="off">
-      <input disabled type="text" class="form-control" name="grupo" placeholder="Grupo de Pesquisa : <?php echo $dado["nome"]; ?>"   />
-
-      <div class="text-center">
-      <select data-live-search="true" name="linha" class="selectpicker form-control">
-         <option disabled selected="selected" >Linha de Pesquisa</option>
-         <?php
-
-
-                 $query = "SELECT `cod_especialidade`, `nome_especialidade` FROM `especialidade`, `grupos_linhas` WHERE fk_cod_grupo = '$gp' AND `cod_especialidade` = `fk_cod_linha` ";
-
-                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                 if ($stmt = $mysqli->prepare($query)) {
-
-                    /* execute statement */
-                    $stmt->execute();
-
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
-
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
-
-                /* close statement */
-                  $stmt->close();
-                }         
-                               
-                
-          ?>
-
-      </select>
-</div>
+      
 <br>
-      <p>Data de Inclusão</p>
-      <div class="input-group registration-date-time">
-                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                    <input class="form-control" name="inclusao" id="registration-date" type="date">
-                    
-                </div>
-                <br>
-      <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+     
+      <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar Dados"/><br>
         
         <?php 
 
@@ -139,7 +95,8 @@
 
     </form>
   </div>
-    
+
+  
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

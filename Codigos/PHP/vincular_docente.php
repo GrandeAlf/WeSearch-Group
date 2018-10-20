@@ -35,6 +35,8 @@
    
 
 <?php include("funcoes.php");
+
+    include("conexao.php");
      
      $logado = logado();
      $adm = dado();
@@ -44,8 +46,14 @@
       header("location: inicial.php");
      }
 
+    $gp= $_GET["id"];
+
+     $consulta = "SELECT nome FROM grupo_pesquisa WHERE id = '$gp'";
+     $result = $mysqli->query($consulta) or die($mysqli->error);
+      $dado = mysqli_fetch_assoc($result);
+
 ?>
-    <title>Vincular Linha</title>
+    <title>Vincular Docente</title>
   </head>
   
 <body onload="barra();">
@@ -58,44 +66,16 @@
 
   <div class="wrapper">
         <form  class="form-signin" method="post" action=""> 
-        <h2 class="form-signin-heading" align="center">Vincular Linha</h2>      
-      <select data-live-search="true" name="grupo" class="selectpicker form-control">
-         <option disabled selected="selected" >Grupo de Pesquisa</option>
-         <?php
+        <h2 class="form-signin-heading" align="center">Vincular Docente</h2>      
+     <input disabled type="text" class="form-control" name="grupo" placeholder="Grupo de Pesquisa : <?php echo $dado["nome"]; ?>"/>
 
-
-                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE lider = '$logado'";
-
-                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                 if ($stmt = $mysqli->prepare($consulta)) {
-
-                    /* execute statement */
-                    $stmt->execute();
-
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
-
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
-
-                /* close statement */
-                  $stmt->close();
-                }         
-                               
-                
-          ?>
-
-      </select>
-      <br><br>
 <div class="text-center">
-      <select data-live-search="true" name="linha" class="selectpicker form-control">
+       <select data-live-search="true" name="linha" class="selectpicker form-control">
          <option disabled selected="selected" >Linha de Pesquisa</option>
          <?php
 
 
-                 $query = "SELECT `cod_especialidade`, `nome_especialidade` FROM `especialidade`";
+                 $query = "SELECT `cod_especialidade`, `nome_especialidade` FROM `especialidade`, `grupos_linhas` WHERE fk_cod_grupo = '$gp' AND `cod_especialidade` = `fk_cod_linha` ";
 
                  // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
                  if ($stmt = $mysqli->prepare($query)) {
@@ -121,9 +101,6 @@
       </select>
 </div>
 <br><br>
-<textarea class="form-control" rows="5" name="descricao" placeholder="Descrição da linha de pesquisa"></textarea> 
-
-        <br><br>
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Vincular"/><br>
        

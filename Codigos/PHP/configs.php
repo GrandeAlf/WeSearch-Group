@@ -73,19 +73,18 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                   
                                         <?php 
                                             if($adm == 1)
                                             {
-                                                echo "<span class=\"glyphicon glyphicon-eye-open\"></span><a href=\"#\" onclick=\"carrega_pagina('permissoes.php')\">Permissões</a>";
+                                                echo " <td>
+                                                <span class=\"glyphicon glyphicon-eye-open\"></span><a href=\"#\" onclick=\"carrega_pagina('permissoes.php')\">Permissões</a>
+                                                 </td>  ";                                          
                                             }
-                                            else
-                                            {
-                                                echo "<span class=\"glyphicon glyphicon-pencil text-primary\"></span><a href=\"#\" >Newsletters</a>";
-                                            }
+                                            
                                          ?>
                                         
-                                    </td>
+                                   
                                 </tr>
                                 <tr>
                                     <td>
@@ -101,7 +100,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                            </span>Modules</a>
+                            </span>Gerenciamento de Grupos</a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">
@@ -109,22 +108,40 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="">Orders</a> <span class="label label-success">$ 320</span>
+                                         <?php 
+                                            if($adm == 1)
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-search\"></span><a href=\"#\" onclick=\"carrega_pagina('areas_pesquisa.php')\">Areas de Pesquisa</a>";
+                                            }
+                                            else
+                                            {
+                                                echo "<span class=\"glyphicon glyphicon-plus\"></span><a href=\"vincular_linhas.php\">Vincular Linha</a>";
+                                            }
+                                         ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <a href="">Invoices</a>
-                                    </td>
+                                        <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-user\" ></span><a href=\"#\"onclick=\"carrega_pagina('lista_tecnicos.php')\">Técnico</a> </td>";
+                                            }
+                                            
+                                         ?>
+                                   
+                                </tr>
+                                <tr>
+                                    <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-user\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_docentes.php')\">Docente</a> </td>";
+                                            }
+                                            
+                                         ?>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <a href="">Shipments</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="">Tex</a>
+                                            
                                     </td>
                                 </tr>
                             </table>
@@ -203,10 +220,8 @@
             </div>
         </div>
         <div class="col-lg-9">
-            <div class="well" id="conteudo">
-                <h1>
-                    Accordion Menu With Icon</h1>
-                Admin Dashboard Accordion Menu
+            <div id="conteudo">
+               
             </div>
                 
             </div>

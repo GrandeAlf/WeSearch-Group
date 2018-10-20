@@ -47,7 +47,8 @@
 <body>
 
 
-    <div id = "conteudo">
+    <div id = "conteudo">    
+
       <table class="table table-bordered table-sm m-0">
                     <thead class="">
                         <tr>
@@ -126,7 +127,9 @@
                                  {
                                   $id = $dados["id"];
 
-                                  echo "<td class=\"text-center\"><a href=\"vincular_linhas.php?cod=0&id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Linha</button></td>";
+                                  echo "<td class=\"text-center\"><a href=\"vincular_tecnico.php?id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Técnico</button></td>";
+
+                                  echo "<td class=\"text-center\"><a href=\"vincular_docente.php?id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Docente</button></td>";
                                  }
 
                                  
@@ -156,7 +159,8 @@
                
             
     
-    </div>    
+
+</div>   
     
 </body>
 </html>
