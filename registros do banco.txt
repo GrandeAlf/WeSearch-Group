@@ -1,9 +1,0 @@
-Administrador
-admin
-Admin*2018
-
-user1
-User1*2018
-
-user2
-User2*2018

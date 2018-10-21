@@ -30,6 +30,12 @@
 
 
      $gp = $_POST["grupo"];
+     if($gp == 0){
+        $_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">Selecione um grupo.</div>"; 
+        header("location: seleciona_grupoT.php");
+        exit();
+      }
+      $_SESSION['codigogrupo'] = $gp;
 
      $consulta = "SELECT nome FROM grupo_pesquisa WHERE id = '$gp'";
      $result = $mysqli->query($consulta) or die($mysqli->error);
@@ -49,7 +55,7 @@
       <input type="text" class="form-control" name="lattes" placeholder="Curriculo Lattes" />
       <input type="text" class="form-control" name="atividade" placeholder="Atividade Realizada"  />
       <select class="form-control" name="graduacao">
-      <option disabled selected="selected" >Graduação</option>
+      <option disabled selected="selected" >Escolaridade</option>
          <?php
             
 
@@ -85,7 +91,7 @@
       </select>
       <br>
       <input type="text" class="form-control" name="curso" placeholder="Curso"  />
-      <input type="text" class="form-control" placeholder="Data de conclusão do curso" name="conclusao" maxlength="6" autocomplete="off">
+      <input type="text" class="form-control" placeholder="Ano de conclusão do curso" name="conclusao" maxlength="6" autocomplete="off">
       <input disabled type="text" class="form-control" name="grupo" placeholder="Grupo de Pesquisa : <?php echo $dado["nome"]; ?>"   />
 
       <div class="text-center">

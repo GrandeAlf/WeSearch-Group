@@ -94,7 +94,15 @@
 
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Grupo"/><br>
-       
+        
+         <?php 
+
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
     </form>
       </div>
     </div>

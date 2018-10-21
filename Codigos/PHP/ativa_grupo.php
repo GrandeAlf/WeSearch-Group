@@ -104,7 +104,14 @@
 
       </select>
 </div>
-
+      <br>
+      <p>Data de Inclusão da Linha de Pesquisa</p>
+      <div class="input-group registration-date-time">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                    <input class="form-control" name="inclusao" id="registration-date" type="date">
+                    
+                </div>
+                
 
       <br>
         

@@ -37,6 +37,7 @@
 <?php include("funcoes.php");
      
      $logado = logado();
+     $lider = lider();
      $adm = dado();
 
      if($logado == NULL || $adm == 1)
@@ -57,37 +58,36 @@
    </div>
 
   <div class="wrapper">
-        <form  class="form-signin" method="post" action=""> 
+        <form  class="form-signin" method="post" action="valida_vincular_linha.php"> 
         <h2 class="form-signin-heading" align="center">Vincular Linha</h2>      
-      <select data-live-search="true" name="grupo" class="selectpicker form-control">
-         <option disabled selected="selected" >Grupo de Pesquisa</option>
-         <?php
+          <select data-live-search="true" name="idgrupo" class="selectpicker form-control">
+             <option disabled selected="selected" >Grupo de Pesquisa</option>
+             <?php
 
 
-                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE lider = '$logado'";
+                     $consulta = "SELECT id AS cod, nome as nominho FROM grupo_pesquisa WHERE id_lider = '$lider'";
+                     // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
+                     if ($stmt = $mysqli->prepare($consulta)) {
 
-                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                 if ($stmt = $mysqli->prepare($consulta)) {
+                        /* execute statement */
+                        $stmt->execute();
 
-                    /* execute statement */
-                    $stmt->execute();
+                        /* bind result variables */
+                        $stmt->bind_result($id, $nome);
 
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
+                        /* fetch values */
+                        while ($stmt->fetch()) {        
+                            printf ("<option value='%s'>%s</option>\n", $id, $nome);
+                        }
 
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
+                    /* close statement */
+                      $stmt->close();
+                    }         
+                                   
+                    
+              ?>
 
-                /* close statement */
-                  $stmt->close();
-                }         
-                               
-                
-          ?>
-
-      </select>
+          </select>
       <br><br>
 <div class="text-center">
       <select data-live-search="true" name="linha" class="selectpicker form-control">
@@ -120,12 +120,29 @@
 
       </select>
 </div>
+
+<br>
+      <p>Data de Inclusão da Linha de Pesquisa</p>
+      <div class="input-group registration-date-time">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                    <input class="form-control" name="data" id="registration-date" type="date">
+                    
+                </div>
 <br><br>
 <textarea class="form-control" rows="5" name="descricao" placeholder="Descrição da linha de pesquisa"></textarea> 
 
         <br><br>
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Vincular"/><br>
+
+        <?php 
+          
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
        
     </form>
       </div>

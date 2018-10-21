@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 14-Out-2018 às 16:50
+-- Generation Time: 21-Out-2018 às 17:24
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -138,26 +138,8 @@ CREATE TABLE IF NOT EXISTS `docentes` (
   `fk_graduacao` int(11) NOT NULL,
   `curso` varchar(100) DEFAULT NULL,
   `ano_conclusao` int(4) NOT NULL,
-  `data_inclusao` date NOT NULL,
-  `data_remocao` date DEFAULT NULL,
   PRIMARY KEY (`cod_docente`),
   KEY `fk_graducao` (`fk_graduacao`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `docente_linhas`
---
-
-DROP TABLE IF EXISTS `docente_linhas`;
-CREATE TABLE IF NOT EXISTS `docente_linhas` (
-  `fk_docente` int(11) NOT NULL,
-  `fk_linha` int(11) NOT NULL,
-  `data_inicio` date NOT NULL,
-  `data_fim` date DEFAULT NULL,
-  KEY `cod_docente` (`fk_docente`),
-  KEY `fk_linha` (`fk_linha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1086,7 +1068,20 @@ CREATE TABLE IF NOT EXISTS `graduacoes` (
   `cod_graduacao` int(11) NOT NULL AUTO_INCREMENT,
   `nome_graduacao` varchar(60) NOT NULL,
   PRIMARY KEY (`cod_graduacao`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `graduacoes`
+--
+
+INSERT INTO `graduacoes` (`cod_graduacao`, `nome_graduacao`) VALUES
+(8, 'Ensino Fundamental'),
+(9, 'Ensino Médio'),
+(10, 'Ensino Técnico'),
+(11, 'Ensino Superior'),
+(12, 'Pós Gradução'),
+(13, 'Mestrado'),
+(14, 'Doutorado');
 
 -- --------------------------------------------------------
 
@@ -1126,9 +1121,21 @@ DROP TABLE IF EXISTS `grupos_linhas`;
 CREATE TABLE IF NOT EXISTS `grupos_linhas` (
   `fk_cod_grupo` int(11) NOT NULL,
   `fk_cod_linha` int(11) NOT NULL,
+  `data_inicio` date NOT NULL,
+  `data_fim` date DEFAULT NULL,
+  `descricao` text,
   KEY `FK_cod_grupo` (`fk_cod_grupo`),
   KEY `FK_cod_linha` (`fk_cod_linha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `grupos_linhas`
+--
+
+INSERT INTO `grupos_linhas` (`fk_cod_grupo`, `fk_cod_linha`, `data_inicio`, `data_fim`, `descricao`) VALUES
+(8, 80302025, '2018-10-17', NULL, NULL),
+(8, 10102019, '2018-10-11', NULL, 'asdfghgfdsvc'),
+(8, 10405011, '2018-10-24', NULL, 'should i stay ou should i go');
 
 -- --------------------------------------------------------
 
@@ -1149,7 +1156,14 @@ CREATE TABLE IF NOT EXISTS `grupo_pesquisa` (
   `id_lider` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_lider` (`id_lider`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `grupo_pesquisa`
+--
+
+INSERT INTO `grupo_pesquisa` (`id`, `nome`, `sigla`, `lattes`, `email`, `descricao`, `data_inicio`, `ativacao`, `id_lider`) VALUES
+(8, 'Grupo Gordo', 'GG', 'laksdjlkasjlk', 'gg@gg.com', 'jkjhkahdkhsk', '2018-10-03', 1, 29);
 
 -- --------------------------------------------------------
 
@@ -1574,11 +1588,23 @@ CREATE TABLE IF NOT EXISTS `tecnicos` (
   `fk_graduacao` int(11) NOT NULL,
   `curso` varchar(100) DEFAULT NULL,
   `ano_conclusao` int(4) NOT NULL,
-  `data_inclusao` date NOT NULL,
-  `data_remocao` date DEFAULT NULL,
+  `fk_cod_grupo` int(11) NOT NULL,
+  `fk_especialidade` int(11) NOT NULL,
+  `data_inicio` date NOT NULL,
+  `data_fim` date DEFAULT NULL,
+  `situacao` tinyint(4) NOT NULL COMMENT '1=ativo 0=inativo',
   PRIMARY KEY (`cod_tecnico`),
-  KEY `fk_graducao` (`fk_graduacao`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `fk_graducao` (`fk_graduacao`),
+  KEY `grupo` (`fk_cod_grupo`),
+  KEY `especialidade` (`fk_especialidade`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tecnicos`
+--
+
+INSERT INTO `tecnicos` (`cod_tecnico`, `nome`, `lattes`, `atividade_realizada`, `fk_graduacao`, `curso`, `ano_conclusao`, `fk_cod_grupo`, `fk_especialidade`, `data_inicio`, `data_fim`, `situacao`) VALUES
+(1, 'Kratos Ghost of Sparta', 'olimpo.com', 'Matador de Deuses', 12, 'MataÃ§Ã£o Grega', 2003, 8, 10102019, '2018-10-17', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1598,7 +1624,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `adm` tinyint(1) NOT NULL,
   `chave` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `prontuario`, `nome`, `senha`, `email`, `lattes`, `alteracao`, `adm`, `chave`) VALUES
+(28, 'admin', 'Admin', 'ff2590eae5b6435000af4aa7f205ae0d650045dbc7ec7d72f5cefd151f7ca414', 'eric.gmoreira98@gmail.com', NULL, '2018-10-20', 1, 'a78cee544d5535ddf3f3b21fac85d68fdc93e2040fdc665e94977bcf65cb7ce9'),
+(29, '12345', 'Eric', 'ff2590eae5b6435000af4aa7f205ae0d650045dbc7ec7d72f5cefd151f7ca414', 'eric.gmoreira98@gmail.com', NULL, '2018-10-20', 0, 'a78cee544d5535ddf3f3b21fac85d68fdc93e2040fdc665e94977bcf65cb7ce9');
 
 --
 -- Constraints for dumped tables
@@ -1615,13 +1649,6 @@ ALTER TABLE `area_conhecimento`
 --
 ALTER TABLE `docentes`
   ADD CONSTRAINT `docentes_ibfk_1` FOREIGN KEY (`fk_graduacao`) REFERENCES `graduacoes` (`cod_graduacao`);
-
---
--- Limitadores para a tabela `docente_linhas`
---
-ALTER TABLE `docente_linhas`
-  ADD CONSTRAINT `docente_linhas_ibfk_1` FOREIGN KEY (`fk_docente`) REFERENCES `docentes` (`cod_docente`),
-  ADD CONSTRAINT `docente_linhas_ibfk_2` FOREIGN KEY (`fk_linha`) REFERENCES `especialidade` (`cod_especialidade`);
 
 --
 -- Limitadores para a tabela `especialidade`
@@ -1659,7 +1686,9 @@ ALTER TABLE `sub_area`
 -- Limitadores para a tabela `tecnicos`
 --
 ALTER TABLE `tecnicos`
-  ADD CONSTRAINT `tecnicos_ibfk_1` FOREIGN KEY (`fk_graduacao`) REFERENCES `graduacoes` (`cod_graduacao`);
+  ADD CONSTRAINT `tecnicos_ibfk_1` FOREIGN KEY (`fk_graduacao`) REFERENCES `graduacoes` (`cod_graduacao`),
+  ADD CONSTRAINT `tecnicos_ibfk_2` FOREIGN KEY (`fk_cod_grupo`) REFERENCES `grupo_pesquisa` (`id`),
+  ADD CONSTRAINT `tecnicos_ibfk_3` FOREIGN KEY (`fk_especialidade`) REFERENCES `especialidade` (`cod_especialidade`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

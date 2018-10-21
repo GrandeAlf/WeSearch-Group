@@ -44,7 +44,9 @@ function lider()
   	$result = $mysqli->query($consulta) or die($mysqli->error);
   	$dado = mysqli_fetch_assoc($result);
 
-  	return $dado["id"];
+  	$idlider = $dado["id"];
+
+  	return $idlider;
 }
 
 function situacao($id)
