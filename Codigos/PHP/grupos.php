@@ -123,14 +123,14 @@
                                  
                                  <?php 
 
-                                 if($adm != 1)
+                                 /*if($adm != 1)
                                  {
                                   $id = $dados["id"];
 
                                   echo "<td class=\"text-center\"><a href=\"vincular_tecnico.php?id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Técnico</button></td>";
 
                                   echo "<td class=\"text-center\"><a href=\"vincular_docente.php?id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Docente</button></td>";
-                                 }
+                                 }*/
 
                                  
                                  ?>

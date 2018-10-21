@@ -7,7 +7,7 @@
 
 <?php include("conexao.php");
        include("funcoes.php");
-     
+      //session_start();
      $logado = logado();
      if($logado == NULL)
      {
@@ -17,24 +17,17 @@
      {
 
 
-/*
        $lider = lider();
        $adm = dado(); 
         
              
-       if($adm != 1)
-       {
-
-        $consulta = "SELECT `id`, `nome`, `sigla` FROM `grupo_pesquisa` WHERE `id_lider` = '$lider'";
-       }
-       else
-       {
-        $consulta = "SELECT `id`, `nome`, `sigla` FROM `grupo_pesquisa`";
-       }
-        
+      
+        $consulta = "SELECT gp.id as cod_grupo, gp.nome as grupo , cod_docente, t.nome as docente FROM `grupo_pesquisa` as gp, docentes as t WHERE `id_lider` = '$lider' and fk_cod_grupo = gp.id and t.situacao = '1'";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
+        
+
       }
-      */
+      
   ?>
 
 
@@ -51,9 +44,10 @@
     <div id = "conteudo">
       <table class="table table-bordered table-sm m-0">
                     <thead class="">
-                        <tr>
+                        <tr class="text-center">
                             
                             <th class="text-center">Nome</th>
+                             <th class="text-center">Grupo de Pesquisa</th>
                             
                                 
                                 <th>Ação</th>
@@ -65,27 +59,20 @@
                     </thead>
                     <tbody>
                         <?php 
-                            //while($dados = $con->fetch_array()){?>
+                            while($dados = $con->fetch_array()){?>
                              <tr>
-                                 
-                                <td class="text-center"><?php //echo $dados["nome"]; ?></td>
-                                <?php 
-
-                               // $situacao = situacao($dados["id"]);
-
-                               
-                                  
-
-                                 ?>
-                                 
-                                 <?php 
-
-                                 
-                                 ?>
-
-                               
                                 
+                                 <?php 
+                                    $_SESSION['cod_docente'] = $dados['cod_docente'];
+                                  ?>
+                                 <td class="text-center"><?php echo $dados["docente"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["grupo"]; ?></td>
 
+
+                                 <td class="text-center"><?php echo " <a href=\"edita_docente.php\"><button class=\"btn btn-warning\">Alterar</button></a>"; ?></td>
+
+                                 <td class="text-center"><?php echo " <a href=\"inativa_docente.php\"><button class=\"btn btn-danger\">Inativar</button></a>"; ?></td>
+                                
                                 </tr> 
                         <?php } ?>
 
@@ -111,5 +98,3 @@
     
 </body>
 </html>
-
-            

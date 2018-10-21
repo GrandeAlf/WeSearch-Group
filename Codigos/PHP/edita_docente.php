@@ -27,9 +27,9 @@
      {
       header("location: inicial.php");
      }
-     $cod_tecnico = $_SESSION['cod_tecnico'];
+     $cod_docente = $_SESSION['cod_docente'];
 
-    $consulta = "SELECT nome, lattes, atividade_realizada, fk_graduacao, curso, ano_conclusao FROM tecnicos WHERE cod_tecnico = '$cod_tecnico'";
+    $consulta = "SELECT nome, lattes, atividade_realizada, fk_graduacao, curso, ano_conclusao FROM docentes WHERE cod_docente = '$cod_docente'";
     $result = $mysqli->query($consulta) or die($mysqli->error);
 
      while($dados = $result->fetch_array()){
@@ -42,7 +42,7 @@
 
     </div>
    <div class="wrapper" >
-    <form class="form-signin" method="post" action="valida_edita_tecnico.php">       
+    <form class="form-signin" method="post" action="valida_edita_docente.php">       
       <h2 class="form-signin-heading" align="center">Alterar dados de Técnicos</h2>
       <input type="text" class="form-control" name="nome" value="<?php echo $dados["nome"]; ?>" >
       <input type="text" class="form-control" name="lattes" value="<?php echo $dados["lattes"]; ?>"  />
