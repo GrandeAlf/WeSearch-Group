@@ -29,6 +29,12 @@
      }
 
       $gp = $_POST["grupo"];
+      if($gp == 0){
+        $_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">Selecione um grupo.</div>"; 
+        header("location: seleciona_grupoT.php");
+        exit();
+      }
+      $_SESSION['codigogrupo'] = $gp;
 
      $consulta = "SELECT nome FROM grupo_pesquisa WHERE id = '$gp'";
      $result = $mysqli->query($consulta) or die($mysqli->error);

@@ -36,11 +36,7 @@
 		header("location: seleciona_grupoT.php");
 		exit();
 	}
-	if(strlen($curso) == 0){
-		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O curso não pode ser vazio.</div>"; 
-		header("location: seleciona_grupoT.php");
-		exit();
-	}
+	
 	if(strlen($ano) == 0){
 		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O ano de conclusão não pode ser vazio.</div>"; 
 		header("location: seleciona_grupoT.php");

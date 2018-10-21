@@ -59,7 +59,7 @@
 
   <div class="wrapper">
         <form  class="form-signin" method="post" action="cadastro_tecnico.php"> 
-        <h2 class="form-signin-heading" align="center">Vincular Linha</h2> 
+        <h2 class="form-signin-heading" align="center">Selecionar Grupo</h2> 
         
       <select data-live-search="true" name="grupo" class="selectpicker form-control">
          <option disabled selected="selected" >Grupo de Pesquisa</option>
