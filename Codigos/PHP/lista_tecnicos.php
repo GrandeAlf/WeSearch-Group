@@ -17,24 +17,18 @@
      {
 
 
-/*
        $lider = lider();
        $adm = dado(); 
         
              
-       if($adm != 1)
-       {
+      
 
-        $consulta = "SELECT `id`, `nome`, `sigla` FROM `grupo_pesquisa` WHERE `id_lider` = '$lider'";
-       }
-       else
-       {
-        $consulta = "SELECT `id`, `nome`, `sigla` FROM `grupo_pesquisa`";
-       }
-        
+        $consulta = "SELECT gp.id as cod_grupo, gp.nome as grupo , cod_tecnico, t.nome as tecnico FROM `grupo_pesquisa` as gp, tecnicos as t WHERE `id_lider` = '$lider' and fk_cod_grupo = gp.id ";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
+
+
       }
-      */
+      
   ?>
 
 
@@ -54,6 +48,7 @@
                         <tr>
                             
                             <th class="text-center">Nome</th>
+                             <th class="text-center">Grupo de Pesquisa</th>
                             
                                 
                                 <th>Ação</th>
@@ -65,27 +60,14 @@
                     </thead>
                     <tbody>
                         <?php 
-                            //while($dados = $con->fetch_array()){?>
+                            while($dados = $con->fetch_array()){?>
                              <tr>
                                  
-                                <td class="text-center"><?php //echo $dados["nome"]; ?></td>
-                                <?php 
+                                <td class="text-center"><?php echo $dados["tecnico"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["grupo"]; ?></td>
 
-                               // $situacao = situacao($dados["id"]);
-
-                               
-                                  
-
-                                 ?>
-                                 
-                                 <?php 
-
-                                 
-                                 ?>
-
-                               
+                                 <td class="text-center"><?php echo " <a href=\"seleciona_grupoT.php\"><button class=\"btn btn-warning\">Inativar ou Excluir Técnico</button></a>"; ?></td>
                                 
-
                                 </tr> 
                         <?php } ?>
 
