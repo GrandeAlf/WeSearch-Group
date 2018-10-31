@@ -42,29 +42,19 @@
   </head>
   
 <body onload="barra()">
-	
+  
    <div id="barra">
      
 
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action="validaativacaogrupos.php"> 
-              
-      <h2 class="form-signin-heading" align="center">Publicação de Pesquisa</h2>
-
-      <input  type="text" class="form-control" name="nome" placeholder="Título"   />
-
-      <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Tipo</option>
-          <option  selected="selected" >Livro</option>
-          <option  selected="selected" >Capítulo de livro</option>
-          <option  selected="selected" >Anais de congresso</option>
-          <option  selected="selected" >Periódicos</option>
-      </select>
-
-      <br><br>
-      <p>Data da Publicação</p>
+        <form class="form-signin"  method="post" action="valida_cad_equipamentos.php">       
+      <h2 class="form-signin-heading" align="center">Cadastro de Equipamentos</h2>
+      <input  type="text" class="form-control" name="nome" placeholder="Nome do equipamento"   />
+     
+      
+      <p>Data da Aquisição</p>
       <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                     <input class="form-control" name="inclusao" id="registration-date" type="date">
@@ -72,27 +62,13 @@
                 </div>
                 
 
-      <br>
-      <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Docente</option>
-         
 
-      </select>
       <br><br>
-      <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Linha de Pesquisa</option>
-         
-
-      </select>
-      <br><br>
-      <textarea class="form-control" rows="5" name="descricao" placeholder="Referencia da ABNT"></textarea>
+      <textarea class="form-control" rows="5" name="descricao" placeholder="Descrição do equipamento"></textarea>
        
       <br>
 
-       <textarea class="form-control" rows="5" name="descricao" placeholder="Referencia da publicação"></textarea>
-                
-
-      <br>
+       
 
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
@@ -103,7 +79,7 @@
     
   </div>
 
-	 
+   
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -3,11 +3,7 @@
   <head>
 <?php include("funcoes.php");
      
-     $logado = logado();
-     if($logado == NULL)
-     {
-      header("location: inicial.php");
-     }
+     
 ?>
 
 
