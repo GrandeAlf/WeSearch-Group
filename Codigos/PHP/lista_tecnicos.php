@@ -53,6 +53,7 @@
                             
                                 
                                 <th>Ação</th>
+                                 <th>Inativar</th>
                                 
                             
                           
@@ -69,9 +70,9 @@
                                 <td class="text-center"><?php echo $dados["tecnico"]; ?></td>
                                  <td class="text-center"><?php echo $dados["grupo"]; ?></td>
 
-                                 <td class="text-center"><?php echo " <a href=\"edita_tecnico.php\"><button class=\"btn btn-warning\">Alterar</button></a>"; ?></td>
+                                 <td class="text-center"><?php echo " <a href=\"edita_tecnico.php\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
 
-                                 <td class="text-center"><?php echo " <a href=\"inativa_tecnico.php\"><button class=\"btn btn-danger\">Inativar</button></a>"; ?></td>
+                                 <td class="text-center"><?php echo " <a href=\"inativa_tecnico.php\"><button class=\"btn btn-danger btn-block\">Inativar</button></a>"; ?></td>
                                 
                                 </tr> 
                         <?php } ?>

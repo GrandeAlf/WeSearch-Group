@@ -140,9 +140,13 @@
                                          ?>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-wrench\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_equipamentos.php')\">Equipamentos</a> </td>";
+                                            }
                                             
-                                    </td>
+                                         ?>
                                 </tr>
                             </table>
                         </div>

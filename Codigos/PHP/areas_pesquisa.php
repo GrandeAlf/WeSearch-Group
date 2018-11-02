@@ -69,7 +69,7 @@
                                  <td class="text-center"><input type="checkbox" name="select"></td>
                                  <td class="text-center"><?php echo $dados["cod_especialidade"]; ?></td>
                                 <td class="text-center"><?php echo $dados["nome_especialidade"]; ?></td>
-                                <td><?php echo "<a href="."TESTE.php?id=".$dados["cod_especialidade"]."</a>";?><button class="btn btn-warning btn-block">Alterar Linha</button></td>
+                                <td><?php echo "<a href=\"TESTE.php?id=".$dados["cod_especialidade"]."\">";?><button class="btn btn-warning btn-block">Alterar Linha</button></td>
                                 
 
                                 </tr> 

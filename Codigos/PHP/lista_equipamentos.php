@@ -7,14 +7,14 @@
 
 <?php include("conexao.php");
        include("funcoes.php");
-      //session_start();
-     $logado = logado();
-     if($logado == NULL)
-     {
-      header("location: inicial.php");
-     }
-     else
-     {
+     // session_start();
+    // $logado = logado();
+    // if($logado == NULL)
+    // {
+      //header("location: inicial.php");
+    // }
+     //else
+     //{
 
 
        $lider = lider();
@@ -22,11 +22,11 @@
         
              
       
-        $consulta = "SELECT gp.id as cod_grupo, gp.nome as grupo , cod_docente, t.nome as docente FROM `grupo_pesquisa` as gp, docentes as t WHERE `id_lider` = '$lider' and fk_cod_grupo = gp.id and t.situacao = '1'";
+        $consulta = "SELECT gp.id as cod_grupo, gp.nome as grupo , cod_equipamento, e.nome as equipamento FROM `grupo_pesquisa` as gp, equipamentos as e WHERE `id_lider` = '$lider' and fk_grupo = gp.id";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
         
 
-      }
+      //}
       
   ?>
 
@@ -51,7 +51,7 @@
                             
                                 
                                 <th>Ação</th>
-                                <th>Inativar</th>
+                                
                                 
                             
                           
@@ -64,15 +64,15 @@
                              <tr>
                                 
                                  <?php 
-                                    $_SESSION['cod_docente'] = $dados['cod_docente'];
+                                    //$_SESSION['cod_docente'] = $dados['cod_docente'];
                                   ?>
-                                 <td class="text-center"><?php echo $dados["docente"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["equipamento"]; ?></td>
                                  <td class="text-center"><?php echo $dados["grupo"]; ?></td>
 
 
                                  <td class="text-center"><?php echo " <a href=\"edita_docente.php\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
 
-                                 <td class="text-center"><?php echo " <a href=\"inativa_docente.php\"><button class=\"btn btn-danger btn-block\">Inativar</button></a>"; ?></td>
+                                 
                                 
                                 </tr> 
                         <?php } ?>
@@ -88,7 +88,7 @@
 
                      // if($adm == 1)
                      // {
-                        echo " <a href=\"seleciona_grupoD.php\"><button class=\"btn btn-success\">Cadastrar Docente</button></a>";
+                        echo " <a href=\"seleciona_grupoE.php\"><button class=\"btn btn-success\">Cadastrar Equipamento</button></a>";
                      // }  
 
                  ?>

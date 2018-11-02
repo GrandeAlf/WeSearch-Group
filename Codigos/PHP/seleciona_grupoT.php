@@ -46,7 +46,7 @@
      }
 
 ?>
-    <title>Vincular Linha</title>
+    <title>Selecionar Grupo</title>
   </head>
   
 <body onload="barra();">

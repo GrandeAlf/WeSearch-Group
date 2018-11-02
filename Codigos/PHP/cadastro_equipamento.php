@@ -35,6 +35,9 @@
    
 
 <?php include("funcoes.php");
+      $cod = $_POST["grupo"];
+      
+      $_SESSION["cod"] = $cod;
      
     
 ?>
