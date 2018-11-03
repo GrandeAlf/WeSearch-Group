@@ -54,7 +54,7 @@
 
       $_SESSION['codigo_grupo'] = $cod;
 
-      $consulta = "SELECT nome, sigla FROM grupo_pesquisa WHERE id = '$cod'";
+      $consulta = "SELECT nome, sigla, lattes, email, descricao  FROM grupo_pesquisa WHERE id = '$cod'";
       $result = $mysqli->query($consulta) or die($mysqli->error);
       $dado = mysqli_fetch_assoc($result);
    
@@ -70,15 +70,11 @@
       <h2 class="form-signin-heading" align="center">Alterar Grupo de Pesquisa</h2>
       <input disabled type="text" class="form-control" name="nome" placeholder="<?php echo $dado["nome"]; ?>"   />
       <input disabled type="text" class="form-control" name="sigla" placeholder="<?php echo $dado["sigla"] ?>"   />
-      <input type="email" class="form-control" name="email" placeholder="Email"   />
-      <input type="text" class="form-control" name="lattes" placeholder="Lattes" />
-
-
-
-
+      <input type="email" class="form-control" name="email" placeholder="<?php echo $dado["email"]; ?>"   />
+      <input type="text" class="form-control" name="lattes" placeholder="<?php echo $dado["lattes"]; ?>" />
       <br>
         
-        <textarea class="form-control" rows="5" name="descricao" placeholder="Descrição"></textarea>    
+        <textarea class="form-control" rows="5" name="descricao" placeholder="<?php echo $dado["descricao"]; ?>"></textarea>    
           
         <br><br>
         

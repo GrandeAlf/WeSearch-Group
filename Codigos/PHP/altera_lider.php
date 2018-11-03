@@ -19,12 +19,12 @@
      
      $logado = logado();
      $adm = dado();
-     if($logado == NULL || $adm != 1)
+     if($logado == NULL || $adm == 1)
      {
       header("location: inicial.php");
      }
 
-     $idgrupo = $_GET["id"];
+     $idgrupo = $_SESSION["grupo_id"];
      $_SESSION['idgrupo'] = $idgrupo;
 
      $consulta = "SELECT gp.id_lider, u.nome FROM grupo_pesquisa as gp, usuarios as u WHERE id_lider = u.id and gp.id = '$idgrupo'";
@@ -50,7 +50,9 @@
 
         <!-- input com nome do lider atual desabilitado --> 
 
-        <input type="text" class="form-control" name="lideratual" <?php echo "value='".$dado["nome"]."'"; ?>  autofocus="" />
+        <input type="text" disabled class="form-control" name="lideratual" <?php echo "value='".$idgrupo."'"; ?>  autofocus="" />
+
+         <input type="text" disabled class="form-control" name="lideratual" <?php echo "value='".$dado["nome"]."'"; ?>  autofocus="" />
 
         <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>

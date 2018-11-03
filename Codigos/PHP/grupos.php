@@ -89,6 +89,12 @@
                                 
                                 </td>";
                                   }
+
+                                   
+
+                                  echo "<td align=\"center\"><a href=\"altera_lider.php?id=".$dados["id"]."\"><button \" class=\"btn btn-success btn-block\">ALTERAR LÍDER</button>
+                                    </td>";
+
                                   
 
                                 }
@@ -97,23 +103,22 @@
                                   
                                   if($situacao == 0)
                                   {
-                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php?cod=1&id=".$dados["id"]."\"><button \" class=\"btn btn-danger btn-block\">ATIVAR</button>
+                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php?cod=1&id=".$dados["id"]."\"><button \" class=\"btn btn-success btn-block\">ATIVAR</button>
                                     </td>";
                                   }
                                   else if($situacao == 1)
                                   {
-                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php?cod=0&id=".$dados["id"]."\"><button \" class=\"btn btn-success btn-block\">INATIVAR</button>
+                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php?cod=0&id=".$dados["id"]."\"><button \" class=\"btn btn-danger btn-block\">INATIVAR</button>
                                     </td>";
                                   }
                                   else if($situacao == 2)
                                   {
-                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php.php?cod=2&id=".$dados["id"]."\"><button \" class=\"btn btn-warning btn-block\">EXCLUIR</button>
+                                    echo "<td align=\"center\"><a href=\"situacao_grupo.php?cod=2&id=".$dados["id"]."\"><button \" class=\"btn btn-warning btn-block\">EXCLUIR</button>
                                 
                                 </td>";
                                   }
-                                  echo "<td align=\"center\"><a href=\"altera_lider.php?cod=0&id=".$dados["id"]."\"><button \" class=\"btn btn-success btn-block\">ALTERAR LÍDER</button>
-                                    </td>";
 
+                                
                                   
                                 }
 
@@ -121,21 +126,7 @@
 
                                  ?>
                                  
-                                 <?php 
-
-                                 /*if($adm != 1)
-                                 {
-                                  $id = $dados["id"];
-
-                                  echo "<td class=\"text-center\"><a href=\"vincular_tecnico.php?id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Técnico</button></td>";
-
-                                  echo "<td class=\"text-center\"><a href=\"vincular_docente.php?id=".$dados["id"]."\"><button class=\"btn btn-success btn-block\">Vincular Docente</button></td>";
-                                 }*/
-
                                  
-                                 ?>
-
-                               
                                 
 
                                 </tr> 
