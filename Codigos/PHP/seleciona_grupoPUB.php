@@ -35,77 +35,74 @@
    
 
 <?php include("funcoes.php");
-
-    //$cod = $_POST["grupo"];
-      
-    //$_SESSION["cod"] = $cod;
      
-    
+     $logado = logado();
+     $adm = dado();
+     $lider = lider();
+
+     if($logado == NULL || $adm == 1)
+     {
+      header("location: inicial.php");
+     }
+
 ?>
-    <title>Cadastrar Publicações</title>
+    <title>Selecionar Grupo</title>
   </head>
   
-<body onload="barra()">
-	
+<body onload="barra();">
+	<?php 
+    include ("conexao.php");
+	 ?>
    <div id="barra">
      
-
    </div>
 
-  <div >
-        <form class="form-signin"  method="post" action="valida_cad_publicacoes.php"> 
-              
-      <h2 class="form-signin-heading" align="center">Publicação de Pesquisa</h2>
+  <div class="wrapper">
+        <form  class="form-signin" method="post" action="cadastrar_publicacoes.php"> 
+        <h2 class="form-signin-heading" align="center">Selecionar Grupo</h2> 
+        
+      <select data-live-search="true" name="grupo" class="selectpicker form-control">
+         <option disabled selected="selected" >Grupo de Pesquisa</option>
+         <?php
 
-      <input  type="text" class="form-control" name="nome" placeholder="Título"   />
 
-      <select  name="tipo" class="selectpicker form-control">
-         <option  disabled selected="selected" >Tipo</option>
-          <option >Livro</option>
-          <option >Capítulo de livro</option>
-          <option >Anais de congresso</option>
-          <option >Periódicos</option>
-      </select>
+                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE id_lider = '$lider'";
 
-      <br><br>
-      <p>Data da Publicação</p>
-      <div class="input-group registration-date-time">
-                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                    <input class="form-control" name="inclusao" id="registration-date" type="date">
-                    
-                </div>
+                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
+                 if ($stmt = $mysqli->prepare($consulta)) {
+
+                    /* execute statement */
+                    $stmt->execute();
+
+                    /* bind result variables */
+                    $stmt->bind_result($id, $nome);
+
+                    /* fetch values */
+                    while ($stmt->fetch()) {        
+                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
+                    }
+
+                /* close statement */
+                  $stmt->close();
+                }         
+                               
                 
-
-      <br>
-      <div>
-        <select  name="docente" class="selectpicker form-control">
-         <option  selected="selected" >Docente</option>
-
-         
-         
-
-      </select>
-      </div>
-      
-      <br><br>
-      <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Linha de Pesquisa</option>
-         
+          ?>
 
       </select>
       <br><br>
-      <textarea class="form-control" rows="5" name="abnt" placeholder="Referencia da ABNT"></textarea>
-       
-      <br>
-
-       <textarea class="form-control" rows="5" name="referencia" placeholder="Referencia da publicação"></textarea>
-                
-
-      <br>
 
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Grupo"/><br>
         
+         <?php 
+
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
     </form>
       </div>
     </div>

@@ -156,16 +156,20 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
-                            </span>Account</a>
+                            </span>Projetos e Publicações</a>
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table class="table">
                                 <tr>
-                                    <td>
-                                        <a href="">Alterar Senha</a>
-                                    </td>
+                                     <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-wrench\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_publicacoes.php')\">Publicações</a> </td>";
+                                            }
+                                            
+                                         ?>
                                 </tr>
                                 <tr>
                                     <td>
