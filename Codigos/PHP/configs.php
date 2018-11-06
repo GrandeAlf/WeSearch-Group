@@ -172,9 +172,13 @@
                                          ?>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <a href="">Notifications</a> <span class="label label-info">5</span>
-                                    </td>
+                                    <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-wrench\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_projetos.php')\">Projetos Pesquisa</a> </td>";
+                                            }
+                                            
+                                         ?>
                                 </tr>
                                 <tr>
                                     <td>
