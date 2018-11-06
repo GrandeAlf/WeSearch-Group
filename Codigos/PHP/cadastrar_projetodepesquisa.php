@@ -35,6 +35,25 @@
    
 
 <?php include("funcoes.php");
+      include("conexao.php");
+
+      $grupo = $_SESSION["grupo"];
+      $linha = $_SESSION["linha"];
+      $docente = $_POST["docente"];
+      $_SESSION["docente"] = $docente;
+
+
+      $consulta_docente = "SELECT nome FROM docentes  WHERE cod_docente = '$docente'";
+     $result_docente = $mysqli->query($consulta_docente) or die($mysqli->error);
+     $docente_nome = mysqli_fetch_assoc($result_docente);
+
+     $consulta_linha = "SELECT nome_especialidade as linha FROM especialidade  WHERE cod_especialidade = '$linha'";
+     $result_linha = $mysqli->query($consulta_linha) or die($mysqli->error);
+     $linha_nome = mysqli_fetch_assoc($result_linha);
+
+     $consulta_grupo = "SELECT nome FROM grupo_pesquisa  WHERE id = '$grupo'";
+     $result_grupo = $mysqli->query($consulta_grupo) or die($mysqli->error);
+     $grupo_nome = mysqli_fetch_assoc($result_grupo);
      
     
 ?>
@@ -52,24 +71,28 @@
         <form class="form-signin"  method="post" action="validaativacaogrupos.php">       
       <h2 class="form-signin-heading" align="center">Projeto de Pesquisa</h2>
       <input  type="text" class="form-control" name="nome" placeholder="Título do projeto de pesquisa"   />
+      
+
+      <input  disabled type="text" class="form-control" name="grupo" placeholder="Grupo: <?php echo $grupo_nome['nome']; ?>"   />
+
+      <input  disabled type="text" class="form-control" name="grupo" placeholder="Linha: <?php echo $linha_nome['linha']; ?>"   />
+
+      <input  disabled type="text" class="form-control" name="grupo" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
+
+
       <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Docente Responsavel</option>
+         <option  selected="selected" >Tipo de Bolta</option>
          
-
+         <optgroup label="Sem bolsa">
+          <option>Voluntario</option>
+        </optgroup>
+        <optgroup label="Com bolsa">
+          <option>PIBIFSP</option>
+          <option>CNPQ</option>
+          <option>Outros</option>
+        </optgroup>
       </select>
-      <br><br>
-      <select data-live-search="true" name="linha" class="selectpicker form-control">
-         <option disabled selected="selected" >Linha de Pesquisa</option>
-         
-
-      </select>
-      <br><br>
-      <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Tipo</option>
-         
-
-      </select>
-      <br><br>
+       <br><br>
       <input disabled type="text" class="form-control" name="outro" placeholder="Tipo da bolsa"   />
       <select  name="linha" class="selectpicker form-control">
          <option  selected="selected" >Orientado</option>
