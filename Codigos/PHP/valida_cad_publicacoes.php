@@ -1,13 +1,14 @@
 <?php 
 	
-	//session_start();
+	session_start();
 
 	//$cod = $_SESSION['cod'];
 	$titulo = $_POST["nome"];
 	$tipo = $_POST["tipo"];
 	$data = $_POST["inclusao"];
-	$docente = $_POST["docente"];
-	$linha = $_POST["linha"];
+	$grupo = $_SESSION["grupo"];
+	$docente = $_SESSION["docente"];
+	$linha = $_SESSION["linha"];
 	$abnt = $_POST["abnt"];
 	$referencia = $_POST["referencia"];
 
@@ -15,6 +16,7 @@
 	echo "Nome: ".$titulo."<br>";
 	echo "Tipo: ".$tipo."<br>";
 	echo "Data de inclusão: ".$data."<br>";
+	echo "Grupo: ".$grupo."<br>";
 	echo "Docente: ".$docente."<br>";
 	echo "Linha: ".$linha."<br>";
 	echo "Referencia ABNT: ".$abnt."<br>";
