@@ -38,7 +38,6 @@
       include("conexao.php");
 
     $grupo = $_SESSION["grupo"];
-    $linha = $_SESSION["linha"];
     $docente = $_POST["docente"];
     $_SESSION["docente"] = $docente;
 
@@ -48,7 +47,7 @@
      $result_docente = $mysqli->query($consulta_docente) or die($mysqli->error);
      $docente_nome = mysqli_fetch_assoc($result_docente);
 
-     $consulta_linha = "SELECT nome_especialidade as linha FROM especialidade  WHERE cod_especialidade = '$linha'";
+     $consulta_linha = "SELECT cod_especialidade as id, nome_especialidade as linha FROM especialidade, docentes  WHERE cod_especialidade = fk_especialidade and cod_docente = '$docente'";
      $result_linha = $mysqli->query($consulta_linha) or die($mysqli->error);
      $linha_nome = mysqli_fetch_assoc($result_linha);
 
@@ -56,7 +55,7 @@
      $result_grupo = $mysqli->query($consulta_grupo) or die($mysqli->error);
      $grupo_nome = mysqli_fetch_assoc($result_grupo);
      
-    
+    $_SESSION["linha"] = $linha_nome["id"];
 ?>
     <title>Cadastrar Publicações</title>
   </head>
@@ -69,7 +68,7 @@
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action="valida_cad_publicacoes.php"> 
+        <form class="form-signin"  method="post" action="valida_cad_publicacoesGRU.php"> 
               
       <h2 class="form-signin-heading" align="center">Publicação de Pesquisa</h2>
 

@@ -22,7 +22,7 @@
         
              
       
-        $consulta = "SELECT gp.id as cod_grupo, gp.nome as grupo , cod_docente, t.nome as docente FROM `grupo_pesquisa` as gp, docentes as t WHERE `id_lider` = '$lider' and fk_cod_grupo = gp.id and t.situacao = '1'";
+        $consulta = "SELECT `cod_aluno`, `nome` FROM alunos";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
         
 
@@ -47,11 +47,11 @@
                         <tr class="text-center">
                             
                             <th class="text-center">Nome</th>
-                             <th class="text-center">Grupo de Pesquisa</th>
+                             
                             
                                 
                                 <th>Ação</th>
-                                <th>Inativar</th>
+                               
                                 
                             
                           
@@ -64,13 +64,13 @@
                              <tr>
                                 
                                 
-                                 <td class="text-center"><?php echo $dados["docente"]; ?></td>
-                                 <td class="text-center"><?php echo $dados["grupo"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["nome"]; ?></td>
+                                 
 
 
-                                 <td class="text-center"><?php echo " <a href=\"edita_discente.php?id=".$dados["cod_docente"]."\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
+                                 <td class="text-center"><?php echo " <a href=\"edita_discente.php?id=".$dados["cod_aluno"]."\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
 
-                                 <td class="text-center"><?php echo " <a href=\"inativa_docente.php\"><button class=\"btn btn-danger btn-block\">Inativar</button></a>"; ?></td>
+                                
                                 
                                 </tr> 
                         <?php } ?>
@@ -86,7 +86,7 @@
 
                      // if($adm == 1)
                      // {
-                        echo " <a href=\"seleciona_grupoD.php\"><button class=\"btn btn-success\">Cadastrar Docente</button></a>";
+                        echo " <a href=\"cadastrar_discente.php\"><button class=\"btn btn-success\">Cadastrar Alunos</button></a>";
                      // }  
 
                  ?>

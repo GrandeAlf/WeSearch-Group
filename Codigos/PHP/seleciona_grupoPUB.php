@@ -58,7 +58,7 @@
    </div>
 
   <div class="wrapper">
-        <form  class="form-signin" method="post" action="seleciona_linhaPUB.php"> 
+        <form  class="form-signin" method="post" action="seleciona_docentePUB.php"> 
         <h2 class="form-signin-heading" align="center">Selecionar Grupo</h2> 
         
       <select data-live-search="true" name="grupo" class="selectpicker form-control">

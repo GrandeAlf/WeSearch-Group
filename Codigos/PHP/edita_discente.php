@@ -27,9 +27,9 @@
      {
       header("location: inicial.php");
      }
-     $cod_docente = $_GET['id'];
+     $aluno = $_GET['id'];
 
-    $consulta = "SELECT nome, lattes, atividade_realizada, fk_graduacao, curso, ano_conclusao FROM docentes WHERE cod_docente = '$cod_docente'";
+    $consulta = "SELECT nome, curso, lattes FROM alunos WHERE cod_aluno = '$aluno'";
     $result = $mysqli->query($consulta) or die($mysqli->error);
 
      while($dados = $result->fetch_array()){
@@ -45,48 +45,9 @@
     <form class="form-signin" method="post" action="valida_edita_docente.php">       
       <h2 class="form-signin-heading" align="center">Alterar dados de Técnicos</h2>
       <input type="text" class="form-control" name="nome" value="<?php echo $dados["nome"]; ?>" >
-      <input type="text" class="form-control" name="lattes" value="<?php echo $dados["lattes"]; ?>"  />
-      <input type="text" class="form-control" name="atividade" value="<?php echo $dados["atividade_realizada"]; ?>"  />
-      <select class="form-control" name="graduacao">
-      <option  selected="selected" value="<?php echo $dados["fk_graduacao"]; ?>" >Sem Alteração</option>
-         <?php
-            
-
-            /* check connection */
-              if ($mysqli->connect_errno) {
-                  printf("A conexão falhou: %s\n", $ligacao->connect_error);
-                  exit();
-              }
-                               
-
-                $query = "SELECT cod_graduacao,nome_graduacao FROM `graduacoes`";
-                               
-
-                               
-                if ($stmt = $mysqli->prepare($query)) {
-
-                    /* execute statement */
-                    $stmt->execute();
-
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
-
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
-
-                /* close statement */
-                  $stmt->close();
-                }                     
-          ?>
-
-      </select>
-      <br>
-      <input type="text" class="form-control" name="curso" value="<?php echo $dados["curso"]; ?>"  />
-      <input type="text" class="form-control" value="<?php echo $dados["ano_conclusao"]; ?>" name="conclusao" maxlength="6" autocomplete="off">
+      <input type="text" class="form-control" name="lattes" value="<?php echo $dados["curso"]; ?>"  />
+      <input type="text" class="form-control" name="atividade" value="<?php echo $dados["lattes"]; ?>"  />
       
-<br>
      
       <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar Dados"/><br>
         

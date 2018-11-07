@@ -38,7 +38,6 @@
       include("conexao.php");
 
       $grupo = $_SESSION["grupo"];
-      $linha = $_SESSION["linha"];
       $docente = $_POST["docente"];
       $_SESSION["docente"] = $docente;
 
@@ -47,7 +46,7 @@
      $result_docente = $mysqli->query($consulta_docente) or die($mysqli->error);
      $docente_nome = mysqli_fetch_assoc($result_docente);
 
-     $consulta_linha = "SELECT nome_especialidade as linha FROM especialidade  WHERE cod_especialidade = '$linha'";
+     $consulta_linha = "SELECT cod_especialidade as id, nome_especialidade as linha FROM especialidade, docentes  WHERE cod_especialidade = fk_especialidade and cod_docente = '$docente'";
      $result_linha = $mysqli->query($consulta_linha) or die($mysqli->error);
      $linha_nome = mysqli_fetch_assoc($result_linha);
 
@@ -55,7 +54,7 @@
      $result_grupo = $mysqli->query($consulta_grupo) or die($mysqli->error);
      $grupo_nome = mysqli_fetch_assoc($result_grupo);
      
-    
+    $_SESSION["linha"] = $linha_nome["id"];
 ?>
     <title>Cadastrar Projeto</title>
   </head>
@@ -68,7 +67,7 @@
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action="validaativacaogrupos.php">       
+        <form class="form-signin"  method="post" action="valida_cad_projeto.php">       
       <h2 class="form-signin-heading" align="center">Projeto de Pesquisa</h2>
       <input  type="text" class="form-control" name="nome" placeholder="Título do projeto de pesquisa"   />
       
@@ -81,7 +80,7 @@
 
 
       <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Tipo de Bolta</option>
+         <option  selected="selected" >Tipo de Bolsa</option>
          
          <optgroup label="Sem bolsa">
           <option>Voluntario</option>
@@ -100,7 +99,7 @@
 
       </select>
       <br><br>
-       <p>Data de Inclusão da Linha de Pesquisa</p>
+       <p>Data de Inclusão</p>
       <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                     <input class="form-control" name="inclusao" id="registration-date" type="date">
@@ -109,16 +108,7 @@
                 
 
       <br>
-       <p>Data de Remoção da Linha de Pesquisa</p>
-      <div class="input-group registration-date-time">
-                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                    <input class="form-control" name="inclusao" id="registration-date" type="date">
-                    
-                </div>
-                
-
-      <br>
-        
+       
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
         
     </form>
