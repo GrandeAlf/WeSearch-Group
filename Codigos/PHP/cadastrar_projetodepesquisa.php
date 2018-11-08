@@ -74,12 +74,12 @@
 
       <input  disabled type="text" class="form-control" name="grupo" placeholder="Grupo: <?php echo $grupo_nome['nome']; ?>"   />
 
-      <input  disabled type="text" class="form-control" name="grupo" placeholder="Linha: <?php echo $linha_nome['linha']; ?>"   />
+      <input  disabled type="text" class="form-control" name="linha" placeholder="Linha: <?php echo $linha_nome['linha']; ?>"   />
 
-      <input  disabled type="text" class="form-control" name="grupo" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
+      <input  disabled type="text" class="form-control" name="docente" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
 
 
-      <select  name="linha" class="selectpicker form-control">
+      <select  name="tipo" class="selectpicker form-control">
          <option  selected="selected" >Tipo de Bolsa</option>
          
          <optgroup label="Sem bolsa">
@@ -91,11 +91,44 @@
           <option>Outros</option>
         </optgroup>
       </select>
+
        <br><br>
+
       <input disabled type="text" class="form-control" name="outro" placeholder="Tipo da bolsa"   />
-      <select  name="linha" class="selectpicker form-control">
+
+      <select  name="orientado" class="selectpicker form-control">
          <option  selected="selected" >Orientado</option>
-         
+          
+        <?php 
+  
+            /* check connection */
+              if ($mysqli->connect_errno) {
+                  printf("A conexão falhou: %s\n", $ligacao->connect_error);
+                  exit();
+              }
+                               
+
+                $query = "SELECT cod_aluno, nome FROM `alunos`";
+                               
+
+                               
+                if ($stmt = $mysqli->prepare($query)) {
+
+                    /* execute statement */
+                    $stmt->execute();
+
+                    /* bind result variables */
+                    $stmt->bind_result($id, $nome);
+
+                    /* fetch values */
+                    while ($stmt->fetch()) {        
+                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
+                    }
+
+                /* close statement */
+                  $stmt->close();
+                }         
+           ?>       
 
       </select>
       <br><br>

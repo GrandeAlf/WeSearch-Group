@@ -9,8 +9,10 @@
 	$grupo = $_SESSION["grupo"];
 	$docente = $_SESSION["docente"];
 	$linha = $_SESSION["linha"];
-	$abnt = $_POST["abnt"];
-	$referencia = $_POST["referencia"];
+	$aluno = $_POST["orientado"];
+
+
+	
 
 	//echo "Cod: ".$cod;
 	echo "Nome: ".$titulo."<br>";
@@ -19,9 +21,8 @@
 	echo "Grupo: ".$grupo."<br>";
 	echo "Docente: ".$docente."<br>";
 	echo "Linha: ".$linha."<br>";
-	echo "Referencia ABNT: ".$abnt."<br>";
-	echo "Referencia: ".$referencia."<br>";
-
+	echo "Orientado: ".$aluno."<br>";
+	
 
 	//include("conexao.php");
 
