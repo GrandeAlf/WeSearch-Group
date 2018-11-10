@@ -38,7 +38,8 @@
      
      $logado = logado();
      $adm = dado();
-      $lider = lider();
+     $lider = lider();
+
      if($logado == NULL || $adm == 1)
      {
       header("location: inicial.php");
@@ -57,14 +58,15 @@
    </div>
 
   <div class="wrapper">
-        <form  class="form-signin" method="post" action="cadastro_docente.php"> 
-        <h2 class="form-signin-heading" align="center">Selecionar Grupo</h2>      
-      <select data-live-search="true" name="grupo" class="selectpicker form-control">
-         <option disabled selected="selected" >Grupo de Pesquisa</option>
+        <form  class="form-signin" method="post" action="cadastrar_publicacoes_projeto.php"> 
+        <h2 class="form-signin-heading" align="center">Selecionar Projeto</h2> 
+        
+      <select data-live-search="true" name="projeto" class="selectpicker form-control">
+         <option disabled selected="selected" >Projeto de Pesquisa</option>
          <?php
 
 
-                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE id_lider = '$lider' and ativacao = 1";
+                 $consulta = "SELECT `cod_projeto`, `titulo` FROM `projetos_pesquisa`, grupo_pesquisa WHERE `fk_grupo` = id and id_lider = '$lider'";
 
                  // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
                  if ($stmt = $mysqli->prepare($consulta)) {
@@ -92,8 +94,8 @@
 
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Grupo"/><br>
-
-        <?php 
+        
+         <?php 
 
           if(isset($_SESSION['informaerro'])){
             echo $_SESSION['informaerro'];
@@ -101,7 +103,6 @@
           }
 
          ?>
-       
     </form>
       </div>
     </div>

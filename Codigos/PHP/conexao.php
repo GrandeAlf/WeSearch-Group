@@ -1,7 +1,7 @@
 <?php
     $host = "localhost";
     $usuario = "root";
-    $senha = "toor";
+    $senha = "";
     $database = "wesearch";
 
     $mysqli = new mysqli($host, $usuario, $senha, $database);

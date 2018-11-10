@@ -8,11 +8,11 @@
 <?php include("conexao.php");
        include("funcoes.php");
      // session_start();
-    // $logado = logado();
-    // if($logado == NULL)
-    // {
-      //header("location: inicial.php");
-    // }
+     $logado = logado();
+     if($logado == NULL)
+     {
+     header("location: inicial.php");
+     }
      //else
      //{
 
@@ -22,8 +22,8 @@
         
              
       
-        //$consulta = "SELECT gp.id as cod_grupo, gp.nome as grupo , cod_equipamento, e.nome as equipamento FROM `grupo_pesquisa` as gp, equipamentos as e WHERE `id_lider` = '$lider' and fk_grupo = gp.id";
-        //$con = $mysqli->query($consulta) or die ($mysqli->error);
+        $consulta = "SELECT `cod_projeto`, `titulo`, nome FROM `projetos_pesquisa`, grupo_pesquisa WHERE `fk_grupo` = id and id_lider = '$lider'";
+        $con = $mysqli->query($consulta) or die ($mysqli->error);
         
 
       //}
@@ -46,7 +46,7 @@
                     <thead class="">
                         <tr class="text-center">
                             
-                            <th class="text-center">Nome</th>
+                            <th class="text-center">Título</th>
                              <th class="text-center">Grupo de Pesquisa</th>
                             
                                 
@@ -60,14 +60,14 @@
                     </thead>
                     <tbody>
                         <?php 
-                            //while($dados = $con->fetch_array()){?>
+                            while($dados = $con->fetch_array()){?>
                              <tr>
                                 
                                  <?php 
-                                    //$_SESSION['cod_docente'] = $dados['cod_docente'];
+                                   
                                   ?>
-                                 <td class="text-center"><?php //echo $dados["equipamento"]; ?></td>
-                                 <td class="text-center"><?php //echo $dados["grupo"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["titulo"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["nome"]; ?></td>
 
 
                                  <td class="text-center"><?php //echo " <a href=\"edita_docente.php\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
@@ -75,7 +75,7 @@
                                  
                                 
                                 </tr> 
-                        <?php //} ?>
+                        <?php } ?>
 
                     </tbody>
 

@@ -45,7 +45,8 @@
       header("location: inicial.php");
      }
 
-       $grupo = $_SESSION["grupo"];
+       $grupo = $_POST["grupo"];
+       $_SESSION["grupo"] = $grupo;
        
       
     

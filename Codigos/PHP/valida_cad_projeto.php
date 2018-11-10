@@ -24,14 +24,28 @@
 	echo "Orientado: ".$aluno."<br>";
 	
 
-	//include("conexao.php");
+	include("conexao.php");
 
-	//$consulta = "INSERT INTO equipamentos( nome, descricao, data_inicio, fk_grupo) 
-	//VALUES ('$nome', '$descricao', '$inclusao', '$cod')";
-	//$result = $mysqli->query($consulta) or die($mysqli->error);
-	//if($result)
-	//{
-	//	echo "inserido";
-	//}
+	$consulta = "INSERT INTO `projetos_pesquisa`(`titulo`, `fk_grupo`, `fk_linha`, `bolsa`, `fk_prof_responsavel`, `data_inicio`) VALUES ('$titulo','$grupo','$linha','$tipo','$docente','$data')";
+	$result = $mysqli->query($consulta) or die($mysqli->error);
+	
+
+	$select = "SELECT `cod_projeto` FROM projetos_pesquisa WHERE `titulo` = '$titulo' and `fk_grupo` = '$grupo' and `fk_linha` = '$linha' and `bolsa` = '$tipo' and `fk_prof_responsavel` = '$docente' and `data_inicio` = '$data'";
+	$con = $mysqli->query($select) or die ($mysqli->error);
+	$dados = $con->fetch_array();
+
+	$cod = $dados["cod_projeto"];
+
+	$consulta2 = "INSERT INTO `projeto_aluno`(`fk_projeto`, `fk_aluno`, `data_inicio`) VALUES ('$cod','$aluno','$data')";
+	$result2 = $mysqli->query($consulta2) or die($mysqli->error);
+
+
+
+
+
+	if($result && $result2)
+	{
+		echo "inserido";
+	}
 
  ?>

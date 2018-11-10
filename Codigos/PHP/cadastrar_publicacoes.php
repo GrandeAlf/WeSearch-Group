@@ -94,9 +94,9 @@
       <br>
       <input  disabled type="text" class="form-control" name="grupo" placeholder="Grupo: <?php echo $grupo_nome['nome']; ?>"   />
 
-      <input  disabled type="text" class="form-control" name="grupo" placeholder="Linha: <?php echo $linha_nome['linha']; ?>"   />
+      <input  disabled type="text" class="form-control" name="linha" placeholder="Linha: <?php echo $linha_nome['linha']; ?>"   />
 
-      <input  disabled type="text" class="form-control" name="grupo" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
+      <input  disabled type="text" class="form-control" name="docente" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
 
 
       <textarea class="form-control" rows="5" name="abnt" placeholder="Referencia da ABNT"></textarea>

@@ -35,74 +35,87 @@
    
 
 <?php include("funcoes.php");
+      include("conexao.php");
+
+    $projeto = $_POST["projeto"];
+    
+
+
+    $select_projeto = "SELECT `titulo`, `fk_grupo`, `fk_linha`, `bolsa`, `fk_prof_responsavel`, `data_inicio` FROM `projetos_pesquisa` WHERE cod_projeto = '$projeto'";
+    $result_projeto = $mysqli->query($select_projeto) or die($mysqli->error);
+    $projeto_dados = mysqli_fetch_assoc($result_projeto);
+
+    $docente = $projeto_dados["fk_prof_responsavel"];
+     $consulta_docente = "SELECT cod_docente, nome FROM docentes  WHERE cod_docente = '$docente'";
+     $result_docente = $mysqli->query($consulta_docente) or die($mysqli->error);
+     $docente_nome = mysqli_fetch_assoc($result_docente);
+
+     $linha = $projeto_dados["fk_linha"];
+     $consulta_linha = "SELECT cod_especialidade as id, nome_especialidade as linha FROM especialidade WHERE cod_especialidade = '$linha'";
+     $result_linha = $mysqli->query($consulta_linha) or die($mysqli->error);
+     $linha_nome = mysqli_fetch_assoc($result_linha);
+
+
+     $_SESSION["projeto"] = $projeto;
+     $_SESSION["docente"] = $docente_nome["cod_docente"];
+     $_SESSION["linha"] = $linha_nome["id"];
+
      
-     $logado = logado();
-     $adm = dado();
-     $lider = lider();
-
-     if($logado == NULL || $adm == 1)
-     {
-      header("location: inicial.php");
-     }
-
 ?>
-    <title>Selecionar Grupo</title>
+    <title>Cadastrar Publicações</title>
   </head>
   
-<body onload="barra();">
-	<?php 
-    include ("conexao.php");
-	 ?>
+<body onload="barra()">
+	
    <div id="barra">
      
+
    </div>
 
-  <div class="wrapper">
-        <form  class="form-signin" method="post" action="seleciona_docentePRO.php"> 
-        <h2 class="form-signin-heading" align="center">Selecionar Grupo</h2> 
-        
-      <select data-live-search="true" name="grupo" class="selectpicker form-control">
-         <option disabled selected="selected" >Grupo de Pesquisa</option>
-         <?php
+  <div >
+        <form class="form-signin"  method="post" action="valida_cad_publicacoesPRO.php"> 
+              
+      <h2 class="form-signin-heading" align="center">Publicação de Pesquisa</h2>
 
+      <input  type="text" class="form-control" name="nome" placeholder="Título"   />
 
-                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE id_lider = '$lider' and ativacao = 1";
-
-                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                 if ($stmt = $mysqli->prepare($consulta)) {
-
-                    /* execute statement */
-                    $stmt->execute();
-
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
-
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
-
-                /* close statement */
-                  $stmt->close();
-                }         
-                               
-                
-          ?>
-
+      <select  name="tipo" class="selectpicker form-control">
+         <option  disabled selected="selected" >Tipo</option>
+          <option >Livro</option>
+          <option >Capítulo de livro</option>
+          <option >Anais de congresso</option>
+          <option >Periódicos</option>
       </select>
+
       <br><br>
+      <p>Data da Publicação</p>
+      <div class="input-group registration-date-time">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                    <input class="form-control" name="inclusao" id="registration-date" type="date">
+                    
+                </div>
+                
+
+      <br>
+      <input  disabled type="text" class="form-control" name="projeto" placeholder="Projeto: <?php echo $projeto_dados['titulo']; ?>"   />
+
+      <input  disabled type="text" class="form-control" name="linha" placeholder="Linha: <?php echo $linha_nome['linha']; ?>"   />
+
+      <input  disabled type="text" class="form-control" name="docente" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
+
+
+      <textarea class="form-control" rows="5" name="abnt" placeholder="Referencia da ABNT"></textarea>
+       
+      <br>
+
+       <textarea class="form-control" rows="5" name="referencia" placeholder="Referencia da publicação"></textarea>
+                
+
+      <br>
 
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Grupo"/><br>
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
         
-         <?php 
-
-          if(isset($_SESSION['informaerro'])){
-            echo $_SESSION['informaerro'];
-            unset($_SESSION['informaerro']);
-          }
-
-         ?>
     </form>
       </div>
     </div>
