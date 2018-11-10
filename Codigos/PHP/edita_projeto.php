@@ -35,79 +35,54 @@
    
 
 <?php include("funcoes.php");
-     
-     $logado = logado();
-     $adm = dado();
-     $lider = lider();
+      include("conexao.php");
 
-     if($logado == NULL || $adm == 1)
-     {
-      header("location: inicial.php");
-     }
+      $pro = $_GET["id"];
+    $_SESSION["projeto"] = $pro;
 
-       $grupo = $_POST["grupo"];
-       $_SESSION["grupo"] = $grupo
-      
-    
+
+     $consulta_pro = "SELECT `titulo`, bolsa FROM `projetos_pesquisa` WHERE `cod_projeto` = '$pro'";
+    $result_pro = $mysqli->query($consulta_pro) or die($mysqli->error);
+    $projeto = mysqli_fetch_assoc($result_pro);
 
 ?>
-    <title>Selecionar Grupo</title>
+    <title>Alterar Projeto</title>
   </head>
   
-<body onload="barra();">
-	<?php 
-    include ("conexao.php");
-	 ?>
+<body onload="barra()">
+	
    <div id="barra">
      
+
    </div>
 
-  <div class="wrapper">
-        <form  class="form-signin" method="post" action="cadastrar_projetodepesquisa.php"> 
-        <h2 class="form-signin-heading" align="center">Selecionar Docente</h2> 
-        
-      <select data-live-search="true" name="docente" class="selectpicker form-control">
-         <option disabled selected="selected" >Selecionar Docente</option>
-         <?php
-
-
-                 $consulta = "SELECT cod_docente, nome FROM docentes  WHERE fk_cod_grupo = '$grupo'";
-
-                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                 if ($stmt = $mysqli->prepare($consulta)) {
-
-                    /* execute statement */
-                    $stmt->execute();
-
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
-
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
-
-                /* close statement */
-                  $stmt->close();
-                }         
-                               
-                
-          ?>
-
+  <div >
+        <form class="form-signin"  method="post" action="valida_edita_projeto.php">       
+      <h2 class="form-signin-heading" align="center">Alterar Projeto de Pesquisa</h2>
+      <input  type="text" class="form-control" name="nome" placeholder="Título: <?php echo $projeto['titulo']; ?>"   />
+      
+<p style="color: red">Selecione novamente o tipo da bolsa</p>
+      <select  name="tipo" class="selectpicker form-control">
+         <option  selected="selected" >Bolsa atual: <?php echo $projeto["bolsa"] ?></option>
+         
+         <optgroup label="Sem bolsa">
+          <option>Voluntario</option>
+        </optgroup>
+        <optgroup label="Com bolsa">
+          <option>PIBIFSP</option>
+          <option>CNPQ</option>
+          <option>Outros</option>
+        </optgroup>
       </select>
-      <br><br>
 
+       <br><br>
+
+      <input disabled type="text" class="form-control" name="outro" placeholder="Tipo da bolsa"   />
+
+           
+       
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Docente"/><br>
-        
-         <?php 
-
-          if(isset($_SESSION['informaerro'])){
-            echo $_SESSION['informaerro'];
-            unset($_SESSION['informaerro']);
-          }
-
-         ?>
     </form>
       </div>
     </div>

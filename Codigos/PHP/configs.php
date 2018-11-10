@@ -181,9 +181,15 @@
                                          ?>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <a href="">Import/Export</a>
-                                    </td>
+                                  
+                                         <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-wrench\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_discentes.php')\">Alunos</a> </td>";
+                                            }
+                                            
+                                         ?>
+                        
                                 </tr>
                                 <tr>
                                     <td>

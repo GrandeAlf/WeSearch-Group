@@ -7,14 +7,14 @@
 
 <?php include("conexao.php");
        include("funcoes.php");
-     // session_start();
+      //session_start();
      $logado = logado();
      if($logado == NULL)
      {
-     header("location: inicial.php");
+      header("location: inicial.php");
      }
-     //else
-     //{
+     else
+     {
 
 
        $lider = lider();
@@ -22,11 +22,11 @@
         
              
       
-        $consulta = "SELECT `cod_projeto`, `titulo`, nome FROM `projetos_pesquisa`, grupo_pesquisa WHERE `fk_grupo` = id and id_lider = '$lider'";
+        $consulta = "SELECT `cod_aluno`, `nome` FROM alunos";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
         
 
-      //}
+      }
       
   ?>
 
@@ -46,12 +46,12 @@
                     <thead class="">
                         <tr class="text-center">
                             
-                            <th class="text-center">Título</th>
-                             <th class="text-center">Grupo de Pesquisa</th>
+                            <th class="text-center">Nome</th>
+                             
                             
                                 
                                 <th>Ação</th>
-                                
+                               
                                 
                             
                           
@@ -63,16 +63,14 @@
                             while($dados = $con->fetch_array()){?>
                              <tr>
                                 
-                                 <?php 
-                                   
-                                  ?>
-                                 <td class="text-center"><?php echo $dados["titulo"]; ?></td>
+                                
                                  <td class="text-center"><?php echo $dados["nome"]; ?></td>
-
-
-                                 <td class="text-center"><?php //echo " <a href=\"edita_docente.php\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
-
                                  
+
+
+                                 <td class="text-center"><?php echo " <a href=\"edita_discente.php?id=".$dados["cod_aluno"]."\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
+
+                                
                                 
                                 </tr> 
                         <?php } ?>
@@ -88,8 +86,7 @@
 
                      // if($adm == 1)
                      // {
-                        echo " <a href=\"seleciona_grupoPRO.php\"><button class=\"btn btn-success\">Inserir Projeto</button></a>";
-                        
+                        echo " <a href=\"cadastrar_discente.php\"><button class=\"btn btn-success\">Cadastrar Alunos</button></a>";
                      // }  
 
                  ?>

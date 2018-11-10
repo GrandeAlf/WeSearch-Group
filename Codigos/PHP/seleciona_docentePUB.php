@@ -45,9 +45,9 @@
       header("location: inicial.php");
      }
 
-       $grupo = $_SESSION["grupo"];
-       $linha = $_POST["linha"];
-       $_SESSION["linha"] = $linha;
+       $grupo = $_POST["grupo"];
+       $_SESSION["grupo"] = $grupo;
+       
       
     
 
@@ -68,11 +68,11 @@
         <h2 class="form-signin-heading" align="center">Selecionar Docente</h2> 
         
       <select data-live-search="true" name="docente" class="selectpicker form-control">
-         <option disabled selected="selected" >Docente</option>
+         <option disabled selected="selected" >Docentes</option>
          <?php
 
 
-                 $consulta = "SELECT cod_docente, nome FROM docentes  WHERE fk_cod_grupo = '$grupo' and fk_especialidade = '$linha'";
+                 $consulta = "SELECT cod_docente, nome FROM docentes  WHERE fk_cod_grupo = '$grupo'";
 
                  // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
                  if ($stmt = $mysqli->prepare($consulta)) {

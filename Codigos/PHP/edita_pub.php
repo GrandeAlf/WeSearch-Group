@@ -35,85 +35,66 @@
    
 
 <?php include("funcoes.php");
+      include("conexao.php");
+
+    $pub = $_GET["id"];
+    $_SESSION["publicacao"] = $pub;
+
+
+     $consulta_pub = "SELECT `titulo`, `tipo`, `referencia_abnt`, `referencia_pub`FROM `publicacoes` WHERE `cod_publicacao` = '$pub'";
+    $result_pub = $mysqli->query($consulta_pub) or die($mysqli->error);
+    $publicacao = mysqli_fetch_assoc($result_pub);
+
      
-     $logado = logado();
-     $adm = dado();
-     $lider = lider();
-
-     if($logado == NULL || $adm == 1)
-     {
-      header("location: inicial.php");
-     }
-
-       $cod = $_POST["grupo"];
-       $_SESSION["grupo"] = $cod;
-    
-
 ?>
-    <title>Selecionar Grupo</title>
+    <title>Editar Publicações</title>
   </head>
   
-<body onload="barra();">
-	<?php 
-    include ("conexao.php");
-	 ?>
+<body onload="barra()">
+  
    <div id="barra">
      
+
    </div>
 
-  <div class="wrapper">
-        <form  class="form-signin" method="post" action="seleciona_docentePRO.php"> 
-        <h2 class="form-signin-heading" align="center">Selecionar Linha de Pesquisa</h2> 
-        
-      <select data-live-search="true" name="linha" class="selectpicker form-control">
-         <option disabled selected="selected" >Linha de Pesquisa</option>
-         <?php
+  <div >
+        <form class="form-signin"  method="post" action="valida_edita_pub.php"> 
+              
+      <h2 class="form-signin-heading" align="center">Alterar Publicação de Pesquisa</h2>
 
+      <input  type="text" class="form-control" name="nome" placeholder="Título: <?php echo $publicacao['titulo']; ?>"   />
 
-                 $consulta = "SELECT cod_especialidade, nome_especialidade FROM especialidade, grupos_linhas  WHERE fk_cod_linha = cod_especialidade and fk_cod_grupo = '$cod'";
-
-                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                 if ($stmt = $mysqli->prepare($consulta)) {
-
-                    /* execute statement */
-                    $stmt->execute();
-
-                    /* bind result variables */
-                    $stmt->bind_result($id, $nome);
-
-                    /* fetch values */
-                    while ($stmt->fetch()) {        
-                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                    }
-
-                /* close statement */
-                  $stmt->close();
-                }         
-                               
-                
-          ?>
-
+      <p style="color: red">Selecione novamente o tipo da publicação</p>
+      <select  name="tipo" class="selectpicker form-control">
+         <option  disabled selected >Tipo atual: <?php echo $publicacao["tipo"] ?></option>
+          <option >Livro</option>
+          <option >Capítulo de livro</option>
+          <option >Anais de congresso</option>
+          <option >Periódicos</option>
       </select>
+                
+
       <br><br>
+     
+      <textarea class="form-control" rows="5" name="abnt" placeholder="<?php echo $publicacao['referencia_abnt']; ?>"></textarea>
+       
+      <br>
+
+       <textarea class="form-control" rows="5" name="referencia" placeholder="<?php echo $publicacao['referencia_pub']; ?>"></textarea>
+                
+
+      <br>
 
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Linha"/><br>
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
         
-         <?php 
-
-          if(isset($_SESSION['informaerro'])){
-            echo $_SESSION['informaerro'];
-            unset($_SESSION['informaerro']);
-          }
-
-         ?>
     </form>
       </div>
     </div>
     
   </div>
 
-	 
+   
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -58,7 +58,7 @@
    </div>
 
   <div class="wrapper">
-        <form  class="form-signin" method="post" action="seleciona_linhaPUB.php"> 
+        <form  class="form-signin" method="post" action="seleciona_docentePUB.php"> 
         <h2 class="form-signin-heading" align="center">Selecionar Grupo</h2> 
         
       <select data-live-search="true" name="grupo" class="selectpicker form-control">
@@ -66,7 +66,7 @@
          <?php
 
 
-                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE id_lider = '$lider'";
+                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE id_lider = '$lider' and ativacao = 1";
 
                  // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
                  if ($stmt = $mysqli->prepare($consulta)) {

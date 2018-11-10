@@ -45,11 +45,6 @@
       header("location: inicial.php");
      }
 
-       $grupo = $_POST["grupo"];
-       $_SESSION["grupo"] = $grupo
-      
-    
-
 ?>
     <title>Selecionar Grupo</title>
   </head>
@@ -63,15 +58,15 @@
    </div>
 
   <div class="wrapper">
-        <form  class="form-signin" method="post" action="cadastrar_projetodepesquisa.php"> 
-        <h2 class="form-signin-heading" align="center">Selecionar Docente</h2> 
+        <form  class="form-signin" method="post" action="cadastrar_publicacoes_projeto.php"> 
+        <h2 class="form-signin-heading" align="center">Selecionar Projeto</h2> 
         
-      <select data-live-search="true" name="docente" class="selectpicker form-control">
-         <option disabled selected="selected" >Selecionar Docente</option>
+      <select data-live-search="true" name="projeto" class="selectpicker form-control">
+         <option disabled selected="selected" >Projeto de Pesquisa</option>
          <?php
 
 
-                 $consulta = "SELECT cod_docente, nome FROM docentes  WHERE fk_cod_grupo = '$grupo'";
+                 $consulta = "SELECT `cod_projeto`, `titulo` FROM `projetos_pesquisa`, grupo_pesquisa WHERE `fk_grupo` = id and id_lider = '$lider'";
 
                  // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
                  if ($stmt = $mysqli->prepare($consulta)) {
@@ -98,7 +93,7 @@
       <br><br>
 
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Docente"/><br>
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Grupo"/><br>
         
          <?php 
 

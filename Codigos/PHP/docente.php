@@ -42,7 +42,7 @@
 
             $id = $_GET["id"];
 
-            $consulta = "SELECT `cod_docente`, `nome`, `lattes`, `atividade_realizada`, `fk_graduacao`, `curso`, `ano_conclusao`, `data_inclusao`, `data_remocao` FROM `docentes` WHERE `cod_docente` = '$id'";
+            $consulta = "SELECT `cod_docente`, `nome`, `lattes`, `atividade_realizada`, `fk_graduacao`, `curso`, `ano_conclusao`, `data_inicio`, `data_fim` FROM `docentes` WHERE `cod_docente` = '$id'";
 
 
 
@@ -63,9 +63,9 @@
             echo " <p>Graduação: ".$graduacoes["nome_graduacao"]."</p> <br>";
             echo "<p>Curso: ".$dados["curso"]."</p> <br>";
             echo "<p>Ano de conclusão do curso ".$dados["ano_conclusao"]."</p> <br>";
-            $inclusao = date('d/m/Y', strtotime($dados["data_inclusao"]));
+            $inclusao = date('d/m/Y', strtotime($dados["data_inicio"]));
             echo "<p>Data de inclusão no grupo ".$inclusao."</p> <br>";
-            $remocao = date('d/m/Y', strtotime($dados["data_remocao"]));
+            $remocao = date('d/m/Y', strtotime($dados["data_fim"]));
             echo "<p>Data de remoção no grupo ".$remocao."</p> <br>";
 
            ?>
