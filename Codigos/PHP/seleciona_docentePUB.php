@@ -65,10 +65,10 @@
 
   <div class="wrapper">
         <form  class="form-signin" method="post" action="cadastrar_publicacoes.php"> 
-        <h2 class="form-signin-heading" align="center">Selecionar Linha de Pesquisa</h2> 
+        <h2 class="form-signin-heading" align="center">Selecionar Docente</h2> 
         
       <select data-live-search="true" name="docente" class="selectpicker form-control">
-         <option disabled selected="selected" >Linha de Pesquisa</option>
+         <option disabled selected="selected" >Docente</option>
          <?php
 
 

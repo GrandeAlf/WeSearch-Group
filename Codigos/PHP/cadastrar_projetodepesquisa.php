@@ -81,7 +81,7 @@
 
 
       <select  name="linha" class="selectpicker form-control">
-         <option  selected="selected" >Tipo de Bolta</option>
+         <option  selected="selected" >Tipo de Bolsa</option>
          
          <optgroup label="Sem bolsa">
           <option>Voluntario</option>

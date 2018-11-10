@@ -89,7 +89,7 @@
                      // if($adm == 1)
                      // {
                         echo " <a href=\"seleciona_grupoPUB.php\"><button class=\"btn btn-success\">Inserir Publicação a Grupo</button></a>";
-                        echo " <a href=\"seleciona_projeto.php\"><button class=\"btn btn-success\">Inserir Publicação Publicação em Projeto</button></a>";
+                        echo " <a href=\"seleciona_projeto.php\"><button class=\"btn btn-success\">Inserir Publicação em Projeto</button></a>";
                      // }  
 
                  ?>

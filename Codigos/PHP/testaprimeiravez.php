@@ -21,7 +21,7 @@
     	header("location: cadastro_ADM.php"); 
     } 
     else{ 
-    	header("location: login.php"); 
+    	header("location: inicial.php"); 
     } 
  
  ?>
