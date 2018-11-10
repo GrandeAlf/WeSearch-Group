@@ -43,7 +43,7 @@
     </div>
    <div class="wrapper" >
     <form class="form-signin" method="post" action="valida_edita_docente.php">       
-      <h2 class="form-signin-heading" align="center">Alterar dados de Técnicos</h2>
+      <h2 class="form-signin-heading" align="center">Alterar dados de Docente</h2>
       <input type="text" class="form-control" name="nome" value="<?php echo $dados["nome"]; ?>" >
       <input type="text" class="form-control" name="lattes" value="<?php echo $dados["lattes"]; ?>"  />
       <input type="text" class="form-control" name="atividade" value="<?php echo $dados["atividade_realizada"]; ?>"  />
