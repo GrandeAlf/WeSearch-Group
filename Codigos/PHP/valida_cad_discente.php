@@ -1,5 +1,6 @@
 <?php 
 	include("conexao.php");
+	session_start();
 		
 	$nome = $_POST["nome"];
 	$curso = $_POST["curso"];

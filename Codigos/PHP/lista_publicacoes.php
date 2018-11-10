@@ -24,7 +24,7 @@
         $consulta_grupo = "SELECT `cod_publicacao`, `titulo`, `tipo`, nome FROM `publicacoes`, grupo_pesquisa WHERE `fk_grupo` = id and id_lider = '$lider'";
         $con = $mysqli->query($consulta_grupo) or die ($mysqli->error);
 
-         $consulta_projeto = "SELECT `cod_publicacao`, pub.titulo as publicacao, `tipo`, p.titulo as projeto FROM `publicacoes` as pub, grupo_pesquisa, projetos_pesquisa as p WHERE fk_projeto = cod_projeto and p.fk_grupo = id and id_lider = '$lider'";
+         $consulta_projeto = "SELECT `cod_publicacao`, pub.titulo as publicacao, `tipo`, p.titulo as projeto FROM `publicacoes` as pub, grupo_pesquisa, projetos_pesquisa as p WHERE /*fk_projeto = cod_projeto and*/ p.fk_grupo = id and id_lider = '$lider'";
         $con2 = $mysqli->query($consulta_projeto) or die ($mysqli->error);
         
 
