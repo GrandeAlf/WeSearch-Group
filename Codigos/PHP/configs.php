@@ -152,10 +152,12 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+
                             </span>Projetos e Publicações</a>
                         </h4>
                     </div>
@@ -166,7 +168,7 @@
                                      <?php 
                                             if($adm != 1)
                                             {
-                                                echo "<td><span class=\"glyphicon glyphicon-wrench\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_publicacoes.php')\">Publicações</a> </td>";
+                                                echo "<td><span class=\"glyphicon glyphicon-duplicate\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_publicacoes.php')\">Publicações</a> </td>";
                                             }
                                             
                                          ?>
@@ -175,7 +177,7 @@
                                     <?php 
                                             if($adm != 1)
                                             {
-                                                echo "<td><span class=\"glyphicon glyphicon-wrench\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_projetos.php')\">Projetos Pesquisa</a> </td>";
+                                                echo "<td><span class=\"glyphicon glyphicon-briefcase\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_projetos.php')\">Projetos Pesquisa</a> </td>";
                                             }
                                             
                                          ?>
@@ -185,17 +187,11 @@
                                          <?php 
                                             if($adm != 1)
                                             {
-                                                echo "<td><span class=\"glyphicon glyphicon-wrench\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_discentes.php')\">Alunos</a> </td>";
+                                                echo "<td><span class=\"glyphicon glyphicon-education\" ></span><a href=\"#\" onclick=\"carrega_pagina('lista_discentes.php')\">Alunos</a> </td>";
                                             }
                                             
                                          ?>
                         
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="" class="text-danger">
-                                            Delete Account</a>
-                                    </td>
                                 </tr>
                             </table>
                         </div>
@@ -205,7 +201,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
-                            </span>Reports</a>
+                            </span>Reuniões e Relatorios</a>
                         </h4>
                     </div>
                     <div id="collapseFour" class="panel-collapse collapse">

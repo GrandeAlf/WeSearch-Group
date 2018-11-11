@@ -16,7 +16,7 @@
        <link rel="stylesheet" type="text/css" href="../CSS/login.css">
        <script type="text/javascript" src="../JS/scripts.js"></script>
 
-    <title>Cadastro Técnicos</title>
+    <title>Alterar Técnicos</title>
 
 <?php include("funcoes.php");
       include ("conexao.php");

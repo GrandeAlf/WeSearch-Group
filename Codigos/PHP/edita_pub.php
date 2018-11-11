@@ -62,11 +62,11 @@
               
       <h2 class="form-signin-heading" align="center">Alterar Publicação de Pesquisa</h2>
 
-      <input  type="text" class="form-control" name="nome" placeholder="Título: <?php echo $publicacao['titulo']; ?>"   />
+      <input  type="text" class="form-control" name="nome" value="<?php echo $publicacao['titulo']; ?>"   />
 
-      <p style="color: red">Selecione novamente o tipo da publicação</p>
+      
       <select  name="tipo" class="selectpicker form-control">
-         <option  disabled selected >Tipo atual: <?php echo $publicacao["tipo"] ?></option>
+          <option  selected="selected" value="<?php echo $publicacao["tipo"]; ?>" >Sem Alteração</option>
           <option >Livro</option>
           <option >Capítulo de livro</option>
           <option >Anais de congresso</option>
@@ -76,11 +76,11 @@
 
       <br><br>
      
-      <textarea class="form-control" rows="5" name="abnt" placeholder="<?php echo $publicacao['referencia_abnt']; ?>"></textarea>
+      <textarea class="form-control" rows="5" name="abnt" ><?php echo $publicacao['referencia_abnt']; ?></textarea>
        
       <br>
 
-       <textarea class="form-control" rows="5" name="referencia" placeholder="<?php echo $publicacao['referencia_pub']; ?>"></textarea>
+       <textarea class="form-control" rows="5" name="referencia"><?php echo $publicacao['referencia_pub']; ?></textarea>
                 
 
       <br>

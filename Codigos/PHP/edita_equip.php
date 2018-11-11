@@ -35,53 +35,60 @@
    
 
 <?php include("funcoes.php");
-      include("conexao.php");
+      include ("conexao.php");
+     
+     $logado = logado();
+     $adm = dado();
+     if($logado == NULL || $adm == 1)
+     {
+      header("location: inicial.php");
+     }
+     $equip = $_GET["id"];
 
-      $pro = $_GET["id"];
-    $_SESSION["projeto"] = $pro;
+    $consulta = "SELECT nome, descricao FROM equipamentos WHERE cod_equipamento = '$equip'";
+    $result = $mysqli->query($consulta) or die($mysqli->error);
 
+    $dados = $result->fetch_array();
 
-     $consulta_pro = "SELECT `titulo`, bolsa FROM `projetos_pesquisa` WHERE `cod_projeto` = '$pro'";
-    $result_pro = $mysqli->query($consulta_pro) or die($mysqli->error);
-    $projeto = mysqli_fetch_assoc($result_pro);
-
+      
+      
+    
 ?>
-    <title>Alterar Projeto</title>
+    <title>Altera Equipamento</title>
   </head>
   
 <body onload="barra()">
-	
+  
    <div id="barra">
      
 
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action="valida_edita_projeto.php">       
-      <h2 class="form-signin-heading" align="center">Alterar Projeto de Pesquisa</h2>
-      <input  type="text" class="form-control" name="nome" value="<?php echo $projeto['titulo']; ?>"   />
+        <form class="form-signin"  method="post" action="valida_cad_equipamentos.php">       
+      <h2 class="form-signin-heading" align="center">Cadastro de Equipamentos</h2>
+      <input  type="text" class="form-control" name="nome" value="<?php echo $dados["nome"]; ?>"   />
+     
       
-
-      <select  name="tipo" class="selectpicker form-control">
-          <option  selected="selected" value="<?php echo $projeto["bolsa"]; ?>" >Sem Alteração</option>
-         
-         <optgroup label="Sem bolsa">
-          <option>Voluntario</option>
-        </optgroup>
-        <optgroup label="Com bolsa">
-          <option>PIBIFSP</option>
-          <option>CNPQ</option>
-          <option>Outros</option>
-        </optgroup>
-      </select>
-
-       <br><br>
-
-      <input disabled type="text" class="form-control" name="outro" placeholder="Tipo da bolsa"   />
-
-           
+    
+      <br><br>
+      <textarea class="form-control" rows="5" name="descricao" value="<?php echo $dados["descricao"]; ?>"></textarea>
        
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
+      <br>
+
+       
+
+        
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="alterar" value="Alterar"/><br>
+
+        <?php 
+
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
         
     </form>
       </div>
@@ -89,7 +96,7 @@
     
   </div>
 
-	 
+   
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

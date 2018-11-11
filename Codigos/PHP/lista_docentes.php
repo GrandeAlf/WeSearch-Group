@@ -68,7 +68,7 @@
                                  <td class="text-center"><?php echo $dados["grupo"]; ?></td>
 
 
-                                 <td class="text-center"><?php echo " <a href=\"edita_discente.php?id=".$dados["cod_docente"]."\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
+                                 <td class="text-center"><?php echo " <a href=\"edita_docente.php?id=".$dados["cod_docente"]."\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
 
                                  <td class="text-center"><?php echo " <a href=\"inativa_docente.php\"><button class=\"btn btn-danger btn-block\">Inativar</button></a>"; ?></td>
                                 

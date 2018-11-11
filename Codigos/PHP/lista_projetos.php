@@ -70,7 +70,7 @@
                                  <td class="text-center"><?php echo $dados["nome"]; ?></td>
 
 
-                                 <td class="text-center"><?php //echo " <a href=\"edita_docente.php\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
+                                 <td class="text-center"><?php echo " <a href=\"edita_projeto.php?id=".$dados["cod_projeto"]."\"><button class=\"btn btn-warning btn-block\">Alterar</button></a>"; ?></td>
 
                                  
                                 
