@@ -20,7 +20,7 @@
 		exit();
 	}
 	if(strlen($curso) == 0){
-		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">A atividade realizada não pode ser vazia.</div>"; 
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O curso não pode ser vazia.</div>"; 
 		header("location: edita_discente.php?id=$id");
 		exit();
 	}
