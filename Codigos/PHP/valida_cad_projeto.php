@@ -1,6 +1,7 @@
 <?php 
 	
 	session_start();
+	include("conexao.php");
 
 	//$cod = $_SESSION['cod'];
 	$titulo = $_POST["nome"];
@@ -22,9 +23,43 @@
 	echo "Docente: ".$docente."<br>";
 	echo "Linha: ".$linha."<br>";
 	echo "Orientado: ".$aluno."<br>";
-	
 
-	include("conexao.php");
+	if(strlen($titulo) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O título não pode ser vazio.</div>"; 
+		header("location: seleciona_grupoPRO.php");
+		exit();
+	}
+	if(strlen($tipo) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O tipo de bolsa não pode ser vazio.</div>"; 
+		header("location: seleciona_grupoPRO.php");
+		exit();
+	}
+	if(strlen($data) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">A data não pode ser vazio.</div>"; 
+		header("location: seleciona_grupoPRO.php");
+		exit();
+	}
+	if(strlen($grupo) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O grupo não pode ser vazio.</div>"; 
+		header("location: seleciona_grupoPRO.php");
+		exit();
+	}
+	if(strlen($docente) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O docente não pode ser vazio.</div>"; 
+		header("location: seleciona_grupoPRO.php");
+		exit();
+	}
+	if(strlen($linha) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">A linha de pesquisa não pode ser vazio.</div>"; 
+		header("location: seleciona_grupoPRO.php");
+		exit();
+	}
+	if(strlen($aluno) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O aluno não pode ser vazio.</div>"; 
+		header("location: seleciona_grupoPRO.php");
+		exit();
+	}
+
 
 	$consulta = "INSERT INTO `projetos_pesquisa`(`titulo`, `fk_grupo`, `fk_linha`, `bolsa`, `fk_prof_responsavel`, `data_inicio`) VALUES ('$titulo','$grupo','$linha','$tipo','$docente','$data')";
 	$result = $mysqli->query($consulta) or die($mysqli->error);
@@ -45,7 +80,8 @@
 
 	if($result && $result2)
 	{
-		echo "inserido";
+		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Cadastro Inserido com sucesso!</div>"; 
+		header("location: seleciona_grupoPRO.php");
 	}
 
  ?>

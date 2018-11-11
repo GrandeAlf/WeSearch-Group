@@ -65,14 +65,14 @@
 
   <div class="wrapper">
         <form  class="form-signin" method="post" action="cadastrar_publicacoes.php"> 
-        <h2 class="form-signin-heading" align="center">Selecionar Linha de Pesquisa</h2> 
+        <h2 class="form-signin-heading" align="center">Selecionar Docente</h2> 
         
       <select data-live-search="true" name="docente" class="selectpicker form-control">
          <option disabled selected="selected" >Docentes</option>
          <?php
 
 
-                 $consulta = "SELECT cod_docente, nome FROM docentes  WHERE fk_cod_grupo = '$grupo'";
+                 $consulta = "SELECT cod_docente, nome FROM docentes  WHERE fk_cod_grupo = '$grupo'AND situacao = '1'";
 
                  // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
                  if ($stmt = $mysqli->prepare($consulta)) {

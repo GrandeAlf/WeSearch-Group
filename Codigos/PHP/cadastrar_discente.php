@@ -18,6 +18,7 @@
     <title>Cadastro Usuarios</title>
 
 <?php include("funcoes.php");
+     //session_start();
      
      $logado = logado();
      $adm = dado();
@@ -45,6 +46,7 @@
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
         
         <?php 
+
 
           if(isset($_SESSION['informaerro'])){
             echo $_SESSION['informaerro'];

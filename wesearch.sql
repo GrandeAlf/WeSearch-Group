@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 30-Out-2018 às 01:13
+-- Generation Time: 07-Nov-2018 às 23:31
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -188,7 +188,14 @@ CREATE TABLE IF NOT EXISTS `equipamentos` (
   `fk_grupo` int(11) NOT NULL,
   PRIMARY KEY (`cod_equipamento`),
   KEY `grupo` (`fk_grupo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `equipamentos`
+--
+
+INSERT INTO `equipamentos` (`cod_equipamento`, `nome`, `descricao`, `data_inicio`, `data_fim`, `fk_grupo`) VALUES
+(1, 'LP Queen', 'Boa banda!', '2018-11-07', NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -1255,6 +1262,7 @@ DROP TABLE IF EXISTS `projetos_pesquisa`;
 CREATE TABLE IF NOT EXISTS `projetos_pesquisa` (
   `cod_projeto` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
+  `fk_grupo` int(11) NOT NULL,
   `fk_linha` int(11) NOT NULL,
   `bolsa` varchar(100) NOT NULL,
   `fk_prof_responsavel` int(11) NOT NULL,
@@ -1262,7 +1270,8 @@ CREATE TABLE IF NOT EXISTS `projetos_pesquisa` (
   `data_fim` date DEFAULT NULL,
   PRIMARY KEY (`cod_projeto`),
   KEY `linha pesquisa` (`fk_linha`),
-  KEY `professor responsavel` (`fk_prof_responsavel`)
+  KEY `professor responsavel` (`fk_prof_responsavel`),
+  KEY `grupo` (`fk_grupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1799,7 +1808,8 @@ ALTER TABLE `mudancas_lider`
 --
 ALTER TABLE `projetos_pesquisa`
   ADD CONSTRAINT `projetos_pesquisa_ibfk_2` FOREIGN KEY (`fk_linha`) REFERENCES `grupos_linhas` (`fk_cod_linha`),
-  ADD CONSTRAINT `projetos_pesquisa_ibfk_3` FOREIGN KEY (`fk_prof_responsavel`) REFERENCES `docentes` (`cod_docente`);
+  ADD CONSTRAINT `projetos_pesquisa_ibfk_3` FOREIGN KEY (`fk_prof_responsavel`) REFERENCES `docentes` (`cod_docente`),
+  ADD CONSTRAINT `projetos_pesquisa_ibfk_4` FOREIGN KEY (`fk_grupo`) REFERENCES `grupo_pesquisa` (`id`);
 
 --
 -- Limitadores para a tabela `projeto_aluno`
