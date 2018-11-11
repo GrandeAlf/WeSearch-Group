@@ -44,6 +44,7 @@
       header("location: inicial.php");
      }
      $equip = $_GET["id"];
+     $_SESSION['id_equip'] = $equip;
 
     $consulta = "SELECT nome, descricao FROM equipamentos WHERE cod_equipamento = '$equip'";
     $result = $mysqli->query($consulta) or die($mysqli->error);
@@ -65,14 +66,14 @@
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action="valida_cad_equipamentos.php">       
-      <h2 class="form-signin-heading" align="center">Cadastro de Equipamentos</h2>
+        <form class="form-signin"  method="post" action="valida_edita_equip.php">       
+      <h2 class="form-signin-heading" align="center">Edita de Equipamentos</h2>
       <input  type="text" class="form-control" name="nome" value="<?php echo $dados["nome"]; ?>"   />
      
       
     
       <br><br>
-      <textarea class="form-control" rows="5" name="descricao" value="<?php echo $dados["descricao"]; ?>"></textarea>
+      <textarea class="form-control" rows="5" name="descricao" ><?php echo $dados["descricao"]; ?></textarea>
        
       <br>
 

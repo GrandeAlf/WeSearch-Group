@@ -29,6 +29,8 @@
      }
      $aluno = $_GET['id'];
 
+     $_SESSION['aluno_id'] = $aluno;
+
     $consulta = "SELECT nome, curso, lattes FROM alunos WHERE cod_aluno = '$aluno'";
     $result = $mysqli->query($consulta) or die($mysqli->error);
 
@@ -43,10 +45,10 @@
     </div>
    <div class="wrapper" >
     <form class="form-signin" method="post" action="valida_edita_discente.php">       
-      <h2 class="form-signin-heading" align="center">Alterar dados de Discente</h2>
+      <h2 class="form-signin-heading" align="center">Alterar Discentes</h2>
       <input type="text" class="form-control" name="nome" value="<?php echo $dados["nome"]; ?>" >
-      <input type="text" class="form-control" name="lattes" value="<?php echo $dados["curso"]; ?>"  />
-      <input type="text" class="form-control" name="atividade" value="<?php echo $dados["lattes"]; ?>"  />
+      <input type="text" class="form-control" name="curso" value="<?php echo $dados["curso"]; ?>"  />
+      <input type="text" class="form-control" name="lattes" value="<?php echo $dados["lattes"]; ?>"  />
       
      
       <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar Dados"/><br>

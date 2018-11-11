@@ -34,7 +34,7 @@
 		exit();
 	}
 	if(strlen($data) == 0){
-		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">A data de inclusão não pode ser vazio.</div>"; 
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">A data da publicação não pode ser vazio.</div>"; 
 		header("location: seleciona_grupoPUB.php");
 		exit();
 	}

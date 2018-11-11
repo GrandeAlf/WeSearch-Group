@@ -96,6 +96,15 @@
             
     
     </div>    
-    
+        
+        <?php 
+          /*
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }*/
+
+         ?>
+
 </body>
 </html>
