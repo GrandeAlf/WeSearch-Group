@@ -37,27 +37,27 @@
 <?php include("funcoes.php");
       include("conexao.php");
 
-    $grupo = $_SESSION["grupo"];
-    $docente = $_POST["docente"];
-    $_SESSION["docente"] = $docente;
+    //$grupo = $_SESSION["grupo"];
+    //$docente = $_POST["docente"];
+    //$_SESSION["docente"] = $docente;
 
 
 
-     $consulta_docente = "SELECT nome FROM docentes  WHERE cod_docente = '$docente'";
-     $result_docente = $mysqli->query($consulta_docente) or die($mysqli->error);
-     $docente_nome = mysqli_fetch_assoc($result_docente);
+     //$consulta_docente = "SELECT nome FROM docentes  WHERE cod_docente = '$docente'";
+     //$result_docente = $mysqli->query($consulta_docente) or die($mysqli->error);
+     //$docente_nome = mysqli_fetch_assoc($result_docente);
 
-     $consulta_linha = "SELECT cod_especialidade as id, nome_especialidade as linha FROM especialidade, docentes  WHERE cod_especialidade = fk_especialidade and cod_docente = '$docente'";
-     $result_linha = $mysqli->query($consulta_linha) or die($mysqli->error);
-     $linha_nome = mysqli_fetch_assoc($result_linha);
+    // $consulta_linha = "SELECT cod_especialidade as id, nome_especialidade as linha FROM especialidade, docentes  WHERE cod_especialidade = fk_especialidade and cod_docente = '$docente'";
+     //$result_linha = $mysqli->query($consulta_linha) or die($mysqli->error);
+     //$linha_nome = mysqli_fetch_assoc($result_linha);
 
-     $consulta_grupo = "SELECT nome FROM grupo_pesquisa  WHERE id = '$grupo'";
-     $result_grupo = $mysqli->query($consulta_grupo) or die($mysqli->error);
-     $grupo_nome = mysqli_fetch_assoc($result_grupo);
+     //$consulta_grupo = "SELECT nome FROM grupo_pesquisa  WHERE id = '$grupo'";
+     //$result_grupo = $mysqli->query($consulta_grupo) or die($mysqli->error);
+    // $grupo_nome = mysqli_fetch_assoc($result_grupo);
      
-    $_SESSION["linha"] = $linha_nome["id"];
+    //$_SESSION["linha"] = $linha_nome["id"];
 ?>
-    <title>Cadastrar Publicações</title>
+    <title>Cadastrar Reuniões</title>
   </head>
   
 <body onload="barra()">
@@ -68,45 +68,24 @@
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action="valida_cad_publicacoesGRU.php"> 
+        <form class="form-signin"  method="post" action=""> 
               
-      <h2 class="form-signin-heading" align="center">Publicação de Pesquisa</h2>
-
-      <input  type="text" class="form-control" name="nome" placeholder="Título"   />
-
-      <select  name="tipo" class="selectpicker form-control">
-         <option  disabled selected="selected" >Tipo</option>
-          <option >Livro</option>
-          <option >Capítulo de livro</option>
-          <option >Anais de congresso</option>
-          <option >Periódicos</option>
-      </select>
-
-      <br><br>
-      <p>Data da Publicação</p>
-      <div class="input-group registration-date-time">
-                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                    <input class="form-control" name="inclusao" id="registration-date" type="date">
-                    
-                </div>
-                
-
-      <br>
-      <input  disabled type="text" class="form-control" name="grupo" placeholder="Grupo: <?php echo $grupo_nome['nome']; ?>"   />
-
-      <input  disabled type="text" class="form-control" name="linha" placeholder="Linha: <?php echo $linha_nome['linha']; ?>"   />
-
-      <input  disabled type="text" class="form-control" name="docente" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
+      <h2 class="form-signin-heading" align="center">Finalizar Reuniões</h2>
 
 
-      <textarea style="resize: none" class="form-control" rows="5" name="abnt" placeholder="Referencia da ABNT"></textarea>
+      
+      <input  type="text" class="form-control" name="hora_inicio" placeholder="Hora de Incio"   />
+
+      <input  type="text" class="form-control" name="hora_termino" placeholder="Hora de Término"   />
+
+
+      <textarea style="resize: none" class="form-control" rows="5" name="pauta" placeholder="Ata da reunião"></textarea>
        
       <br>
 
-       <textarea style="resize: none" class="form-control" rows="5" name="referencia" placeholder="Referencia da publicação"></textarea>
-                
+      <input  type="text" class="form-control" name="docentes" placeholder="Marcar docentes"   />
 
-      <br>
+      <input  type="text" class="form-control" name="convidados" placeholder="Convidados que participaram"   />
 
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>

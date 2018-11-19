@@ -76,11 +76,11 @@
 
       <br><br>
      
-      <textarea class="form-control" rows="5" name="abnt" ><?php echo $publicacao['referencia_abnt']; ?></textarea>
+      <textarea style="resize: none" class="form-control" rows="5" name="abnt" ><?php echo $publicacao['referencia_abnt']; ?></textarea>
        
       <br>
 
-       <textarea class="form-control" rows="5" name="referencia"><?php echo $publicacao['referencia_pub']; ?></textarea>
+       <textarea style="resize: none" class="form-control" rows="5" name="referencia"><?php echo $publicacao['referencia_pub']; ?></textarea>
                 
 
       <br>

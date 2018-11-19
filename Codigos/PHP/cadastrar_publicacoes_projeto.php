@@ -104,11 +104,11 @@
       <input  disabled type="text" class="form-control" name="docente" placeholder="Docente: <?php echo $docente_nome['nome']; ?>"   />
 
 
-      <textarea class="form-control" rows="5" name="abnt" placeholder="Referencia da ABNT"></textarea>
+      <textarea style="resize: none" class="form-control" rows="5" name="abnt" placeholder="Referencia da ABNT"></textarea>
        
       <br>
 
-       <textarea class="form-control" rows="5" name="referencia" placeholder="Referencia da publicação"></textarea>
+       <textarea style="resize: none" class="form-control" rows="5" name="referencia" placeholder="Referencia da publicação"></textarea>
                 
 
       <br>
