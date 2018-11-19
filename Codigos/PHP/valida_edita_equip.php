@@ -2,24 +2,23 @@
 	include("conexao.php");
 	session_start();
 
-	$pro = $_SESSION['projeto'];
+	$equip = $_SESSION['id_equip'];
 	$nome = $_POST['nome'];
-	$tipo = $_POST['tipo'];
-	
+	$descricao = $_POST['descricao'];
 	
 
 	if(strlen($nome) == 0){
 		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O nome não pode ser vazio.</div>"; 
-		header("location: edita_projeto.php?id=$pro");
+		header("location: edita_equip.php?id=$equip");
 		exit();
 	}
-	if(strlen($tipo) == 0){
-		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">Você deve selecionar o tipo.</div>"; 
-		header("location: edita_projeto.php?id=$pro");
+	if(strlen($descricao) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">A descrição não pode ser vazio.</div>"; 
+		header("location: edita_equip.php?id=$equip");
 		exit();
 	}
 	
-	$consulta = "UPDATE projetos_pesquisa SET titulo = '$nome', bolsa = '$tipo' WHERE cod_projeto = '$pro' ";
+	$consulta = "UPDATE equipamentos SET nome = '$nome', descricao = '$descricao' WHERE cod_equipamento = '$equip' ";
 	$result = $mysqli->query($consulta) or die($mysqli->error);
 
 	

@@ -37,7 +37,7 @@
 <?php include("funcoes.php");
       include("conexao.php");
 
-      $pro = $_GET["id"];
+    $pro = $_GET["id"];
     $_SESSION["projeto"] = $pro;
 
 
@@ -82,7 +82,16 @@
            
        
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Alterar"/><br>
-        
+
+        <?php 
+
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
+         
     </form>
       </div>
     </div>
