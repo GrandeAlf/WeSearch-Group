@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 11-Nov-2018 às 22:02
+-- Generation Time: 21-Nov-2018 às 00:11
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -38,6 +38,14 @@ CREATE TABLE IF NOT EXISTS `alunos` (
   `lattes` varchar(100) NOT NULL,
   PRIMARY KEY (`cod_aluno`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `alunos`
+--
+
+INSERT INTO `alunos` (`cod_aluno`, `nome`, `curso`, `lattes`) VALUES
+(1, 'Daredevil', '', 'sdkjfhdjkfdhfjkshfk'),
+(2, 'Punisher', 'sldfjdlvpodkvemwo', 'vn  kdnvdsk kis');
 
 -- --------------------------------------------------------
 
@@ -164,6 +172,16 @@ CREATE TABLE IF NOT EXISTS `docentes` (
   KEY `especialidade` (`fk_especialidade`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `docentes`
+--
+
+INSERT INTO `docentes` (`cod_docente`, `nome`, `lattes`, `atividade_realizada`, `fk_graduacao`, `curso`, `ano_conclusao`, `fk_cod_grupo`, `fk_especialidade`, `data_inicio`, `data_fim`, `situacao`) VALUES
+(1, 'TrovÃ£o', 'trovÃ£o.com', 'DogÃ£o', 14, 'Babacao', 2012, 8, 80302025, '2018-10-17', NULL, 1),
+(2, 'InativÃ£o esse cara aÃ­', 'inativao.com', 'some', 13, 'InativaÃ§Ã£o de Si PrÃ³prio', 2018, 8, 10405011, '2018-10-16', '2018-10-21', 0),
+(3, 'Danillo Fidelis', 'www.google.com', 'xfgfdgfdg', 14, 'teste', 2010, 9, 10103058, '2017-01-01', NULL, 1),
+(4, 'Eric Moreira', 'www.google.com', 'asdsaasaasds', 13, 'sdfdfdsfdsfdsf', 2003, 9, 10102051, '2018-01-01', NULL, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -181,6 +199,14 @@ CREATE TABLE IF NOT EXISTS `equipamentos` (
   PRIMARY KEY (`cod_equipamento`),
   KEY `grupo` (`fk_grupo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `equipamentos`
+--
+
+INSERT INTO `equipamentos` (`cod_equipamento`, `nome`, `descricao`, `data_inicio`, `data_fim`, `fk_grupo`) VALUES
+(1, 'Teste', 'cvfvbcsdvcdvdvbsfxcvsdvfxzvdfd', '2018-01-01', NULL, 9),
+(2, 'Novo', 'xcvvbvcsvsfccfvscscscsdcscs', '2018-01-01', NULL, 9);
 
 -- --------------------------------------------------------
 
@@ -1168,6 +1194,18 @@ CREATE TABLE IF NOT EXISTS `grupos_linhas` (
   KEY `FK_cod_linha` (`fk_cod_linha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `grupos_linhas`
+--
+
+INSERT INTO `grupos_linhas` (`fk_cod_grupo`, `fk_cod_linha`, `data_inicio`, `data_fim`, `descricao`) VALUES
+(8, 80302025, '2018-10-17', NULL, NULL),
+(8, 10102019, '2018-10-11', NULL, 'asdfghgfdsvc'),
+(8, 10405011, '2018-10-24', NULL, 'should i stay ou should i go'),
+(9, 10102051, '2018-01-01', NULL, NULL),
+(9, 10103058, '2018-01-01', NULL, 'dfdffvxvxcvcvcxvcxvxvxcvxcvcvxcvcxv'),
+(9, 10101063, '2013-04-04', NULL, 'gncbdsvsfgbcbv scnxcvbdfbdvbdf');
+
 -- --------------------------------------------------------
 
 --
@@ -1188,6 +1226,15 @@ CREATE TABLE IF NOT EXISTS `grupo_pesquisa` (
   PRIMARY KEY (`id`),
   KEY `id_lider` (`id_lider`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `grupo_pesquisa`
+--
+
+INSERT INTO `grupo_pesquisa` (`id`, `nome`, `sigla`, `lattes`, `email`, `descricao`, `data_inicio`, `ativacao`, `id_lider`) VALUES
+(8, 'Grupo Gordo', 'GG', 'laksdjlkasjlk', 'gg@gg.com', 'jkjhkahdkhsk', '2018-10-03', 1, 29),
+(9, 'Teste', 'TST', 'www.google.com', 'danillomodesto5@gmail.com', 'Damian William Jones (nascido em 30 de junho de 1995)[1] Ã© um jogador norte-americano de basquete profissional, que atualmente joga pelo Golden State Warriors, da liga NBA. Com 2,13 metros de altura, atua na posiÃ§Ã£o de pivÃ´.', '2018-01-01', 1, 30),
+(10, 'Novo', 'NOVO', NULL, NULL, NULL, '2019-02-02', 2, 30);
 
 -- --------------------------------------------------------
 
@@ -1243,6 +1290,14 @@ CREATE TABLE IF NOT EXISTS `projetos_pesquisa` (
   KEY `grupo` (`fk_grupo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `projetos_pesquisa`
+--
+
+INSERT INTO `projetos_pesquisa` (`cod_projeto`, `titulo`, `fk_grupo`, `fk_linha`, `bolsa`, `fk_prof_responsavel`, `data_inicio`, `data_fim`) VALUES
+(4, 'Novo', 9, 10103058, 'Voluntario', 3, '2018-01-01', NULL),
+(5, 'Teste', 9, 10102051, 'CNPQ', 4, '2018-01-01', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -1258,6 +1313,14 @@ CREATE TABLE IF NOT EXISTS `projeto_aluno` (
   KEY `projeto` (`fk_projeto`),
   KEY `aluno` (`fk_aluno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `projeto_aluno`
+--
+
+INSERT INTO `projeto_aluno` (`fk_projeto`, `fk_aluno`, `data_inicio`, `data_fim`) VALUES
+(4, 2, '2018-01-01', NULL),
+(5, 2, '2018-01-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -1283,6 +1346,33 @@ CREATE TABLE IF NOT EXISTS `publicacoes` (
   KEY `linha docente` (`fk_linha_docente`),
   KEY `grupo` (`fk_grupo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `publicacoes`
+--
+
+INSERT INTO `publicacoes` (`cod_publicacao`, `titulo`, `tipo`, `data_pub`, `fk_docente`, `fk_projeto`, `fk_linha_docente`, `referencia_abnt`, `referencia_pub`, `fk_grupo`) VALUES
+(1, 'Teste', 'CapÃ­tulo de livro', '2018-01-01', 3, NULL, 10103058, 'vsdfbsxmncvdhgckabckj', 'jkhshcbksjhcbksjcbsahkbkchbs', 9),
+(2, 'Novo', 'Livro', '2018-01-01', 3, 4, 10103058, 'cjkhndckjsncskdljcnsklcnckln', 'kl cdncklsdnckjsdnjkdsfndsjk', NULL),
+(3, 'kdfhksdfh', 'PeriÃ³dicos', '2018-01-01', 4, 5, 10102051, 'sdkljfdhnsjkldjflsdjfklsjdlk', 'ldskfjdslkfjkdlfdjsfklÃ§dsjflkdsÃ§fj', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `reunioes`
+--
+
+DROP TABLE IF EXISTS `reunioes`;
+CREATE TABLE IF NOT EXISTS `reunioes` (
+  `cod_reunioes` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_lider` int(11) NOT NULL,
+  `fk_grupo` int(11) NOT NULL,
+  `data` datetime NOT NULL,
+  `pauta` text,
+  PRIMARY KEY (`cod_reunioes`),
+  KEY `lider` (`fk_lider`),
+  KEY `grupo` (`fk_grupo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1686,6 +1776,16 @@ CREATE TABLE IF NOT EXISTS `tecnicos` (
   KEY `especialidade` (`fk_especialidade`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `tecnicos`
+--
+
+INSERT INTO `tecnicos` (`cod_tecnico`, `nome`, `lattes`, `atividade_realizada`, `fk_graduacao`, `curso`, `ano_conclusao`, `fk_cod_grupo`, `fk_especialidade`, `data_inicio`, `data_fim`, `situacao`) VALUES
+(1, 'TrovÃ£o', 'trovÃ£o.com', 'DogÃ£o', 14, 'BabacÃ£o', 2012, 8, 10102019, '2018-10-17', NULL, 1),
+(2, 'outro inativao', 'inativaessaporra.com', 'sumiÃ£o', 8, 'burrÃ£o inativo', 1998, 8, 80302025, '2018-10-01', '2018-10-21', 0),
+(3, 'Teste', 'www.google.com', 'teste', 11, 'teste', 2011, 9, 10101063, '2018-01-01', NULL, 1),
+(4, 'Novo', 'www.google.com', 'dfgfdgfdgfd', 13, 'sdfdfdsfdsfdsf', 2011, 9, 10102051, '2018-01-01', NULL, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -1705,6 +1805,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `chave` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `prontuario`, `nome`, `senha`, `email`, `lattes`, `alteracao`, `adm`, `chave`) VALUES
+(28, 'ADM', 'Admin', '1971F7E67A70645F59B2080F89908AF169C6C5CA5C8326657635E15E4BE8B65B', 'eric.gmoreira98@gmail.com', NULL, '2018-10-20', 1, 'a78cee544d5535ddf3f3b21fac85d68fdc93e2040fdc665e94977bcf65cb7ce9'),
+(29, '12345', 'Eric', 'ff2590eae5b6435000af4aa7f205ae0d650045dbc7ec7d72f5cefd151f7ca414', 'eric.gmoreira98@gmail.com', NULL, '2018-10-20', 0, 'a78cee544d5535ddf3f3b21fac85d68fdc93e2040fdc665e94977bcf65cb7ce9'),
+(30, '169006X', 'Danillo', '1971f7e67a70645f59b2080f89908af169c6c5ca5c8326657635e15e4be8b65b', 'danillomodesto5@gmail.com', NULL, '2018-11-10', 0, '2f12753d7904b605e98610750fed2d755e543af4206c3281373c8d642d24103a');
 
 --
 -- Constraints for dumped tables
