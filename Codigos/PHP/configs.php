@@ -208,9 +208,13 @@
                         <div class="panel-body">
                             <table class="table">
                                 <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-usd"></span><a href="">Sales</a>
-                                    </td>
+                                    <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-education\" ></span><a href=\"#\" onclick=\"carrega_pagina('seleciona_relatorios.php')\">Relatorios</a> </td>";
+                                            }
+                                            
+                                         ?>
                                 </tr>
                                 <tr>
                                     <td>

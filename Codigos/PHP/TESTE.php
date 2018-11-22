@@ -1,6 +1,10 @@
 <?php 
-	
-	$id = $_GET["id"];
 
-	echo $id;
+session_start();
+	
+	$ano = $_SESSION["ano"];
+	$grupo = $_POST["grupo"];
+
+	echo $ano;
+	echo $grupo;
  ?>
