@@ -43,11 +43,16 @@
     <!-- (Optional) Latest compiled and minified JavaScript translation files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/i18n/defaults-*.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../CSS/perm.css">
+<script type="text/javascript" src="../JS/scripts.js"></script>
+
     <title></title>
 
 </head>
-<body>
+<body onload="barra();">
 
+
+  <div id="barra"></div>
+  
 <form method="post" action="seleciona_grupoR.php">
     <div id = "conteudo">    
 
@@ -79,7 +84,7 @@
                             </tr> 
                              <tr>
                                  
-                                <td align="center"><a href=""><button type="submit" name="rel_linha" class="btn btn-primary btn-block">Linha de Pesquisa por ano</button>
+                                <td align="center"><a href=""><button type="submit" name="rel_linha" class="btn btn-primary btn-block">Relatorio de Linha de Pesquisa por ano</button>
                                 
                                 </td>
                                 
@@ -102,13 +107,49 @@
                                  
                                  <tr>
 
-                                <td align="center"><a href=""><button type="submit" name="rel_discente_grupo" class="btn btn-primary btn-block">Discentes que participaram de um grupo</button>
+                                <td align="center"><a href=""><button type="submit" name="rel_discente_grupo" class="btn btn-primary btn-block">Relatorio de Discentes que participaram de um grupo</button>
                                 
                                 </td>
                                 </tr>
                                 
                                 <tr> 
-                                <td align="center"><a href=""><button type="submit" class="btn btn-primary btn-block">Discente e Docente orientador</button>
+                                <td align="center"><a href=""><button type="submit" name="rel_discente_orientador" class="btn btn-primary btn-block">Relatorio de Discente e Docente orientador</button>
+                                
+                                </td>
+                                </tr>
+
+                                <tr> 
+                                <td align="center"><a href=""><button type="submit" name="rel_discente_orientador_linha" class="btn btn-primary btn-block">Relatorio de Discente e Docente com linha de pesquisa do projeto</button>
+                                
+                                </td>
+                                </tr>
+
+                                <tr> 
+                                <td align="center"><a href=""><button type="submit" name="rel_discente_orientador_linha" class="btn btn-primary btn-block">Discente e Docente com linha de pesquisa do projeto</button>
+                                
+                                </td>
+                                </tr>
+
+                                <tr> 
+                                <td align="center"><a href=""><button type="submit" name="rel_tecnico_grupo" class="btn btn-primary btn-block">Relatorio de Tecnico do grupo</button>
+                                
+                                </td>
+                                </tr>
+
+                                <tr> 
+                                <td align="center"><a href=""><button type="submit" name="rel_equip_grupo" class="btn btn-primary btn-block">Relatorio de Equipamentos do grupo</button>
+                                
+                                </td>
+                                </tr>
+
+                                <tr> 
+                                <td align="center"><a href=""><button type="submit" name="rel_pub_grupo" class="btn btn-primary btn-block">Relatorio de Publicações do grupo</button>
+                                
+                                </td>
+                                </tr>
+
+                                <tr> 
+                                <td align="center"><a href=""><button type="submit" name="rel_projeto_fim" class="btn btn-primary btn-block">Relatorio de Projetos finalizados do grupo</button>
                                 
                                 </td>
                                 </tr>

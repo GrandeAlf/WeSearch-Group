@@ -23,7 +23,7 @@
         
              
       
-        $consulta = "SELECT es.nome_especialidade as linha FROM grupos_linhas gl, especialidade es WHERE es.cod_especialidade = gl.fk_cod_linha AND gl.data_inicio LIKE '$ano%' AND gl.fk_cod_grupo = '$grupo'";
+        $consulta = "SELECT DISTINCT pb.titulo as titulo FROM publicacoes pb, projetos_pesquisa pp WHERE pb.data_pub LIKE '$ano%' AND (pb.fk_grupo = '$grupo' OR (pp.cod_projeto = pb.fk_projeto AND pp.fk_grupo = '$grupo'))";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
         
 
@@ -74,9 +74,8 @@
                     <thead class="">
                         <tr class="text-center">
 
-
-                          <th class="text-center">Ano</th> 
-                            <th class="text-center">Linha</th>
+                             <th class="text-center">Ano</th>  
+                            <th class="text-center">Titulo da Publicação</th>
                              
                             
                                 
@@ -93,8 +92,7 @@
                              <tr>
                                 
                                 <td class="text-center"><?php echo $ano; ?></td>
-                                
-                                 <td class="text-center"><?php echo $dados["linha"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["titulo"]; ?></td>
                                  
 
 

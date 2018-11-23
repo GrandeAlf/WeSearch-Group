@@ -23,7 +23,8 @@
         
              
       
-        $consulta = "SELECT es.nome_especialidade as linha FROM grupos_linhas gl, especialidade es WHERE es.cod_especialidade = gl.fk_cod_linha AND gl.data_inicio LIKE '$ano%' AND gl.fk_cod_grupo = '$grupo'";
+        $consulta = "SELECT DISTINCT al.nome as aluno, dc.nome as docente, es.nome_especialidade as linha FROM alunos al, projeto_aluno pa, projetos_pesquisa pp, docentes dc, especialidade es WHERE pa.data_inicio LIKE '$ano%' AND pa.fk_projeto = pp.cod_projeto AND pp.fk_grupo = '$grupo' AND al.cod_aluno = pa.fk_aluno AND pp.fk_prof_responsavel = dc.cod_docente AND es.cod_especialidade = pp.fk_linha";
+
         $con = $mysqli->query($consulta) or die ($mysqli->error);
         
 
@@ -63,19 +64,19 @@
 
 </head>
 <body onload="barra();">
-
-
-  <div id="barra"></div>
-
-
   
-       <div id = "conteudo">
+   <div id="barra">
+     
+   </div>
+  
+       <div>
       <table class="table table-bordered table-sm m-0">
                     <thead class="">
                         <tr class="text-center">
-
-
-                          <th class="text-center">Ano</th> 
+                            
+                            <th class="text-center">Ano</th>
+                            <th class="text-center">Discentes</th>
+                            <th class="text-center">Docentes</th>
                             <th class="text-center">Linha</th>
                              
                             
@@ -92,10 +93,11 @@
                             while($dados = $con->fetch_array()){?>
                              <tr>
                                 
-                                <td class="text-center"><?php echo $ano; ?></td>
                                 
+                                <td class="text-center"><?php echo $ano; ?></td>
+                                 <td class="text-center"><?php echo $dados["aluno"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["docente"]; ?></td>
                                  <td class="text-center"><?php echo $dados["linha"]; ?></td>
-                                 
 
 
                                  

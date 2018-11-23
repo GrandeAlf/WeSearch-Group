@@ -1,5 +1,5 @@
 <?php  
-	include("conexao.php"); 
+	include("codigos/PHP/conexao.php"); 
 
 	date_default_timezone_set('America/Sao_Paulo');
 	$date = date('Y-m-d');
@@ -18,10 +18,10 @@
     $result = $mysqli->query($consulta) or die($mysqli->error); 
  
     if($result->num_rows == 0){ 
-    	header("location: cadastro_ADM.php"); 
+    	header("location: codigos/PHP/cadastro_ADM.php"); 
     } 
     else{ 
-    	header("location: inicial.php"); 
+    	header("location: codigos/PHP/inicial.php"); 
     } 
  
  ?>

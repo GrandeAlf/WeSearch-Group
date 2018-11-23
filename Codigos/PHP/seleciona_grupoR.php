@@ -83,10 +83,32 @@
           {
             echo "<form   method=\"post\" action=\"relatorio_discente_grupo.php\"> ";
           }
-          else
+          else if(isset($_POST["rel_discente_orientador"]))
           {
             echo "<form   method=\"post\" action=\"relatorio_discente_orientador.php\"> ";
           }
+          else if(isset($_POST["rel_discente_orientador_linha"]))
+          {
+            echo "<form   method=\"post\" action=\"relatorio_discente_orientador_linha.php\"> ";
+          }
+          else if(isset($_POST["rel_tecnico_grupo"]))
+          {
+            echo "<form   method=\"post\" action=\"relatorio_tecnico_grupo.php\"> ";
+          }
+          else if(isset($_POST["rel_equip_grupo"]))
+          {
+            echo "<form   method=\"post\" action=\"relatorio_equipamento.php\"> ";
+          }
+          else if(isset($_POST["rel_pub_grupo"]))
+          {
+            echo "<form   method=\"post\" action=\"relatorio_pub_grupo.php\"> ";
+          }
+          else if(isset($_POST["rel_projeto_fim"]))
+          {
+            echo "<form   method=\"post\" action=\"relatorio_projetos_fim.php\"> ";
+          }
+
+          
 
      ?>
 

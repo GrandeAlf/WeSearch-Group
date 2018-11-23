@@ -57,10 +57,15 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <link rel="stylesheet" type="text/css" href="../CSS/perm.css">
+<script type="text/javascript" src="../JS/scripts.js"></script>
+
     <title></title>
 
 </head>
-<body>
+<body onload="barra();">
+
+
+  <div id="barra"></div>
 
 
   
@@ -69,8 +74,8 @@
                     <thead class="">
                         <tr class="text-center">
                             
-                            <th class="text-center">Resultado</th>
-                             
+                            <th class="text-center">Ano</th>
+                             <th class="text-center">Docente</th>
                             
                                 
                               
@@ -85,6 +90,7 @@
                             while($dados = $con->fetch_array()){?>
                              <tr>
                                 
+                                <td class="text-center"><?php echo $ano; ?></td>
                                 
                                  <td class="text-center"><?php echo $dados["nome"]; ?></td>
                                  
