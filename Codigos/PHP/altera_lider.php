@@ -24,13 +24,15 @@
       header("location: inicial.php");
      }
 
-     $idgrupo = $_SESSION["grupo_id"];
+     $idgrupo = $_GET["id"];
      $_SESSION['idgrupo'] = $idgrupo;
 
-     $consulta = "SELECT gp.id_lider, u.nome FROM grupo_pesquisa as gp, usuarios as u WHERE id_lider = u.id and gp.id = '$idgrupo'";
+     $consulta = "SELECT gp.id_lider as lideratual, u.nome, gp.nome as grupo FROM grupo_pesquisa as gp, usuarios as u WHERE id_lider = u.id and gp.id = '$idgrupo'";
 
      $result = $mysqli->query($consulta) or die($mysqli->error);
       $dado = mysqli_fetch_assoc($result);
+
+      $_SESSION["lideratual"] = $dado["lideratual"];
 
 
 ?>
@@ -50,10 +52,11 @@
 
         <!-- input com nome do lider atual desabilitado --> 
 
-        <input type="text" disabled class="form-control" name="lideratual" <?php echo "value='".$idgrupo."'"; ?>  autofocus="" />
+        <input type="text" disabled class="form-control" name="grupo" <?php echo "value='".$dado["grupo"]."'"; ?>  autofocus="" />
 
          <input type="text" disabled class="form-control" name="lideratual" <?php echo "value='".$dado["nome"]."'"; ?>  autofocus="" />
 
+         Data de saída do lider atual:
         <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                     <input class="form-control" name="data_saida" id="registration-date" type="date">
@@ -94,6 +97,7 @@
           ?> 
           </select>
           <br> 
+          Data de entrada do novo lider:
           <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                     <input class="form-control" name="data_novo" id="registration-date" type="date">

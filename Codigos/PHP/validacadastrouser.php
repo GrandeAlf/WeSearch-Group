@@ -10,6 +10,17 @@
 	$email = $_POST['email'];
 	$cod = hash("sha256", $email);
 
+	$consulta = "SELECT email FROM usuarios WHERE email = '$email' "; 
+    $result = $mysqli->query($consulta) or die($mysqli->error); 
+ 
+    if($result->num_rows != 0)
+    { 
+    	 $_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O Email já cadastrado!.</div>"; 
+		header("location: cadastro_user.php");
+		exit();
+    } 
+    
+
 	if(strlen($login) == 0){
 		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O Login não pode ser vazio.</div>"; 
 		header("location: cadastro_user.php");
