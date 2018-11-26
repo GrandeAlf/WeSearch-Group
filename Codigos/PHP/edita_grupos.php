@@ -68,13 +68,17 @@
   <div>
         <form class="form-signin"  method="post" action="validaalteracaogrupos.php">       
       <h2 class="form-signin-heading" align="center">Alterar Grupo de Pesquisa</h2>
+      Nome:
       <input disabled type="text" class="form-control" name="nome" placeholder="<?php echo $dado["nome"]; ?>"   />
-      <input disabled type="text" class="form-control" name="sigla" placeholder="<?php echo $dado["sigla"] ?>"   />
+      Sigla:
+      <input type="text" class="form-control" name="sigla" placeholder="<?php echo $dado["sigla"] ?>"   />
+      Email:
       <input type="email" class="form-control" name="email" placeholder="<?php echo $dado["email"]; ?>"   />
+      Curriculo Lattes:
       <input type="text" class="form-control" name="lattes" placeholder="<?php echo $dado["lattes"]; ?>" />
-      <br>
-        
-        <textarea class="form-control" rows="5" name="descricao" placeholder="<?php echo $dado["descricao"]; ?>"></textarea>    
+
+        Descrição do grupo:
+        <textarea class="form-control" style="resize: none;" rows="5" name="descricao" placeholder="<?php echo $dado["descricao"]; ?>"></textarea>    
           
         <br><br>
         
