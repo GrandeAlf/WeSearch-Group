@@ -15,6 +15,18 @@
 		header("location: cadastro_user.php");
 		exit();
 	}
+
+	if(strlen($email) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O Email não pode ser vazio.</div>"; 
+		header("location: cadastro_user.php");
+		exit();
+	}
+
+	if(strlen($nome) == 0){
+		$_SESSION['informaerro'] = "<div class=\"alert alert-danger\" role=\"alert\">O Nome não pode ser vazio.</div>"; 
+		header("location: cadastro_user.php");
+		exit();
+	}
 	$RegExAZ = preg_match('/[A-Z]/', $senha); 
 	$RegExaz = preg_match('/[a-z]/', $senha); 
 	$RegEx09 = preg_match('/[0-9]/', $senha); 
