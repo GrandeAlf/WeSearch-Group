@@ -19,6 +19,7 @@
       <script type="text/javascript" src="../JS/scripts.js"></script> 
 
 	 <?php include("funcoes.php");
+            include("conexao.php");
      
      $logado = logado();
      $adm = dado();
@@ -239,10 +240,21 @@
         </div>
         <div class="col-lg-9">
             <div id="conteudo">
-               
-            </div>
-                
-            </div>
+               <?php 
+
+                    $id = id_lider($logado);
+
+                    $consulta = "SELECT * FROM `grupo_pesquisa` WHERE `ativacao` = 0 and `id_lider` = '$id'";
+                    $con = $mysqli->query($consulta) or die ($mysqli->error);
+                    if($con->num_rows != 0)
+                    {
+                        echo "<div class=\"alert alert-danger\" align=\"center\" role=\"alert\" onclick=\"carrega_pagina('grupos.php')\">Existem novos grupos cadastrados. Clique aqui para finalizar cadsatro.</div>";
+                    }
+
+
+                ?>
+            </div>              
+         
         </div>
     </div>
 </div>

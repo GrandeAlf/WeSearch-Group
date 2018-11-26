@@ -68,6 +68,19 @@ function inativar($id)
 	$result = $mysqli->query($consulta) or die($mysqli->error);
 
 }
+function id_lider($prontuario)
+{
+	include("conexao.php");
+
+	$logado = logado();
+
+	$consulta = "SELECT `id` FROM `usuarios` WHERE `prontuario` = '$logado'";
+                               
+  	$result = $mysqli->query($consulta) or die($mysqli->error);
+  	$dado = mysqli_fetch_assoc($result);
+
+  	return $dado["id"];
+}
 
 
  ?>
