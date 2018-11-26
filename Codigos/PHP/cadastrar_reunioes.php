@@ -41,6 +41,9 @@
     //$docente = $_POST["docente"];
     //$_SESSION["docente"] = $docente;
 
+    $docente = lider();
+    $_SESSION['docente'] = $docente;
+
 
 
      //$consulta_docente = "SELECT nome FROM docentes  WHERE cod_docente = '$docente'";
@@ -68,9 +71,9 @@
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action=""> 
+        <form class="form-signin"  method="post" action="valida_cad_reunioes.php"> 
               
-      <h2 class="form-signin-heading" align="center">Cadasstro de Reuniões</h2>
+      <h2 class="form-signin-heading" align="center">Cadastro de Reuniões</h2>
 
       
       <p>Data da Reunião</p>
@@ -83,7 +86,7 @@
 
       <br>
       
-      <input  type="text" class="form-control" name="hora" placeholder="Hora"   />
+      <input  type="time" class="form-control" name="hora" placeholder="Hora"   />
 
 
       <textarea style="resize: none" class="form-control" rows="5" name="pauta" placeholder="Pauta da reunião"></textarea>
@@ -92,6 +95,14 @@
 
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+
+         <?php 
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
         
     </form>
       </div>
