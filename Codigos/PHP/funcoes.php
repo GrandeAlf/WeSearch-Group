@@ -68,18 +68,28 @@ function inativar($id)
 	$result = $mysqli->query($consulta) or die($mysqli->error);
 
 }
-function id_lider($prontuario)
+function verifica_lider_grupo($id_grupo)
 {
 	include("conexao.php");
 
-	$logado = logado();
+	$lider = lider();
 
-	$consulta = "SELECT `id` FROM `usuarios` WHERE `prontuario` = '$logado'";
+	$grupo = $id_grupo;
+
+	$consulta = "SELECT * FROM `grupo_pesquisa` WHERE `id_lider` = '$lider' and id = '$grupo'";
                                
   	$result = $mysqli->query($consulta) or die($mysqli->error);
-  	$dado = mysqli_fetch_assoc($result);
+ 
+  	if($result->num_rows != 0 )
+  	{
+  		return "OK";
+  	}
+  	else
+  	{
+  		return NULL;
+  	}
 
-  	return $dado["id"];
+  	
 }
 
 

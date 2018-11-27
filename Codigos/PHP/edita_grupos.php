@@ -41,7 +41,8 @@
      {
       header("location: inicial.php");
      }
-?>
+
+  ?>
     <title>Alterar Grupo</title>
   </head>
   
@@ -51,12 +52,24 @@
     
       
   		$cod = $_GET["id"];
-
       $_SESSION['codigo_grupo'] = $cod;
 
-      $consulta = "SELECT nome, sigla, lattes, email, descricao  FROM grupo_pesquisa WHERE id = '$cod'";
-      $result = $mysqli->query($consulta) or die($mysqli->error);
-      $dado = mysqli_fetch_assoc($result);
+      //$altera = verifica_lider_grupo($cod);
+
+     // if($altera == NULL)
+    // {
+     //   header("location : inicial.php");
+    //  }
+
+    //  else
+   //   {
+        $consulta = "SELECT nome, sigla, lattes, email, descricao  FROM grupo_pesquisa WHERE id = '$cod'";
+        $result = $mysqli->query($consulta) or die($mysqli->error);
+        $dado = mysqli_fetch_assoc($result);
+     // }
+      
+
+      
    
 
 	 ?>

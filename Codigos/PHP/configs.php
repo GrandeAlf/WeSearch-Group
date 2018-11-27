@@ -218,9 +218,13 @@
                                          ?>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-user"></span><a href="">Customers</a>
-                                    </td>
+                                    <?php 
+                                            if($adm != 1)
+                                            {
+                                                echo "<td><span class=\"glyphicon glyphicon-education\" ></span><a href=\"#\" onclick=\"carrega_pagina('reunioes.php')\">Reuniões</a> </td>";
+                                            }
+                                            
+                                         ?>
                                 </tr>
                                 <tr>
                                     <td>
@@ -242,7 +246,7 @@
             <div id="conteudo">
                <?php 
 
-                    $id = id_lider($logado);
+                    $id = lider($logado);
 
                     $consulta = "SELECT * FROM `grupo_pesquisa` WHERE `ativacao` = 0 and `id_lider` = '$id'";
                     $con = $mysqli->query($consulta) or die ($mysqli->error);
