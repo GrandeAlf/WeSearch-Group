@@ -80,15 +80,14 @@ function verifica_lider_grupo($id_grupo)
                                
   	$result = $mysqli->query($consulta) or die($mysqli->error);
  
-  	if($result->num_rows != 0 )
+  	if($result->num_rows == 0 )
   	{
-  		return "OK";
+  		$retorno = NULL;
   	}
   	else
-  	{
-  		return NULL;
-  	}
-
+  		$retorno = 1;
+  	
+  	return $retorno;
   	
 }
 

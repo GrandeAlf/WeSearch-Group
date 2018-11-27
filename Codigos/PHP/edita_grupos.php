@@ -54,12 +54,12 @@
   		$cod = $_GET["id"];
       $_SESSION['codigo_grupo'] = $cod;
 
-      //$altera = verifica_lider_grupo($cod);
+      $altera = verifica_lider_grupo($cod);
 
-     // if($altera == NULL)
-    // {
-     //   header("location : inicial.php");
-    //  }
+      if($altera == NULL)
+      {
+        header("location: inicial.php");
+      }
 
     //  else
    //   {

@@ -54,6 +54,13 @@
 
       $_SESSION['codigo_grupo'] = $cod;
 
+      $altera = verifica_lider_grupo($cod);
+
+      if($altera == NULL)
+      {
+        header("location: inicial.php");
+      }
+
       $consulta = "SELECT nome, sigla FROM grupo_pesquisa WHERE id = '$cod'";
       $result = $mysqli->query($consulta) or die($mysqli->error);
       $dado = mysqli_fetch_assoc($result);
