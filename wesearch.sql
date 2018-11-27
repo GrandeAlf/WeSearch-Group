@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 21-Nov-2018 às 00:11
+-- Generation Time: 26-Nov-2018 às 23:54
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -1366,13 +1366,24 @@ DROP TABLE IF EXISTS `reunioes`;
 CREATE TABLE IF NOT EXISTS `reunioes` (
   `cod_reunioes` int(11) NOT NULL AUTO_INCREMENT,
   `fk_lider` int(11) NOT NULL,
-  `fk_grupo` int(11) NOT NULL,
   `data` datetime NOT NULL,
   `pauta` text,
+  `data_real` datetime DEFAULT NULL,
+  `ata` text,
+  `docentes` text,
+  `termino` datetime DEFAULT NULL,
+  `convidados` text,
   PRIMARY KEY (`cod_reunioes`),
-  KEY `lider` (`fk_lider`),
-  KEY `grupo` (`fk_grupo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `lider` (`fk_lider`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `reunioes`
+--
+
+INSERT INTO `reunioes` (`cod_reunioes`, `fk_lider`, `data`, `pauta`, `data_real`, `ata`, `docentes`, `termino`, `convidados`) VALUES
+(1, 30, '2018-11-26 11:30:21', 'asfsafa', NULL, NULL, NULL, NULL, NULL),
+(2, 29, '2018-11-26 22:22:00', 'akljfhdkljhafkljhaskldjf', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
