@@ -55,6 +55,7 @@
                                 
                                 <th>Pauta</th>
                                 <th></th>
+                                <th></th>
                                 
                             
                           
@@ -69,14 +70,12 @@
                                 <td class="text-center"><?php echo $dados["data_prevista"]; ?></td>
                                  <td class="text-center"><?php echo $dados["data_realizada"]; ?></td>
                                  <td class="text-center"><?php echo $dados["data_termino"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["pauta"]; ?></td>
 
                                  <td class="text-center"><?php
                                                                 if(strlen($dados["data_termino"]) == 0){
                                                                     echo " <a href=\"finalizar_reunioes.php?id=".$dados["cod_reuniao"]."\"><button class=\"btn btn-primary btn-block\">Finalizar Reunião</button></a>"; 
                                                                 }
-                                                                else{
-                                                                    echo $dados["pauta"];
-                                                                } 
                                                             ?></td>
 
                                  <td class="text-center"><?php 
