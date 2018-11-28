@@ -23,7 +23,7 @@
              
       
 
-        $consulta = "SELECT re.cod_reunioes as cod_reuniao, re.data as data_prevista, re.data_real as data_realizada, re.termino as data_termino FROM `reunioes` as re WHERE re.fk_lider = '$lider' ";
+        $consulta = "SELECT re.cod_reunioes as cod_reuniao, re.data as data_prevista, re.data_real as data_realizada, re.termino as data_termino, re.pauta as pauta FROM `reunioes` as re WHERE re.fk_lider = '$lider' ";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
 
 
@@ -70,9 +70,21 @@
                                  <td class="text-center"><?php echo $dados["data_realizada"]; ?></td>
                                  <td class="text-center"><?php echo $dados["data_termino"]; ?></td>
 
-                                 <td class="text-center"><?php echo " <a href=\"finalizar_reunioes.php?id=".$dados["cod_reuniao"]."\"><button class=\"btn btn-primary btn-block\">Finalizar Reunião</button></a>"; ?></td>
+                                 <td class="text-center"><?php
+                                                                if(strlen($dados["data_termino"]) == 0){
+                                                                    echo " <a href=\"finalizar_reunioes.php?id=".$dados["cod_reuniao"]."\"><button class=\"btn btn-primary btn-block\">Finalizar Reunião</button></a>"; 
+                                                                }
+                                                                else{
+                                                                    echo $dados["pauta"];
+                                                                } 
+                                                            ?></td>
 
-                                 <td class="text-center"><?php echo " <a href=\"#\"><button class=\"btn btn-warning btn-block\">Excluir</button></a>"; ?></td>
+                                 <td class="text-center"><?php 
+                                                                if(strlen($dados["data_termino"]) == 0){
+                                                                    echo " <a href=\"exclui_reuniao.php?id=".$dados["cod_reuniao"]."\"><button class=\"btn btn-warning btn-block\">Excluir</button></a>";
+                                                                }
+
+                                                            ?></td>
                                 
                                 </tr> 
                         <?php } ?>

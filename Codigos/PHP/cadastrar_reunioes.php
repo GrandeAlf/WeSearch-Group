@@ -88,6 +88,8 @@
       
       <input  type="time" class="form-control" name="hora" placeholder="Hora"   />
 
+      <br>
+
 
       <textarea style="resize: none" class="form-control" rows="5" name="pauta" placeholder="Pauta da reunião"></textarea>
        
