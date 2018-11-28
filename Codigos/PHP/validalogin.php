@@ -28,6 +28,30 @@
     if($result->num_rows == 0){
         //variavel global que exibe a mensagem de erro
         $_SESSION['loginErro'] = "<div class=\"alert alert-danger\" role=\"alert\">Prontuário e(ou) senha inválidos. Tente novamente.</div>";
+        if(isset($_SESSION['login'])){
+            if($_SESSION['login'] == $login){
+                if(isset($_SESSION['contador'])){
+                    $_SESSION['contador'] = $_SESSION['contador'] + 1;
+                }
+                else{
+                    $_SESSION['contador'] = 1;
+                }
+            }else{
+                unset($_SESSION['contador']);
+                unset($_SESSION['login']);
+            }
+        }
+        else{
+            $_SESSION['login'] = $login;
+        }
+
+        if($_SESSION['contador'] >= 4){
+            //echo "envia email";
+            header("location: enviaemail_login_erro.php?id=$_SESSION[login]");
+            unset($_SESSION['contador']);
+            exit();
+        }
+        
         //echo "<script> alert(\"teste\");</script>";
         //manda o user de volta a tela login
         header("location: login.php");
