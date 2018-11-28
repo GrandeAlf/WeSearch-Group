@@ -36,7 +36,7 @@
 	
 	if($result){
 
-		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Cadastro Alterado com sucesso!</div>"; 
+		$_SESSION['informaerro'] = "<div class=\"alert alert-success\" role=\"alert\">Cadastrado com sucesso!</div>"; 
 		header("location: cadastrar_reunioes.php");
 	}
  ?>

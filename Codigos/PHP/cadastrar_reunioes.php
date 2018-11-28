@@ -76,7 +76,7 @@
       <h2 class="form-signin-heading" align="center">Cadastro de Reuniões</h2>
 
       
-      <p>Data da Reunião</p>
+      <p>Data Prevista da Reunião</p>
       <div class="input-group registration-date-time">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
                     <input class="form-control" name="data" id="registration-date" type="date">

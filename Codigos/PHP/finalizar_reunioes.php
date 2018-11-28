@@ -37,6 +37,9 @@
 <?php include("funcoes.php");
       include("conexao.php");
 
+      $reuniao = $_GET["id"];
+      $_SESSION["reuniao"] = $reuniao;
+
     //$grupo = $_SESSION["grupo"];
     //$docente = $_POST["docente"];
     //$_SESSION["docente"] = $docente;
@@ -68,27 +71,47 @@
    </div>
 
   <div >
-        <form class="form-signin"  method="post" action=""> 
+        <form class="form-signin"  method="post" action="valida_finalizar_reuniao.php"> 
               
       <h2 class="form-signin-heading" align="center">Finalizar Reuniões</h2>
 
+      <p>Data da Reunião</p>
+      <div class="input-group registration-date-time">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                    <input class="form-control" name="data" id="registration-date" type="date">
+                    
+                </div>
 
-      
-      <input  type="text" class="form-control" name="hora_inicio" placeholder="Hora de Incio"   />
+      <br>
+      <p>Hora Início</p>
+      <input  type="time" class="form-control" name="hora_inicio" placeholder="Hora de Incio"   />
+      <br>
 
-      <input  type="text" class="form-control" name="hora_termino" placeholder="Hora de Término"   />
+      <p>Hora Término</p>
+      <input  type="time" class="form-control" name="hora_termino" placeholder="Hora de Término"   />
+      <br>
 
 
       <textarea style="resize: none" class="form-control" rows="5" name="pauta" placeholder="Ata da reunião"></textarea>
        
       <br>
 
-      <input  type="text" class="form-control" name="docentes" placeholder="Marcar docentes"   />
+      <input  type="text" class="form-control" name="docentes" placeholder="Participantes"   />
 
-      <input  type="text" class="form-control" name="convidados" placeholder="Convidados que participaram"   />
+      <input  type="text" class="form-control" name="convidados" placeholder="Convidados"   />
 
         
         <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Cadastrar"/><br>
+
+        
+        <?php 
+
+          if(isset($_SESSION['informaerro'])){
+            echo $_SESSION['informaerro'];
+            unset($_SESSION['informaerro']);
+          }
+
+         ?>
         
     </form>
       </div>

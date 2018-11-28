@@ -23,7 +23,7 @@
              
       
 
-        $consulta = "SELECT gp.id as cod_grupo, gp.nome as grupo , cod_tecnico, t.nome as tecnico FROM `grupo_pesquisa` as gp, tecnicos as t WHERE `id_lider` = '$lider' and fk_cod_grupo = gp.id and t.situacao = '1'";
+        $consulta = "SELECT re.cod_reunioes as cod_reuniao, re.data as data_prevista, re.data_real as data_realizada, re.termino as data_termino FROM `reunioes` as re WHERE re.fk_lider = '$lider' ";
         $con = $mysqli->query($consulta) or die ($mysqli->error);
 
 
@@ -48,8 +48,9 @@
                     <thead class="">
                         <tr>
                             
-                            <th class="text-center">Grupo</th>
-                             <th class="text-center">Data</th>
+                            <th class="text-center">Data Prevista</th>
+                             <th class="text-center">Data Realizada</th>
+                             <th class="text-center">Data Término</th>
                             
                                 
                                 <th>Pauta</th>
@@ -62,18 +63,19 @@
                     </thead>
                     <tbody>
                         <?php 
-                            //while($dados = $con->fetch_array()){?>
+                            while($dados = $con->fetch_array()){?>
                              <tr>
                                  
-                                <td class="text-center"><?php //echo $dados["tecnico"]; ?></td>
-                                 <td class="text-center"><?php //echo $dados["grupo"]; ?></td>
+                                <td class="text-center"><?php echo $dados["data_prevista"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["data_realizada"]; ?></td>
+                                 <td class="text-center"><?php echo $dados["data_termino"]; ?></td>
 
-                                 <td class="text-center"><?php echo " <a href=\"finalizar_reunioes.php\"><button class=\"btn btn-primary btn-block\">Finalizar Reunião</button></a>"; ?></td>
+                                 <td class="text-center"><?php echo " <a href=\"finalizar_reunioes.php?id=".$dados["cod_reuniao"]."\"><button class=\"btn btn-primary btn-block\">Finalizar Reunião</button></a>"; ?></td>
 
                                  <td class="text-center"><?php echo " <a href=\"#\"><button class=\"btn btn-warning btn-block\">Excluir</button></a>"; ?></td>
                                 
                                 </tr> 
-                        <?php //} ?>
+                        <?php } ?>
 
                     </tbody>
 
