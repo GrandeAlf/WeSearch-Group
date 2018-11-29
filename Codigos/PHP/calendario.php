@@ -5,37 +5,23 @@
 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../CSS/calendario.css">
+<script type="text/javascript" src="../JS/scripts.js"></script>
 
 
 <?php include("conexao.php");
        include("funcoes.php");
      
-     $logado = logado();
-     if($logado == NULL)
-     {
-      header("location: inicial.php");
-     }
-     else
-     {
+     $grupo = $_SESSION["id_grupo"];
 
+     $lider = lider_grupo($grupo);
 
-       $lider = lider();
-       $adm = dado(); 
-        
-             
-      
-
-        $consulta = "SELECT re.cod_reunioes as cod_reuniao, re.data as data_prevista, re.data_real as data_realizada, re.termino as data_termino, re.pauta as pauta, ata, termino FROM `reunioes` as re WHERE re.fk_lider = '$lider' ";
-        $con = $mysqli->query($consulta) or die ($mysqli->error);
-
-
-
-      }
+      $consulta_calendario = "SELECT re.cod_reunioes as cod_reuniao, re.data as data_prevista, re.data_real as data_realizada, re.termino as data_termino, re.pauta as pauta, ata, termino, docentes, convidados FROM `reunioes` as re WHERE re.fk_lider = '$lider' ";
+      $con = $mysqli->query($consulta_calendario) or die ($mysqli->error);
       
   ?>
 
 	
-	<div class="container">
+	<div class="container"  style="border: 50px solid white">
 		<?php 
                             while($dados = $con->fetch_array()){?>
 
@@ -43,12 +29,12 @@
                             	<?php  $mes = date('m', strtotime($dados["data_prevista"]));?>
                             	<?php  $ano = date('Y', strtotime($dados["data_prevista"]));?>
 
-
+                            	<?php $sigla = mes($mes); ?>
 
                              <div class="row row-striped">
 								<div class="col-2 text-right">
 									<h1 class="display-4"><span class="badge badge-secondary"><?php echo $dia; ?></span></h1>
-									<h2 ><?php echo $mes; ?></h2>
+									<h2 ><?php echo $sigla; ?></h2>
 									<h2><?php echo $ano; ?></h2>
 								</div>
 								<div class="col-10">
@@ -87,11 +73,28 @@
 
 
 									</ul>
-									<p><?php echo $dados["ata"]; ?></p>
+									<?php 
+											if($dados["docentes"] != NULL)
+											{
+												echo "<p> Docentes:".$dados["docentes"]."</p>";
+											}
+											if($dados["convidados"] != NULL)
+											{
+												echo "<p> Convidados".$dados["convidados"]."</p>";
+											}
+									 ?>
+									<p><?php echo "Ata da reunião : <br>".$dados["ata"]; ?></p>
 								</div>
 							</div> 
                         <?php } ?>
+
+                        <br><br>
+                        <div>
+                        
+                        	<?php echo "<a href=\"mostra_grupo.php?id=".$grupo."\"><button \" class=\"btn btn-danger btn-block\">Voltar</button></a>"; ?>
+                        	
+                        </div>
 		
 	</div>
 
-	
+		

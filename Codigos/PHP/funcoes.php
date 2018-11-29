@@ -91,5 +91,75 @@ function verifica_lider_grupo($id_grupo)
   	
 }
 
+function lider_grupo($grupo)
+{
+	include("conexao.php");
+	
+
+	$consulta = "SELECT `id_lider` FROM `grupo_pesquisa` WHERE `id` = '$grupo'";
+                               
+  	$result = $mysqli->query($consulta) or die($mysqli->error);
+  	$dado = mysqli_fetch_assoc($result);
+
+  	$idlider = $dado["id_lider"];
+
+  	return $idlider;
+}
+
+
+function mes($n_mes)
+{
+	if($n_mes == 1)
+	{
+		$sigla = "JAN";
+	}
+	elseif($n_mes == 2)
+	{
+		$sigla = "FEV";
+	}
+	elseif($n_mes == 3)
+	{
+		$sigla = "MAR";
+	}
+	elseif($n_mes == 4)
+	{
+		$sigla = "ABR";
+	}
+	elseif($n_mes == 5)
+	{
+		$sigla = "MAI";
+	}
+	elseif($n_mes == 6)
+	{
+		$sigla = "JUN";
+	}
+	elseif($n_mes == 7)
+	{
+		$sigla = "JUL";
+	}
+	elseif($n_mes == 8)
+	{
+		$sigla = "AGO";
+	}
+	elseif($n_mes == 9)
+	{
+		$sigla = "SET";
+	}
+	elseif($n_mes == 10)
+	{
+		$sigla = "OUT";
+	}
+	elseif($n_mes == 11)
+	{
+		$sigla = "NOV";
+	}
+	elseif($n_mes == 12)
+	{
+		$sigla = "DEZ";
+	}
+
+	return $sigla;
+}
+
 
  ?>
