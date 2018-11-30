@@ -37,20 +37,16 @@
 <?php include("funcoes.php");
      
      $logado = logado();
-     $lider = lider();
      $adm = dado();
+     $lider = lider();
 
      if($logado == NULL || $adm == 1)
      {
       header("location: inicial.php");
      }
 
-
-     $grupo = $_POST["grupo"];
-     $_SESSION["grupo"] = $grupo;
-
 ?>
-    <title>Vincular Linha</title>
+    <title>Selecionar Grupo</title>
   </head>
   
 <body onload="barra();">
@@ -62,64 +58,51 @@
    </div>
 
   <div class="wrapper">
-        <form  class="form-signin" method="post" action="valida_vincular_linha.php"> 
-        <h2 class="form-signin-heading" align="center">Vincular Linha</h2>      
-          
-        <div class="text-center">
-              <select data-live-search="true" name="linha" class="selectpicker form-control">
-                 <option disabled selected="selected" >Linha de Pesquisa</option>
-                 <?php
-
-
-                         $query = "SELECT cod_especialidade, nome_especialidade FROM especialidade e WHERE e.cod_especialidade NOT IN (SELECT fk_cod_linha FROM grupos_linhas where fk_cod_grupo = '$grupo')";
-
-                         // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
-                         if ($stmt = $mysqli->prepare($query)) {
-
-                            /* execute statement */
-                            $stmt->execute();
-
-                            /* bind result variables */
-                            $stmt->bind_result($id, $nome);
-
-                            /* fetch values */
-                            while ($stmt->fetch()) {        
-                                printf ("<option value='%s'>%s</option>\n", $id, $nome);
-                            }
-
-                        /* close statement */
-                          $stmt->close();
-                        }         
-                                       
-                        
-                  ?>
-
-              </select>
-        </div>
-
-<br>
-      <p>Data de Inclusão da Linha de Pesquisa</p>
-      <div class="input-group registration-date-time">
-                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-                    <input class="form-control" name="data" id="registration-date" type="date">
-                    
-                </div>
-<br><br>
-<textarea class="form-control" rows="5" name="descricao" placeholder="Descrição da linha de pesquisa"></textarea> 
-
-        <br><br>
+        <form  class="form-signin" method="post" action="vincular_linhas.php"> 
+        <h2 class="form-signin-heading" align="center">Selecionar Grupo</h2> 
         
-        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Vincular"/><br>
+      <select data-live-search="true" name="grupo" class="selectpicker form-control">
+         <option disabled selected="selected" >Grupo de Pesquisa</option>
+         <?php
 
-        <?php 
-          
+
+                 $consulta = "SELECT id, nome FROM grupo_pesquisa WHERE id_lider = '$lider' and ativacao = 1";
+
+                 // $query = "SELECT `cod_grande_area`, `nome_grande_area` FROM `grande_area`";
+                 if ($stmt = $mysqli->prepare($consulta)) {
+
+                    /* execute statement */
+                    $stmt->execute();
+
+                    /* bind result variables */
+                    $stmt->bind_result($id, $nome);
+
+                    /* fetch values */
+                    while ($stmt->fetch()) {        
+                        printf ("<option value='%s'>%s</option>\n", $id, $nome);
+                    }
+
+                /* close statement */
+                  $stmt->close();
+                }         
+                               
+                
+          ?>
+
+      </select>
+      <br><br>
+
+        
+        <input class="btn btn-lg btn-block btn-success" type="submit" name="cadastrar" value="Selecionar Grupo"/><br>
+        
+         <?php 
+
           if(isset($_SESSION['informaerro'])){
             echo $_SESSION['informaerro'];
             unset($_SESSION['informaerro']);
           }
 
          ?>
-       
     </form>
       </div>
     </div>

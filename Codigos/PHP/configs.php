@@ -118,7 +118,7 @@
                                             }
                                             else
                                             {
-                                                echo "<span class=\"glyphicon glyphicon-plus\"></span><a href=\"vincular_linhas.php\">Vincular Linha</a>";
+                                                echo "<span class=\"glyphicon glyphicon-plus\"></span><a href=\"seleciona_grupoL.php\">Vincular Linha</a>";
                                             }
                                          ?>
                                     </td>

@@ -13,7 +13,7 @@
 	
 	$desc = $_POST['descricao'];
 	$data = $_POST['data'];
-	$grupo = $_POST['idgrupo'];
+	$grupo = $_SESSION["grupo"];
 
 	
 	if(strlen($data) == 0){
