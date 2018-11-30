@@ -88,7 +88,50 @@
                             
                                             
 
-                        <?php } ?>  
+                        <?php } ?> 
+
+                        <div class="borda">
+                                <h2>Cadastramento de grupos de pesquisa</h2>
+                                <br>
+                                
+                                <br><br>
+                                <div class="text" style="text-align: left">
+                                    <p>A Pró-Reitoria de Pesquisa, Inovação e Pós-Graduação (PRP) é a responsável pelo cadastramento no Diretório dos Grupos de Pesquisa no Brasil, no Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq), e mantém a relação dos grupos cadastrados no link Grupos de Pesquisa do IFSP.</p>
+                                    <br>
+                                    <br>
+                                   <p> A Portaria nº 1.718, de 5 de maio de 2017, estabeleceu o novo regulamento dos Grupos de Pesquisa Institucionais e está disponível para consulta no link Grupos de Pesquisa da PRP. Conforme o Art. 17 desta Portaria, para a proposta de criação de grupo deverá ser utilizado o formulário de Grupo de Pesquisa Institucional, disponível no link supracitado, a ser encaminhado pelo primeiro líder ao presidente do Compesq do câmpus por e-mail para pesquisa.brt@ifsp.edu.br, com a indicação do assunto “Criação de Grupo de Pesquisa”. Devem constar as seguintes informações no corpo da mensagem:</p>
+                                   <br>
+                                    <p>• nome do grupo de pesquisa;</p>
+                                    <p>• nome do primeiro líder, titulação, câmpus de lotação e n.º do CPF;</p>
+                                    <p>• nome e titulação dos membros pesquisadores;</p>
+                                    <p>• linhas de pesquisa;</p>
+                                    <p>• justificativa para a formação do grupo, demonstrando a relevância e as perspectivas de contribuição científica, tecnológica, artística ou cultural em até 600 caracteres, incluindo os espaços;</p>
+                                    <p>• justificativa para atipicidade, se for o caso, considerando os termos do Art. 23 da referida Portaria, em até 200 caracteres, incluindo os espaços;</p>
+                                    <p>• descrição do grupo de, no máximo, 400 caracteres, incluindo os espaços, para ser apresentada na página da PRP, junto com a logomarca.</p>
+                                    <br>
+                                    <br>
+                                    <p>É importante que o primeiro líder, antes de enviar a proposta, observe o disposto no Art. 9.º e no Art. 30 da referida Portaria.</p>
+                                </div>
+
+                                <br><br><br>
+                                
+                            </div>
+                            <br>
+
+
+                            <div class="borda">
+                                <h2>Produção Científica e Tecnológica</h2>
+                                <br>
+                                
+                                <br><br>
+                                <div class="text" style="text-align: left">
+                                    <p>Dados referentes às produções científica e tecnológica dos servidores do câmpus podem ser consultados na pasta abaixo. Essas informações foram extraídas da Plataforma Lattes do CNPq, a partir da Plataforma Stela Experta, e são válidas até a data indicada no nome do arquivo.</p>
+                                </div>
+
+                                <br><br><br>
+                                
+                            </div>
+                            <br>
         </div>
     </div>
 </div>
