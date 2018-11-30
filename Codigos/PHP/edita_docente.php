@@ -46,7 +46,6 @@
       <h2 class="form-signin-heading" align="center">Alterar dados de Docente</h2>
       <input type="text" class="form-control" name="nome" value="<?php echo $dados["nome"]; ?>" >
       <input type="text" class="form-control" name="lattes" value="<?php echo $dados["lattes"]; ?>"  />
-      <input type="text" class="form-control" name="atividade" value="<?php echo $dados["atividade_realizada"]; ?>"  />
       <select class="form-control" name="graduacao">
       <option  selected="selected" value="<?php echo $dados["fk_graduacao"]; ?>" >Sem Alteração</option>
          <?php
