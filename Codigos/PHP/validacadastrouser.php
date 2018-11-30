@@ -41,7 +41,7 @@
 	$RegExAZ = preg_match('/[A-Z]/', $senha); 
 	$RegExaz = preg_match('/[a-z]/', $senha); 
 	$RegEx09 = preg_match('/[0-9]/', $senha); 
-	$RegExes = preg_match('/[!@#$%&*]/', $senha); 
+	$RegExes = preg_match('/[!@#$%&*()_-+=]/', $senha); 
 
 	if($RegExAZ && $RegExaz && $RegEx09 && $RegExes && strlen($senha) >= 6) 
 	{ 
